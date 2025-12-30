@@ -1,0 +1,213 @@
+<div class="header-row">
+
+    <div class="title-box">
+        <h2>DASHBOARD BRANCH</h2>
+        <span>ID : #NYC-042</span>
+    </div>
+
+    <input type="text" class="search-box" placeholder="Search members / staff">
+</div>
+<div class="menu-header">
+    <div class="class-name">
+        <h3>Gym Pulse Overview</h3>
+        <p>Real-time faclilty monitoaring and predictive analytics </p>
+
+    </div>
+    <input type="button" class="txt1" [value]="CurrentDate">
+
+</div>
+<div class="start-row">
+    <div class="start-card">
+        <div class="start-end">
+            <h4>Current Occupancy</h4>
+            <span class="tag-moderate">MODERATE</span>
+        </div>
+        <h6>84/120</h6>
+        <div class="container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                    style="width:84%">
+                    <span class="sr-only">98% Complete</span>
+                </div>
+            </div>
+        </div>
+        <span>5% vs. average for Tuesday</span>
+    </div>
+    <div class="start-card">
+        <div class="start-end">
+            <h4>Live Check-ins</h4>
+            <span class="tag success">+15</span>
+        </div>
+        <h6>342</h6>
+        <div class="mini-bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <span>peak time expected at 6:00 PM</span>
+    </div>
+
+    <div class="start-card">
+        <div class="start-end">
+            <h4>Revenue (MTD)</h4>
+
+            <span class="tag success">+12%</span>
+        </div>
+        <h6>$42,500</h6>
+        <div class="btn1">
+            <button class="btn btn-primary">MemberShip:$35k</button>
+            <button class="btn btn-primary">POS :$7.5K</button>
+        </div>
+
+        <span>Project to hit $50k by EOM</span>
+    </div>
+</div>
+<div class="middle-row">
+
+    <!-- LEFT SIDE : Crowd Trend Chart -->
+    <div class="left-panel">
+        <div class="trend-card">
+
+            <div class="trend-header">
+                <div>
+                    <h3>Time-wise Crowd Trend</h3>
+                    <span>Hourly crowd levels today vs. average</span>
+                </div>
+
+                <div class="trend-tabs">
+                    <button class="tab active">Today</button>
+                    <button class="tab">Week</button>
+                </div>
+            </div>
+
+            <!-- NOW Label -->
+            <div class="now-badge">NOW</div>
+
+            <!-- Vertical Bar Chart -->
+            <div class="vchart">
+
+                <div class="vcol" *ngFor="let h of hours">
+
+                    <div class="col-bars">
+                        <div class="bar avg" [style.--h.%]="h.avg"></div>
+                        <div class="bar live" [style.--h.%]="h.live"></div>
+
+                    </div>
+
+                    <span class="time">{{h.time}}</span>
+                </div>
+
+            </div>
+
+            <!-- Legend -->
+            <div class="legend">
+                <span class="dot grey"></span> Average (Typical)
+                <span class="dot blue"></span> Today (Live)
+            </div>
+
+        </div>
+
+        <!-- 🔹 Trend Card -->
+        <!-- (इथे आधी दिलेला Trend-Card HTML पेस्ट करा) -->
+        <!-- <app-trend-card></app-trend-card> -->
+    </div>
+
+    <!-- RIGHT SIDE : AI Insights -->
+    <div class="right-panel">
+        <div class="insights-card">
+
+            <div class="insights-header">
+                <h3>AI Insights</h3>
+                <span>3 critical predictions found</span>
+            </div>
+
+            <div class="insight-item danger">
+                <h4>Crowd Surge Alert</h4>
+                <p>Expected 98% capacity at 18:30 due to class overlap.</p>
+                <a>Notify Floor Staff</a>
+            </div>
+
+            <div class="insight-item warning">
+                <h4>Churn Risk Detected</h4>
+                <p>15 members showing "High Risk" behavior patterns this week.</p>
+                <a>View Cohort</a>
+            </div>
+
+            <div class="insight-item info">
+                <h4>Class Optimization</h4>
+                <p>"HIIT Morning" is underbooked (25%). Consider rescheduling.</p>
+                <a>Review Schedule</a>
+            </div>
+
+        </div>
+
+        <!-- 🔹 AI Insights Card -->
+        <!-- (इथे आधी दिलेला Insights Card HTML पेस्ट करा) -->
+        <!-- <app-ai-insights></app-ai-insights> -->
+    </div>
+
+</div>
+<div class="bottom-row">
+
+  <!-- Activity Breakdown -->
+  <div class="small-card">
+    <div class="card-head">
+      <h4>Activity Breakdown</h4>
+      <span class="badge live">Live</span>
+    </div>
+
+    <div class="item">
+      <span class="icon"></span>
+      <div class="info">
+        <h5>Bench Press</h5>
+        <p>Free Weights</p>
+      </div>
+      <span class="value">12 Users</span>
+    </div>
+  </div>
+
+  <!-- Equipment Status -->
+  <div class="small-card">
+    <div class="card-head">
+      <h4>Equipment Status</h4>
+      <span class="sub">Asset utilization</span>
+    </div>
+
+    <div class="item">
+      <div class="info">
+        <h5>Cardio Machines</h5>
+        <p>Treadmills, Bikes</p>
+      </div>
+      <span class="status warn">85% Busy</span>
+    </div>
+
+  </div>
+
+  <!-- Staff On-Duty -->
+  <div class="small-card">
+    <div class="card-head">
+      <h4>Staff On-Duty</h4>
+      <span class="sub">7 Active</span>
+    </div>
+
+
+    <div class="item">
+      <span class="avatar">M</span>
+      <div class="info">
+        <h5>Mike Carter</h5>
+        <p>Floor Coach</p>
+      </div>
+    </div>
+  </div>
+
+</div>
