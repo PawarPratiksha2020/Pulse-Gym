@@ -195,7 +195,7 @@
     }
 }
 
-/* ---------- GRID LAYOUT ---------- */
+/*-- GRID LAYOUT ---------- */
 .middle-row{
   display:grid;
   grid-template-columns: 2fr 1fr;
@@ -260,7 +260,7 @@
   font-size:11px;
 }
 
-/* ---------- VERTICAL BAR CHART ---------- */
+
 .vchart{
   display:flex;
   gap:18px;
@@ -363,7 +363,7 @@
   margin:0 0 6px;
   color:#9ca3af;
   font-size:12px;
-}
+} 
 
 .insight-item a{
   font-size:12px;

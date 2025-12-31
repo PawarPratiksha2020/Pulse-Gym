@@ -1,0 +1,414 @@
+/* Top Menu Create And search box */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #1b2432;
+
+}
+
+.title-box h2 {
+    margin: 0;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.title-box span {
+    color: rgb(120, 117, 117);
+    font-size: 13px;
+}
+
+.search-box {
+    padding: 10px 14px;
+    width: 260px;
+    border-radius: 10px;
+    border: 1px solid #383842;
+    background: #1d2744;
+    color: white;
+    outline: none;
+}
+
+.search-box::placeholder {
+    color: #6b7280;
+}
+
+/* End Part */
+/* member Directory Create style */
+.header-view {
+    border: 1px solid rgb(22, 25, 46);
+    background: rgb(52, 52, 66);
+    width: 380px;
+    height: 118vh;
+    border-radius: 1px solid rgb(34, 34, 74);
+    border-right: 1px solid rgb(128, 128, 168);
+}
+
+.header-view .header-name {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+.header-view .top-veiw {
+    border: 2px solid rgb(73, 67, 113);
+    background: #222236;
+
+}
+
+.header-view h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.header-name .special {
+    margin: 5px;
+    padding: 5px;
+    font-size: 15px;
+    color: rgb(33, 99, 199);
+    border: 1px solid rgb(31, 45, 71);
+    border-radius: 10px;
+    background: rgb(25, 61, 90);
+
+}
+
+.header-view .Search-box1 {
+    margin-left: 15px;
+    border: #020617;
+    padding: 5px;
+    width: 250px;
+    background: #060708;
+}
+
+.header-view .buttons {
+    padding: 10px;
+    justify-content: space-evenly;
+    color: #1e262f;
+}
+
+button {
+    background-color: #1b2432;
+    color: #e2dcdc;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 10px;
+    /* border: 1px solid #ccc; */
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* end */
+/* member and status Declare */
+.status-bar {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    color: #c0cee6;
+    background: #020617;
+}
+
+.members-list {
+    display: flex;
+    flex-direction: column;
+    /* gap: 5px; */
+
+}
+
+/* Card */
+.member-card {
+    background: #222236;
+    border-radius: 10px;
+    padding: 10px 5px;
+    /* margin: 5px; */
+    border-bottom: 1px solid rgb(17, 15, 47);
+
+}
+
+/* Row layout */
+.member-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Name */
+.member-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* ID */
+.member-id {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #cfd5e3;
+}
+
+/* Status colors */
+.member-status {
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.member-status.active {
+    background: #0f3821;
+    color: #4dff4d;
+}
+
+.member-status.pending {
+    background: #3a3300;
+    color: #ffd966;
+}
+
+.member-status.expired {
+    background: #3a0d0d;
+    color: #ff6b6b;
+}
+
+.bottom p {
+    /* margin: 140px; */
+    font-size: 18px;
+    
+    color: #f9f5f5;
+    margin-left: 2px;
+    margin-bottom: 100px;
+    margin-top: 220px;
+    border-top: 2px solid rgb(29, 28, 65);
+    display: flex;
+    background: rgb(17, 17, 41);
+
+
+}
+
+/* right Side */
+/* ---------- RIGHT MAIN SECTION ---------- */
+.layout {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.right-section {
+    flex: 1;
+    padding-left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 0;
+    /* 🔹 section खाली जाणार नाही */
+}
+
+/* ---------- PROFILE CARD ---------- */
+.profile-card {
+    background: linear-gradient(90deg, #1f2b6c, #260630);
+    border-radius: 16px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    color: #fff;
+}
+
+.profile-pic {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info h2 {
+    margin: 0;
+}
+
+/* Badge */
+.badge {
+    background: #fbbf24;
+    padding: 4px 10px;
+
+    color: #111;
+    font-size: 12px;
+}
+
+.box {
+    font-size: 12px;
+    padding: 5px;
+    margin: 8px;
+    border: 1px solid rgb(42, 42, 53);
+    background: rgb(41, 41, 53);
+
+}
+
+/* Buttons */
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.actions button {
+    padding: 6px 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.msg-btn {
+    background: #1f2937;
+    color: #e5e7eb;
+}
+
+.edit-btn {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* ---------- SUGGESTION BOX ---------- */
+.suggestion-box {
+    background: linear-gradient(90deg, #1f2b6c, #260630);
+    border-radius: 12px;
+    border: 1px solid rgb(20, 20, 38);
+    padding: 12px;
+    margin-top: 4px;
+    /* 🔹 छोटासा neat gap */
+}
+
+.suggestion-box .color-change {
+    color: #858080;
+}
+
+
+.note {
+    color: #1912de;
+    display: flex;
+    justify-content: end;
+    font-size: 18px;
+    text-decoration: underline;
+
+}
+
+/* ---------- STATS ROW ---------- */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.stat-card {
+    background: #12162c;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+/* ---------- BOTTOM PANELS ---------- */
+
+.attendance-card {
+    background:  #1e243c;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    color: #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+}
+
+.card-head {
+    padding: 5px;
+    margin: 10px;
+    border-bottom: 1px solid rgb(64, 64, 83);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chart-box {
+    margin-bottom: 10px;
+}
+
+.dot-badge {
+    font-size: 12px;
+    background: #0b1220;
+    padding: 4px 10px;
+    border-radius: 20px;
+    color: #60a5fa;
+}
+
+.peak-box {
+
+    background: #0b1220;
+    border-radius: 12px;
+    padding: 8px 10px;
+    margin-top: 10px;
+}
+
+.peak-title {
+    color: #fbbf24;
+    font-size: 13px;
+}
+
+.two-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    height: 50vh;
+}
+
+.final-card{
+  background:#1e243c;
+  border-radius:14px;
+  padding:12px;
+  color:#dbe2ff;
+}
+
+.card-top{
+  padding:6px 4px 10px 4px;
+  border-bottom:1px solid #2e2e3d;
+  margin-bottom:8px;
+}
+
+.row{
+  margin-bottom:16px;
+}
+
+.bar{
+  position:relative;
+  height:30px;
+  border-radius:15px;
+
+
+ 
+}
+
+.fill{
+  height:100%;
+  display:block;
+  border-radius:20px;
+}
+
+.blue{ background:#3b82f6; }
+.purple{ background:#9a0698; }
+.green{ background:green; }
+
+.percent{
+  position:absolute;
+  right:8px;
+  top:-18px;
+  font-size:12px;
+  color:#ffffff;
+}
+.btns{
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+   
+}
+button{
+    background: rgb(25, 25, 51);
+    border-radius: 2px solid rgb(25, 25, 51);;
+}

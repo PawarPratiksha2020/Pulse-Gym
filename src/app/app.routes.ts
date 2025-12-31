@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { Dashbord } from './Pages/dashbord/dashbord';
 import { Members } from './Pages/members/members';
 import { Satff } from './Pages/satff/satff';
-import { Equipment } from './Pages/equipment/equipment';
+import { EquipmentComponent } from './Pages/equipment/equipment';
 import { Finace } from './Pages/finace/finace';
 import { Reports } from './Pages/reports/reports';
 
@@ -21,7 +21,7 @@ export const routes: Routes = [
     },
      {
         path: 'Equipments',
-        component : Equipment
+        component : EquipmentComponent
     },
      {
         path: 'finances',

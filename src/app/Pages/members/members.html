@@ -1,1 +1,219 @@
-<p>members works!</p>
+<div class="header-row">
+
+    <div class="title-box">
+        <h2>ALL USERS & PROFILES</h2>
+        <span>Drectory / Detail View</span>
+    </div>
+
+    <input type="text" class="search-box" placeholder="Global Search......">
+</div>
+<div class="layout">
+    <div class="header-view">
+        <div class="top-veiw">
+            <div class="header-name">
+                <h3>Member Directory</h3>
+                <p class="special">1,248 Users</p>
+            </div>
+            <input type="text" class="Search-box1" placeholder="Find member by name or ID..">
+            <div class="buttons">
+                <button class="filter-btn" id="color">All</button>
+                <button class="filter-btn">Active</button>
+                <button class="filter-btn">Inactive</button>
+                <button class="filter-btn">Premium</button>
+            </div>
+        </div>
+        <div class="status-bar">
+            <span>MEMBER</span>
+            <span>STATUS</span>
+        </div>
+        <div class="members-list">
+
+            <div class="member-card" *ngFor="let m of members">
+
+                <!-- Row: Name left | Status right -->
+                <div class="member-row">
+                    <span class="member-name">{{ m.name }}</span>
+
+                    <span class="member-status" [ngClass]="m.status.toLowerCase()">
+                        {{ m.status }}
+                    </span>
+                </div>
+
+                <!-- ID below -->
+                <p class="member-id">ID: {{ m.id }}</p>
+            </div>
+
+        </div>
+        <div class="bottom">
+            <p>Showing 6 of 1248</p>
+            <p></p>
+        </div>
+
+    </div>
+    <div class="right-section">
+
+        <!-- PROFILE CARD -->
+        <div class="profile-card">
+            <img src="assets/user1.jpg" class="profile-pic">
+
+            <div class="info">
+                <h2>Sarah Jenkins</h2>
+                <p> <i class="fa-solid fa-location-arrow"></i> NYC Downtown <i class="fa-solid fa-cake-candles"></i> 28
+                    Years</p>
+                <span class="badge">Platinum Member</span>
+                <span class="box">Joined Oct 24,2021</span>
+                <span class="box">Renewal:14 Days</span>
+            </div>
+
+            <div class="actions">
+                <button class="msg-btn"> <i class="fa-solid fa-message"></i> Message</button>
+                <button class="edit-btn"> <i class="fa-solid fa-pen-to-square"></i> Edit Profile</button>
+            </div>
+        </div>
+
+        <!-- SUGGESTION BOX -->
+        <div class="suggestion-box">
+            <h4>Smart Optimization Suggestion</h4>
+            <h6>Real-Time</h6>
+            <p class="color-change">
+                Sarah usually does cardio at this time . the <strong>Treadmill Zone</strong> is currently at <strong
+                    style="color: red;">95% capacity</strong> . Basec on her history. she also enjoys rowing. <strong
+                    style="color: green;">Rowing Machines</strong>
+                are 80% free.
+                Suggest switching to maintain heart rate target without wait </p>
+            <span class="note">Notify User</span>
+        </div>
+
+        <!-- STATS ROW -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <span>Attendance (MO)</span>
+                <h2>18</h2>
+                <p style="color: green;">+2</p>
+                <div class="container">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                            aria-valuemax="100" style="width:84%">
+                            <span class="sr-only">98% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <span>Avg. Duration</span>
+                <h2>55 <h6>min</h6>
+                </h2>
+                <p>Consistent</p>
+            </div>
+
+            <div class="stat-card">
+                <span>Current Streak</span>
+                <h2>4 <h6>Days</h6>
+                </h2>
+                <p>Personal Best:12 Days</p>
+            </div>
+
+            <div class="stat-card">
+                <span>Progress Goal</span>
+                <h2>82%</h2>
+                <div class="container">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                            aria-valuemax="100" style="width:82% ; background-color: #d63384;">
+                            <span class="sr-only">82% Complete</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- LOWER SECTION -->
+        <div class="two-panel">
+            <div class="attendance-card">
+
+                <div class="card-head">
+                    <h4>Attendance & Preferred Times</h4>
+                    <span class="dot-badge">● Workouts</span>
+                </div>
+                <div style="height: 160px;" class="chart-box">
+                    <canvas id="attendanceChart"></canvas>
+                </div>
+
+
+                <div class="peak-box">
+                    <span class="peak-title">Peak Performance Time</span>
+                    <p>Sarah trains best between 5 PM - 7 PM</p>
+                </div>
+
+            </div>
+            <div class="final-card">
+
+                <div class="card-top">
+                    <h4>WorkOut Focus & Equipment</h4>
+                </div>
+
+                <!-- Row 1 -->
+                <div class="row">
+                    <p>Cardio (Treadmill / Rowing)</p>
+
+                    <div class="bar">
+                        <div class="container">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                    aria-valuemax="100" style="width:45% ">
+                                    <span class="sr-only">45%Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="percent">45%</span>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="row">
+                    <p>Strength (Free Weight)</p>
+
+                    <div class="bar">
+                         <div class="container">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                    aria-valuemax="100" style="width:30% ; background-color: #d712ba;">
+                    
+                                </div>
+                            </div>
+                        </div>
+                        <span class="percent">30%</span>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="row">
+                    <p>Flexibility (Yoga / Mat)</p>
+
+                    <div class="bar">
+                         <div class="container">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
+                                    aria-valuemax="100" style="width:25% ;background-color: green;">
+                                    <span class="sr-only">25%Complete</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="percent">25%</span>
+                    </div>
+                </div>
+                <div class="btns">
+                    <button>Fav:Leg Press</button>
+                    <button>Fav:Elliptical</button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>

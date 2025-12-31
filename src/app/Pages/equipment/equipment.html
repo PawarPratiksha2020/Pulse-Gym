@@ -1,1 +1,119 @@
-<p>equipment works!</p>
+<div class="header-row">
+
+    <div class="title-box">
+        <h2>DOWNTOWM BRANCH</h2>
+        <span>ID:#NTC-042</span>
+    </div>
+
+    <input type="text" class="search-box" placeholder="Search equipment ID....">
+</div>
+<div class="page">
+
+    <h2>Equipment & Availability</h2>
+    <p class="subtitle">
+        Live inventory tracking, predictive availability, and procurement intelligence.
+    </p>
+
+    <!-- Top Bar -->
+    <div class="top-actions">
+        <button class="secondary">Export Report</button>
+        <button class="primary">+ Add Equipment</button>
+    </div>
+
+    <!-- status  Cards -->
+    <div class="status-grid">
+        <div class="card">
+            <label>Total Assets</label>
+            <h1>{{status .totalAssets}}</h1>
+            <span class="note">12 new added this month</span>
+        </div>
+
+        <div class="card">
+            <label>Live Utilization</label>
+            <h1>{{status.utilization}}%</h1>
+            <div class="progress">
+                <div class="fill" [style.width.%]="status .utilization"></div>
+            </div>
+        </div>
+
+        <div class="card warn">
+            <label>Maintenance</label>
+            <h1>{{status .maintenance}}</h1>
+            <span class="note orange">Action Required on 2 units</span>
+        </div>
+
+        <div class="card success">
+            <label>Buy Suggestion</label>
+            <h1>{{status .buySuggestion}}</h1>
+            <span class="note green">Predictive Shortage: Treadmills</span>
+        </div>
+    </div>
+
+    <!-- Smart Insight -->
+    <div class="insight">
+        <b>Smart Procurement Insight <strong>NEW</strong></b><br>
+       <b>Critical Shortage Detected:</b>Treadmill usage consistently exceeds 95% <br> capacity between 17:00
+       - 19:00 on Weekdays.Wait time average. <b>12 minutes</b>.
+        <span class="action">Recommended Action <br>
+            Acquire 3 Units <br> <p style="color: blue;">View ROI Analysis</p></span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="grid">
+
+        <!-- Left Table -->
+        <div class="table-card">
+            <h3>Live Inventory Status</h3>
+
+            <table>
+                <tr>
+                    <th>Equipment Name</th>
+                    <th>Zone</th>
+                    <th>Live Status</th>
+                    <th>Avg Duration</th>
+                    <th>Est. Free In</th>
+                </tr>
+
+                <tr *ngFor="let item of equipmentss">
+                    <td>
+                        {{ item.name}}
+                        <div class="id">ID: {{ item.id }}</div>
+                    </td>
+
+                    <td>{{ item.zone }}</td>
+
+                    <td>
+                        <span class="badge" [ngClass]="{
+                          red: item.status === 'IN_USE',
+                          green: item.status === 'FREE',
+                         yellow: item.status === 'MAINTENANCE'
+      }">
+                            {{ getStatusLabel(item.status) }}
+                        </span>
+                    </td>
+
+                    <td>{{item.duration}}</td>
+                    <td>{{item.freeIn || '—'}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="side">
+
+            <div class="card">
+                <h3>Equipment Popularity</h3>
+
+                <div *ngFor="let p of popularity" class="pop-item">
+                    <div class="row">
+                        <span>{{p.name}}</span>
+                        <b>{{p.value}}%</b>
+                    </div>
+                    <div class="bar">
+                        <div class="fill" [style.width.%]="p.value"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card alert">
+                <h3>Crowd Balancing</h3>
