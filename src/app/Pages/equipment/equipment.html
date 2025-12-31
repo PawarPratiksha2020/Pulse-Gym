@@ -25,7 +25,9 @@
         <div class="card">
             <label>Total Assets</label>
             <h1>{{status .totalAssets}}</h1>
-            <span class="note">12 new added this month</span>
+            <span class="note" style="font-size: 15px;">
+                <p style="color: green;">12 new</p> added this month
+            </span>
         </div>
 
         <div class="card">
@@ -39,23 +41,27 @@
         <div class="card warn">
             <label>Maintenance</label>
             <h1>{{status .maintenance}}</h1>
-            <span class="note orange">Action Required on 2 units</span>
+            <span class="note orange">
+                <p style="color: orange;">Action Required</p> on 2 units
+            </span>
         </div>
 
         <div class="card success">
             <label>Buy Suggestion</label>
             <h1>{{status .buySuggestion}}</h1>
-            <span class="note green">Predictive Shortage: Treadmills</span>
+            <span style="color: rgb(184, 175, 175);">Predictive Shortage : <b>Treadmills</b> </span>
         </div>
     </div>
 
     <!-- Smart Insight -->
     <div class="insight">
         <b>Smart Procurement Insight <strong>NEW</strong></b><br>
-       <b>Critical Shortage Detected:</b>Treadmill usage consistently exceeds 95% <br> capacity between 17:00
-       - 19:00 on Weekdays.Wait time average. <b>12 minutes</b>.
-        <span class="action">Recommended Action <br>
-            Acquire 3 Units <br> <p style="color: blue;">View ROI Analysis</p></span>
+        <b>Critical Shortage Detected:</b>Treadmill usage consistently exceeds 95% <br> capacity between 17:00
+        - 19:00 on Weekdays.Wait time average. <b>12 minutes</b>.
+        <span class="action" style="color: grey;">Recommended Action <br>
+            <b style="color: aliceblue;">Acquire 3 Units</b> <br>
+            <p style="color: rgb(68, 68, 156); font-size: 20px;">View ROI Analysis</p>
+        </span>
     </div>
 
     <!-- Main Content -->
@@ -72,9 +78,10 @@
                     <th>Live Status</th>
                     <th>Avg Duration</th>
                     <th>Est. Free In</th>
+                    <th>Action</th>
                 </tr>
 
-                <tr *ngFor="let item of equipmentss">
+                <tr *ngFor="let item of equipment">
                     <td>
                         {{ item.name}}
                         <div class="id">ID: {{ item.id }}</div>
@@ -94,6 +101,7 @@
 
                     <td>{{item.duration}}</td>
                     <td>{{item.freeIn || '—'}}</td>
+                    <td>:</td>
                 </tr>
             </table>
         </div>
@@ -102,12 +110,15 @@
         <div class="side">
 
             <div class="card">
-                <h3>Equipment Popularity</h3>
+                <div class="card1">
+                    <h3>Equipment Popularity</h3>
+                    <p>Last & Days</p>
+                </div>
 
                 <div *ngFor="let p of popularity" class="pop-item">
-                    <div class="row">
+                    <div class="row  graph " >
                         <span>{{p.name}}</span>
-                        <b>{{p.value}}%</b>
+                        <b style="margin-left: 500px;">{{p.value}}%</b>
                     </div>
                     <div class="bar">
                         <div class="fill" [style.width.%]="p.value"></div>
@@ -115,5 +126,14 @@
                 </div>
             </div>
 
-            <div class="card alert">
+            <div class="card  alert">
                 <h3>Crowd Balancing</h3>
+                <p>Live suggestions to optimize member flow</p>
+                <div class="cardio-box">
+                    <h4>Cardio Zone A Overload</h4> 
+                    <p>98% capacity.Redirect members to zone B(35% free)
+                        via app notification
+                    </p>
+                    <button>Send Notification</button>
+                </div>
+            </div>

@@ -51,6 +51,7 @@ h2 {
 .subtitle {
     opacity: .75;
     margin-bottom: 12px;
+    font-size: 22px;
 }
 
 /* ---------- Buttons ---------- */
@@ -58,7 +59,8 @@ h2 {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    margin: 6px 0 14px;
+    margin: 7px 0 15px;
+   
 }
 
 .primary,
@@ -99,15 +101,14 @@ h2 {
     border-radius: 14px;
     border: 1px solid #1f2937;
     padding: 14px;
+    color: white;
+}
+ label{
+    font-size: 20px;
 }
 
-.card.warn {
-    border-color: #f59e0b
-}
 
-.card.success {
-    border-color: #22c55e
-}
+
 
 .card label {
     font-size: 13px;
@@ -118,19 +119,6 @@ h2 {
 .card h1 {
     margin: 6px 0;
     font-size: 26px;
-}
-
-.note {
-    font-size: 12px;
-    opacity: .75;
-}
-
-.orange {
-    color: #fbbf24
-}
-
-.green {
-    color: #4ade80
 }
 
 /* ---------- Progress Bar ---------- */
@@ -145,12 +133,12 @@ h2 {
     height: 100%;
     border-radius: 6px;
     background: #3b82f6;
-}
+} 
 
 /* ---------- Insight Banner ---------- */
 .insight {
     margin: 15px 0;
-    padding: 12px;
+    padding: 18px;
     border-radius: 15px;
     background: #0a1c38;
     border: 1px solid #1e3a8a;
@@ -158,11 +146,11 @@ h2 {
 
 .insight .action {
     padding: 2px;
-    margin-top: 2px;
+    margin-top: -45px;
     float: right;
-    color: #60a5fa;
-    display: flex;
-    text-align:right;
+
+   
+    
     
 }
 
@@ -175,14 +163,15 @@ h2 {
 
 /* ---------- Table Card ---------- */
 .table-card {
+    height: 80vh;
     background: #0b1220;
     border: 1px solid #1f2937;
     border-radius: 14px;
-    padding: 12px;
+    padding: 10px;
 }
 
 .table-card h3 {
-    margin: 4px 0 10px;
+    margin: 4px 0 15px;
 }
 
 table {
@@ -192,25 +181,25 @@ table {
 
 th {
     text-align: left;
-    font-size: 13px;
+    font-size: 14px;
     opacity: .7;
-    padding: 8px;
+    padding: 7px;
     border-bottom: 1px solid #273048;
 }
 
 td {
-    padding: 10px 8px;
+    padding: 10px 9px;
     border-bottom: 1px solid #1e2538;
 }
 
 .id {
-    font-size: 11px;
+    font-size: 12px;
     opacity: .6;
 }
 
 /* ---------- Status Badges ---------- */
 .badge {
-    padding: 5px 12px;
+    padding: 5px 11px;
     border-radius: 20px;
     font-size: 12px;
     letter-spacing: .2px;
@@ -219,6 +208,7 @@ td {
 .red {
     background: #ef444422;
     color: #f87171
+    
 }
 
 .green {
@@ -233,22 +223,28 @@ td {
 
 /* ---------- Right Panel ---------- */
 .side .card {
-    margin-bottom: 12px;
+    margin-bottom: 13px;
 }
+.card .card1{
+    font-size: 14px;
+    display: flex;
+    justify-content:space-around;
+}
+
 
 /* Popularity Bar */
 .pop-item {
-    margin-bottom: 10px
+    margin-bottom: 15px
 }
 
 .row {
     display: flex;
     justify-content: space-between;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .bar {
-    height: 6px;
+    height: 15px;
     border-radius: 6px;
     background: #0f172a;
 }
@@ -261,5 +257,12 @@ td {
 
 /* Alert Card */
 .alert {
-    border-color: #f59e0b
+    border-color: #242328
+}
+ .cardio-box{
+    border-radius: 1px solid rgb(25, 25, 188);
+    font-size: 15px;
+    display: flex;
+    justify-content: flex-start;
+   
 }

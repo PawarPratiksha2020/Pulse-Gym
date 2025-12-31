@@ -24,5 +24,14 @@ export const EQUIPMENT_LIST: Equipment[] = [
     status: "IN_USE",
     duration: "22 min",
     freeIn: "12 min"
-  }
+  },
+    {
+    name: "Spin Bike",
+    id: "SP-101",
+    zone: "Studio A",
+    status: "MAINTENANCE",
+    duration: "45 min",
+    freeIn: "--"
+  },
+  
 ];
