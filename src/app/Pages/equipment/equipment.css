@@ -107,9 +107,6 @@ h2 {
     font-size: 20px;
 }
 
-
-
-
 .card label {
     font-size: 13px;
     opacity: .8;
@@ -123,8 +120,8 @@ h2 {
 
 /* ---------- Progress Bar ---------- */
 .progress {
-    height: 6px;
-    margin-top: 6px;
+    height: 5px;
+    margin-top: 5px;
     border-radius: 6px;
     background: #0f172a;
 }
@@ -137,7 +134,7 @@ h2 {
 
 /* ---------- Insight Banner ---------- */
 .insight {
-    margin: 15px 0;
+    margin: 14px 0;
     padding: 18px;
     border-radius: 15px;
     background: #0a1c38;
@@ -259,10 +256,21 @@ td {
 .alert {
     border-color: #242328
 }
+.alert .cardio-box{
+    border: 1px solid rgb(65, 65, 76);
+    background: rgb(49, 46, 63);
+}
  .cardio-box{
-    border-radius: 1px solid rgb(25, 25, 188);
-    font-size: 15px;
+    padding: 10px;
+    margin-left: 25px;
+    font-size: 20px;
+}
+button{
+    border: none;
+    padding: 5px;
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
+    color: #f9f8f8;
+    background: #2082b7;
    
 }
