@@ -9,18 +9,21 @@
 </div>
 <div class="layout">
     <div class="header-view">
-        <div class="top-veiw">
+        <div class="top-veiw" *ngIf="editingmember">
             <div class="header-name">
                 <h3>Member Directory</h3>
                 <p class="special">1,248 Users</p>
             </div>
-            <input type="text" class="Search-box1" placeholder="Find member by name or ID..">
-            <div class="buttons">
-                <button class="filter-btn" id="color">All</button>
-                <button class="filter-btn">Active</button>
-                <button class="filter-btn">Inactive</button>
-                <button class="filter-btn">Premium</button>
-            </div>
+            <input type="text" [(ngModel)]="editingmember.name" class="Search-box1"
+                placeholder="Find member by name or ID..">
+            <select name="" id="" [(ngModel)]="editingmember.status">
+                <option>Active</option>
+                <option>Inactive</option>
+                <option>Pending</option>
+                <option>Expired</option>
+            </select>
+            <button (click)="saveMember()">Save</button>
+            <button (click)="cancel()">Cancel</button>
         </div>
         <div class="status-bar">
             <span>MEMBER</span>
@@ -28,7 +31,7 @@
         </div>
         <div class="members-list">
 
-            <div class="member-card" *ngFor="let m of members">
+            <div class="member-card" *ngFor="let m of members" (click)="editmember(m.id)" >
 
                 <!-- Row: Name left | Status right -->
                 <div class="member-row">
@@ -45,7 +48,8 @@
 
         </div>
         <div class="bottom">
-            <p>Showing 6 of 1248</p>
+           <p>Showing {{ members.length }} of {{ totalUsers }}</p>
+            <button class="filter-btn" (click)="newMember()">Add Member</button>
             <p></p>
         </div>
 
@@ -58,16 +62,16 @@
 
             <div class="info">
                 <h2>Sarah Jenkins</h2>
-                <p> <i class="fa-solid fa-location-arrow"></i> NYC Downtown <i class="fa-solid fa-cake-candles"></i> 28
-                    Years</p>
-                <span class="badge">Platinum Member</span>
-                <span class="box">Joined Oct 24,2021</span>
-                <span class="box">Renewal:14 Days</span>
+                <p> <i class="fa-solid fa-location-arrow"></i>Pune</p> <p><i class="fa-solid fa-cake-candles"></i> 
+                    28</p>
+                <span class="badge">perminum</span>
+                <span class="box">Joined Oct 24,2021</span> 
+                 <span class="box"> Renewal:14 Days</span>
             </div>
 
             <div class="actions">
                 <button class="msg-btn"> <i class="fa-solid fa-message"></i> Message</button>
-                <button class="edit-btn"> <i class="fa-solid fa-pen-to-square"></i> Edit Profile</button>
+                <button class="edit-btn" > <i class="fa-solid fa-pen-to-square"></i> Edit Profile</button>
             </div>
         </div>
 
@@ -88,7 +92,7 @@
         <div class="stats-row">
             <div class="stat-card">
                 <span>Attendance (MO)</span>
-                <h2>18</h2>
+                <h2>{{attendence}}</h2>
                 <p style="color: green;">+2</p>
                 <div class="container">
                     <div class="progress">
@@ -109,18 +113,18 @@
 
             <div class="stat-card">
                 <span>Current Streak</span>
-                <h2>4 <h6>Days</h6>
+                <h2>{{currentStreak}}<h6>Days</h6>
                 </h2>
                 <p>Personal Best:12 Days</p>
             </div>
 
             <div class="stat-card">
                 <span>Progress Goal</span>
-                <h2>82%</h2>
+                <h2>{{progressGoal}}</h2>
                 <div class="container">
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                            aria-valuemax="100" style="width:82% ; background-color: #d63384;">
+                            aria-valuemax="100" style=" background-color: #d63384;" [style.width.%]="progressGoal">
                             <span class="sr-only">82% Complete</span>
                         </div>
                     </div>
@@ -176,11 +180,11 @@
                     <p>Strength (Free Weight)</p>
 
                     <div class="bar">
-                         <div class="container">
+                        <div class="container">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
                                     aria-valuemax="100" style="width:30% ; background-color: #d712ba;">
-                    
+
                                 </div>
                             </div>
                         </div>
@@ -193,7 +197,7 @@
                     <p>Flexibility (Yoga / Mat)</p>
 
                     <div class="bar">
-                         <div class="container">
+                        <div class="container">
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
                                     aria-valuemax="100" style="width:25% ;background-color: green;">

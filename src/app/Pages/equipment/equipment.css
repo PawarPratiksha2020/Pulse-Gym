@@ -271,6 +271,104 @@ button{
     display: flex;
     align-items: center;
     color: #f9f8f8;
-    background: #2082b7;
+    
    
+}
+/* Buttons Row */
+/* Backdrop */
+.popup-backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+  display: grid;
+  place-items: center;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+/* Card Box */
+.popup-card{
+  width: 440px;
+  background: linear-gradient(145deg,#0f172a,#111827);
+  border: 1px solid #1f2937;
+  border-radius: 18px;
+  padding: 18px 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.55);
+  color: #e5e7eb;
+  animation: popupFade .25s ease-out;
+}
+
+/* Heading */
+.popup-card h3{
+  margin: 0 0 6px;
+  font-weight: 600;
+}
+
+.popup-card p{
+  margin: 0 0 10px;
+  color:#9ca3af;
+  font-size: 13px;
+}
+
+/* Form Grid */
+.form-grid{
+  margin-top: 6px;
+  display: grid;
+  gap: 12px;
+}
+
+.form-grid input,
+.form-grid select{
+  background:#020617;
+  border:1px solid #1f2937;
+  padding:10px 12px;
+  border-radius:10px;
+  color:#e5e7eb;
+  outline:none;
+  font-size:14px;
+  transition:.2s;
+}
+
+.form-grid input:focus,
+.form-grid select:focus{
+  border-color:#2563eb;
+  background:#030712;
+}
+
+/* Footer */
+.popup-footer{
+  margin-top: 14px;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+/* Buttons */
+.save-btn{
+  background:#2563eb;
+  border:1px solid #1d4ed8;
+  padding:8px 14px;
+  border-radius:10px;
+  color:#fff;
+  font-weight:500;
+}
+
+.save-btn:hover{ background:#1d4ed8; }
+
+.cancel-btn{
+  background:#0b1220;
+  border:1px solid #334155;
+  padding:8px 14px;
+  border-radius:10px;
+  color:#cbd5e1;
+}
+
+.cancel-btn:hover{
+  background:#111a2b;
+}
+
+/* Smooth Animation */
+@keyframes popupFade{
+  from{ transform:scale(.92); opacity:0 }
+  to{ transform:scale(1); opacity:1 }
 }

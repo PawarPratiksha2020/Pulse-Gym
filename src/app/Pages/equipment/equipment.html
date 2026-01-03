@@ -1,12 +1,4 @@
-<div class="header-row">
-
-    <div class="title-box">
-        <h2>DOWNTOWM BRANCH</h2>
-        <span>ID:#NTC-042</span>
-    </div>
-
-    <input type="text" class="search-box" placeholder="Search equipment ID....">
-</div>
+<app-dashboardheader></app-dashboardheader>
 <div class="page">
 
     <h2>Equipment & Availability</h2>
@@ -17,7 +9,7 @@
     <!-- Top Bar -->
     <div class="top-actions">
         <button class="secondary">Export Report</button>
-        <button class="primary">+ Add Equipment</button>
+        <button class="primary" (click)="openAdd()">+ Add Equipment</button>
     </div>
 
     <!-- status  Cards -->
@@ -93,15 +85,17 @@
                         <span class="badge" [ngClass]="{
                           red: item.status === 'IN_USE',
                           green: item.status === 'FREE',
-                         yellow: item.status === 'MAINTENANCE'
-      }">
+                         yellow: item.status === 'MAINTENANCE' }">
                             {{ getStatusLabel(item.status) }}
                         </span>
                     </td>
 
                     <td>{{item.duration}}</td>
                     <td>{{item.freeIn || '—'}}</td>
-                    <td>:</td>
+                    <td>
+                        <button class="btn btn-success" (click)="openEdit(item)">Edit</button>
+                        <button class="btn btn-danger" (click)="delete(item)">Delete</button>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -116,7 +110,7 @@
                 </div>
 
                 <div *ngFor="let p of popularity" class="pop-item">
-                    <div class="row  graph " >
+                    <div class="row  graph ">
                         <span>{{p.name}}</span>
                         <b style="margin-left: 500px;">{{p.value}}%</b>
                     </div>
@@ -130,10 +124,44 @@
                 <h3>Crowd Balancing</h3>
                 <p>Live suggestions to optimize member flow</p>
                 <div class="cardio-box">
-                    <h4>Cardio Zone A Overload</h4> 
+                    <h4>Cardio Zone A Overload</h4>
                     <p style="color: grey;">98% capacity.Redirect members to zone B(35% free)
                         via app notification
                     </p>
                     <button>Send Notification</button>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup-backdrop" *ngIf="showPopup">
+    <div class="popup-card">
+
+        <h3>{{ editingItem ? 'Edit Equipment' : 'Add Equipment' }}</h3>
+
+        <div class="form-grid">
+
+            <input placeholder="Equipment Name" [(ngModel)]="newEquipment.name">
+
+            <input placeholder="Zone" [(ngModel)]="newEquipment.zone">
+
+            <select [(ngModel)]="newEquipment.status">
+                <option value="IN_USE">In Use</option>
+                <option value="FREE">Free</option>
+                <option value="MAINTENANCE">Maintenance</option>
+            </select>
+
+            <input type="number" placeholder="Avg Duration (min)" [(ngModel)]="newEquipment.duration">
+
+            <input placeholder="Free In" [(ngModel)]="newEquipment.freeIn">
+
+        </div>
+
+        <div class="popup-footer">
+            <button class="save-btn" (click)="saveEquipment()">Save</button>
+            <button class="cancel-btn" (click)="showPopup=false">Cancel</button>
+        </div>
+
+    </div>
+</div>

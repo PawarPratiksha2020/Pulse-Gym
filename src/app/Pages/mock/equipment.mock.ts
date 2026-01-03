@@ -7,7 +7,7 @@ export const EQUIPMENT_LIST: Equipment[] = [
     id: "TR-001",
     zone: "Cardio A",
     status: "IN_USE",
-    duration: "28 min",
+    duration: 0,
     freeIn: "5 min"
   },
   {
@@ -15,14 +15,14 @@ export const EQUIPMENT_LIST: Equipment[] = [
     id: "BP-004",
     zone: "Free Weights",
     status: "FREE",
-    duration: "15 min"
+    duration: 0
   },
   {
     name: "Rower Concept 2",
     id: "RW-002",
     zone: "Cardio B",
     status: "IN_USE",
-    duration: "22 min",
+    duration: 0,
     freeIn: "12 min"
   },
     {
@@ -30,7 +30,7 @@ export const EQUIPMENT_LIST: Equipment[] = [
     id: "SP-101",
     zone: "Studio A",
     status: "MAINTENANCE",
-    duration: "45 min",
+    duration: 0,
     freeIn: "--"
   },
   

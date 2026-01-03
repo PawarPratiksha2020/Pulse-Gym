@@ -5,6 +5,9 @@ import { Satff } from './Pages/satff/satff';
 import { EquipmentComponent } from './Pages/equipment/equipment';
 import { Finace } from './Pages/finace/finace';
 import { Reports } from './Pages/reports/reports';
+import { Editmemberprofile } from './Pages/members/editmemberprofile/editmemberprofile';
+
+
 
 export const routes: Routes = [
     {
@@ -15,6 +18,11 @@ export const routes: Routes = [
         path: 'MembersPage',
         component : Members
     },
+    {
+        path:'edit-profile/:id',
+        component:Editmemberprofile
+    },
+   
      {
         path: 'staffPage',
         component : Satff
