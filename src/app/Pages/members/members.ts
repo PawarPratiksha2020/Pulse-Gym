@@ -119,4 +119,33 @@ export class Members implements AfterViewInit, OnDestroy {
 
   }
 
+ editMode = false;
+  showToast = false;
+
+  user = {
+    name: 'Sarah Jenkins',
+    email: 'sarah@mail.com',
+    location:'Pune',
+    BirthDate:'20 Jun 2021',
+
+  };
+
+  editUser: any = {};
+
+  enableEdit() {
+    this.editMode = true;
+    this.editUser = { ...this.user }; // copy data
+  }
+
+  saveProfile() {
+    this.user = { ...this.editUser };
+    this.editMode = false;
+
+    this.showToast = true;
+    setTimeout(() => this.showToast = false, 2000);
+  }
+
+  cancelEdit() {
+    this.editMode = false;
+  }
 }

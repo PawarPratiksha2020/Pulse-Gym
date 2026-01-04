@@ -57,7 +57,33 @@
     <div class="right-section">
 
         <!-- PROFILE CARD -->
-        <div class="profile-card">
+         <div class="profile-card">
+
+  <!-- View Mode -->
+  <div *ngIf="!editMode">
+    <h3>{{ user.name }}</h3>
+    <p>{{ user.email }}</p>
+    <p>{{user.location}}</p>
+    {{user.BirthDate}}
+
+    <button (click)="enableEdit()">Edit Profile</button>
+  </div>
+
+  <!-- Edit Mode -->
+  <div *ngIf="editMode" class="edit-form">
+
+    <input type="text" [(ngModel)]="editUser.name" placeholder="Full Name">
+    <input type="email" [(ngModel)]="editUser.email" placeholder="Email">
+     <input type="text" [(ngModel)]="editUser.location" placeholder="Email">
+     <input type="text" [(ngModel)]="editUser.BirthDate" placeholder="Email">
+
+    <div class="actions">
+      <button (click)="saveProfile()">Save</button>
+      <button class="cancel" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </div>
+</div>
+        <!-- <div class="profile-card">
             <img src="assets/user1.jpg" class="profile-pic">
 
             <div class="info">
@@ -73,7 +99,7 @@
                 <button class="msg-btn"> <i class="fa-solid fa-message"></i> Message</button>
                 <button class="edit-btn" > <i class="fa-solid fa-pen-to-square"></i> Edit Profile</button>
             </div>
-        </div>
+        </div> -->
 
         <!-- SUGGESTION BOX -->
         <div class="suggestion-box">
