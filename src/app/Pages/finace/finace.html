@@ -17,13 +17,46 @@
 
         <button class="btn">{{myDate|date:'MMM d, y' }} {{ name}}</button>
     </div>
+
 </div>
+<!-- 🔹 FILTER BAR -->
+<div class="filter-bar">
+
+    <!-- Date Range -->
+    <select [(ngModel)]="filters.dateRange" (change)="applyFilters()">
+        <option value="month">This Month</option>
+        <option value="quarter">This Quarter</option>
+        <option value="year">This Year</option>
+    </select>
+
+    <!-- Branch -->
+    <select [(ngModel)]="filters.branch" (change)="applyFilters()">
+        <option value="all">All Branches</option>
+        <option>Pune</option>
+        <option>Mumbai</option>
+    </select>
+
+    <!-- Plan -->
+    <select [(ngModel)]="filters.plan" (change)="applyFilters()">
+        <option value="all">All Plans</option>
+        <option>Standard</option>
+        <option>Premium</option>
+    </select>
+
+    <!-- Export Buttons -->
+    <div class="export-btns">
+        <button>Export PDF</button>
+        <button>Export Excel</button>
+        <button>Export CSV</button>
+    </div>
+</div>
+
 <div class="dashboardss">
 
     <!-- KPI ROW -->
-    <div class="kpi-grid">
+    <div class="kpi-grid ">
 
-        <div class="card kpi">
+        <div class="card kpi green-card">
             <div class="top">
                 <label>Monthly Recurring Revenue</label>
                 <span class="badge green">+12.5%</span>
@@ -42,7 +75,7 @@
             </div>
         </div>
 
-        <div class="card kpi">
+        <div class="card kpi red-card">
             <div class="top">
                 <label>Avg Revenue Per User</label>
                 <span class="badge green">+$2.10</span>
@@ -59,7 +92,7 @@
             </div>
         </div>
 
-        <div class="card kpi">
+        <div class="card kpi orange-card">
             <div class="top">
                 <label>Outstanding Billing</label>
                 <span class="badge red">ACTION NEEDED</span>
@@ -143,13 +176,24 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>#INV-2042</td>
-                            <td>Sarah Connor</td>
-                            <td>Card</td>
-                            <td>Oct 20</td>
-                            <td>$89</td>
-                            <td class="paid">Paid</td>
+                        <tr *ngFor="let p of filteredBilling">
+                            <td>{{p.id}}</td>
+                            <td>{{p.member}}</td>
+
+                            <td class="pay-icon">
+                                <i class="fa fa-credit-card" *ngIf="p.method=='Card'"></i>
+                                <i class="fa fa-mobile" *ngIf="p.method=='UPI'"></i>
+                                <i class="fa fa-money-bill" *ngIf="p.method=='Cash'"></i>
+                                {{p.method}}
+                            </td>
+
+                            <td>{{p.date}}</td>
+                            <td>\${{p.amount}}</td>
+
+                            <td>
+                                <span class="badge" [ngClass]="p.status">{{p.status}}</span>
+                            </td>
+                            <select [(ngModel)]="filters.branch" (change)="applyFilters()"></select>
                         </tr>
                     </tbody>
                 </table>

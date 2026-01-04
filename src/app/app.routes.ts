@@ -12,31 +12,32 @@ import { Editmemberprofile } from './Pages/members/editmemberprofile/editmemberp
 export const routes: Routes = [
     {
         path: 'Dashboard',
-        component : Dashbord
-    },
-     {
-        path: 'MembersPage',
-        component : Members
+        component: Dashbord
     },
     {
-        path:'edit-profile/:id',
-        component:Editmemberprofile
+        path: 'MembersPage',
+        component: Members
     },
    
-     {
+    {
+        path: 'edit-profile/:id',
+        component: Editmemberprofile
+    },
+
+    {
         path: 'staffPage',
-        component : Satff
-    },
-     {
-        path: 'Equipments',
-        component : EquipmentComponent
-    },
-     {
-        path: 'finances',
-        component : Finace
+        component: Satff
     },
     {
-        path : 'reports',
-        component :Reports
+        path: 'Equipments',
+        component: EquipmentComponent
+    },
+    {
+        path: 'finances',
+        component: Finace
+    },
+    {
+        path: 'reports',
+        component: Reports
     }
 ];

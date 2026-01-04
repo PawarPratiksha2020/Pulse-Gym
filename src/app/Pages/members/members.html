@@ -31,7 +31,7 @@
         </div>
         <div class="members-list">
 
-            <div class="member-card" *ngFor="let m of members" (click)="editmember(m.id)" >
+            <div class="member-card" *ngFor="let m of members" (click)="editmember(m.id)">
 
                 <!-- Row: Name left | Status right -->
                 <div class="member-row">
@@ -48,7 +48,7 @@
 
         </div>
         <div class="bottom">
-           <p>Showing {{ members.length }} of {{ totalUsers }}</p>
+            <p>Showing {{ members.length }} of {{ totalUsers }}</p>
             <button class="filter-btn" (click)="newMember()">Add Member</button>
             <p></p>
         </div>
@@ -57,50 +57,197 @@
     <div class="right-section">
 
         <!-- PROFILE CARD -->
-         <div class="profile-card">
+        <div class="profile-card">
 
-  <!-- View Mode -->
-  <div *ngIf="!editMode">
-    <h3>{{ user.name }}</h3>
-    <p>{{ user.email }}</p>
-    <p>{{user.location}}</p>
-    {{user.BirthDate}}
+            <!-- View Mode -->
+            <div *ngIf="!editMode">
+                <h3>{{ user.name }}</h3>
+                <p>{{ user.email }}</p>
+                <p>{{user.location}}</p>
+                {{user.BirthDate}}
 
-    <button (click)="enableEdit()">Edit Profile</button>
-  </div>
-
-  <!-- Edit Mode -->
-  <div *ngIf="editMode" class="edit-form">
-
-    <input type="text" [(ngModel)]="editUser.name" placeholder="Full Name">
-    <input type="email" [(ngModel)]="editUser.email" placeholder="Email">
-     <input type="text" [(ngModel)]="editUser.location" placeholder="Email">
-     <input type="text" [(ngModel)]="editUser.BirthDate" placeholder="Email">
-
-    <div class="actions">
-      <button (click)="saveProfile()">Save</button>
-      <button class="cancel" (click)="cancelEdit()">Cancel</button>
-    </div>
-  </div>
-</div>
-        <!-- <div class="profile-card">
-            <img src="assets/user1.jpg" class="profile-pic">
-
-            <div class="info">
-                <h2>Sarah Jenkins</h2>
-                <p> <i class="fa-solid fa-location-arrow"></i>Pune</p> <p><i class="fa-solid fa-cake-candles"></i> 
-                    28</p>
-                <span class="badge">perminum</span>
-                <span class="box">Joined Oct 24,2021</span> 
-                 <span class="box"> Renewal:14 Days</span>
+                <button class="btn1" (click)="enableEdit()">Edit Profile</button>
             </div>
 
-            <div class="actions">
-                <button class="msg-btn"> <i class="fa-solid fa-message"></i> Message</button>
-                <button class="edit-btn" > <i class="fa-solid fa-pen-to-square"></i> Edit Profile</button>
-            </div>
-        </div> -->
+            <!-- Edit Mode -->
+            <div *ngIf="editMode" class="edit-form">
 
+                <input type="text" [(ngModel)]="editUser.name" placeholder="Full Name">
+                <input type="email" [(ngModel)]="editUser.email" placeholder="Email">
+                <input type="text" [(ngModel)]="editUser.location" placeholder="Email">
+                <input type="text" [(ngModel)]="editUser.BirthDate" placeholder="Email">
+
+                <div class="actions">
+                    <button (click)="saveProfile()">Save</button>
+                    <button class="cancel" (click)="cancelEdit()">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="membership-card">
+
+            <h3>Membership Details</h3>
+
+            <div class="grid">
+
+                <div>
+                    <label>Plan Type</label>
+                    <!-- <input type="text" [(ngModel)]="member.planType"> -->
+                    <select name="" id="" [(ngModel)]="member.planType" (change)="setEndDate()">
+                        <option>Basic-1 Month</option>
+                        <option>Basic-3 Months</option>
+                        <option>Basic-6 Months</option>
+                        <option>Basic-12 Months</option>
+                        <option>Premium-1 Month</option>
+                        <option>Premium-12 Months</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Start Date</label>
+                    <input type="date" [(ngModel)]="member.startDate" (ngModelChange)="setEndDate()">
+                </div>
+
+                <div>
+                    <label>End Date</label>
+                    <input type="date" [(ngModel)]="member.endDate" (change)="updateExpiryBadge()">
+                </div>
+
+                <div>
+                    <label>Payment Status</label>
+                    <select [(ngModel)]="member.paymentStatus">
+                        <option value="Paid">Paid</option>
+                        <option value="Due">Due</option>
+                        <option value="Pending">Pending</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>
+                        <input type="checkbox" [(ngModel)]="member.renewalReminder">
+                        Renewal Reminder
+                    </label>
+                </div>
+                <button (click)="saveMembership()">Save MemberShip</button>
+
+            </div>
+            <div *ngIf="savedMember" class="profile-display">
+
+                <h3>Membership Summary</h3>
+
+                <p><strong>Plan:</strong> {{ savedMember.planType }}</p>
+                <p><strong>Start:</strong> {{ savedMember.startDate }}</p>
+                <p><strong>End:</strong> {{ savedMember.endDate }}</p>
+                <p><strong>Payment:</strong> {{ savedMember.paymentStatus }}</p>
+                <p><strong>Trainer:</strong>{{member.trainerName|| 'Not Assigned'}}</p>
+
+                <span class="badge" [ngClass]="{
+          'expired': member.statusBadge === 'Expired',
+          'warning': member.statusBadge.includes('Expires'),
+          'active': member.statusBadge.includes('Active')
+  }">
+                    {{ member.statusBadge }}
+                </span>
+
+            </div>
+            <h3>Health & Personal Details</h3>
+
+            <div *ngIf="savedMember" class="profile-display">
+
+                <h3>Health Summary</h3>
+
+                <p><strong>Height:</strong> {{ savedMember.height }} cm</p>
+                <p><strong>Weight:</strong> {{ savedMember.weight }} kg</p>
+                <p><strong>BMI:</strong> {{ savedMember.bmi }}</p>
+                <p><strong>Body Fat:</strong> {{ savedMember.bodyFat }} %</p>
+
+                <p><strong>Medical Conditions:</strong>
+                    {{ savedMember.medicalConditions || 'None' }}
+                </p>
+
+                <p><strong>Injuries:</strong>
+                    {{ savedMember.injuries || 'None' }}
+                </p>
+
+                <p><strong>Diet Preference:</strong>
+                    {{ savedMember.dietPreference }}
+                </p>
+
+            </div>
+
+            <hr>
+
+            <h3>Trainer / Coach Assignment</h3>
+
+            <div class="grid">
+                <div>
+                    <label>Assigned Trainer</label>
+                    <select [(ngModel)]="member.trainerName">
+                        <option value="">Select Trainer</option>
+
+                        <option *ngFor="let t of trainers" [disabled]="getTrainerStatus(t) === 'Full'">
+
+                            {{t.name}} —
+                            {{ getTrainerStatus(t) }}
+                            ({{t.assigned}} / {{t.capacity}})
+                        </option>
+                    </select>
+                </div>
+
+                <button (click)="changeTrainer('Not Assigned Trainer')">
+                    Change Trainer
+                </button>
+                <button (click)="assignTrainer()">Confirm Trainer</button>
+            </div>
+
+            <hr>
+            <h3>Health & Personal Details</h3>
+
+            <div class="grid">
+
+                <div>
+                    <label>Height (cm)</label>
+                    <input type="number" [(ngModel)]="member.height" (change)="calculateBMI()">
+                </div>
+
+                <div>
+                    <label>Weight (kg)</label>
+                    <input type="number" [(ngModel)]="member.weight" (change)="calculateBMI()">
+                </div>
+
+                <div>
+                    <label>BMI</label>
+                    <input type="number" [(ngModel)]="member.bmi" disabled>
+                </div>
+
+                <div>
+                    <label>Body Fat %</label>
+                    <input type="number" [(ngModel)]="member.bodyFat">
+                </div>
+
+                <div class="full">
+                    <label>Medical Conditions</label>
+                    <textarea rows="2" [(ngModel)]="member.medicalConditions"></textarea>
+                </div>
+
+                <div class="full">
+                    <label>Injuries</label>
+                    <textarea rows="2" [(ngModel)]="member.injuries"></textarea>
+                </div>
+
+                <div>
+                    <label>Diet Preference</label>
+                    <select [(ngModel)]="member.dietPreference">
+                        <option>Veg</option>
+                        <option>Non-veg</option>
+                        <option>none</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button (click)="saveMembership()">Save Health Details</button>
+
+        </div>
         <!-- SUGGESTION BOX -->
         <div class="suggestion-box">
             <h4>Smart Optimization Suggestion</h4>

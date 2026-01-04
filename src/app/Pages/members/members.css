@@ -21,7 +21,7 @@
 
 .search-box {
     padding: 10px 14px;
-    width: 260px;
+    width: 300px;
     border-radius: 10px;
     border: 1px solid #383842;
     background: #1d2744;
@@ -39,7 +39,7 @@
     border: 1px solid rgb(22, 25, 46);
     background: rgb(52, 52, 66);
     width: 380px;
-    height: 118vh;
+    height: 300vh;
     border-radius: 1px solid rgb(34, 34, 74);
     border-right: 1px solid rgb(128, 128, 168);
 }
@@ -290,6 +290,12 @@ button {
     text-decoration: underline;
 
 }
+.profile-card .btn1{
+    color: #f5f8f6;
+    text-align: end;
+    margin-left: 300px;
+   
+}
 
 /* ---------- STATS ROW ---------- */
 .stats-row {
@@ -426,6 +432,51 @@ button{
 .cancel {
   background:#444;
 }
-.btn1{
-  text-decoration: underline;
+.membership-card{
+  background:#0b1220;
+  padding:16px;
+  border-radius:14px;
+  margin-top:14px;
+  color:#fff;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:14px;
+}
+
+.full{ grid-column:1 / 4; }
+
+input, select, textarea{
+  width:100%;
+  padding:8px;
+  border-radius:8px;
+  border:1px solid #2b2f40;
+  background:#0f1730;
+  color:#fff;
+}
+.badge{
+  padding:6px 10px;
+  border-radius:10px;
+  font-size:12px;
+}
+
+.expired{ background:#ff4d4d; }
+.warning{ background:#ffbb33; }
+.active{ background:#22c55e; }
+
+.profile-display{
+  margin-top:10px;
+  padding:12px;
+  border-radius:12px;
+  background:#0f172a;
+}
+.profile-display p{ margin:3px 0; }
+
+.trainer-badge{
+  background:#22c55e;
+  padding:3px 8px;
+  border-radius:8px;
+  font-size:11px;
 }
