@@ -1,144 +1,159 @@
 import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 import { EQUIPMENT_LIST } from '../mock/equipment.mock';
 import { Equipment } from '../Model/equipment.model';
 import { Dashboardheader } from "../dashbord/dashboardheader/dashboardheader";
-import { FormsModule } from '@angular/forms';
-
 
 @Component({
   selector: 'app-equipment',
-  imports: [NgClass,NgIf, NgFor, Dashboardheader,FormsModule,CommonModule],
+  standalone: true,
+  imports: [
+    CommonModule, NgClass, NgIf, NgFor,
+    FormsModule, Dashboardheader
+  ],
   templateUrl: './equipment.html',
-  styleUrl: './equipment.css',
+  styleUrl: './equipment.css'
 })
 export class EquipmentComponent {
-  // Top Stats
- showPopup = false;
-editingItem: Equipment | null = null;
 
-newEquipment: Equipment = {
-  id: '',
-  name: '',
-  zone: '',
-  status: 'FREE',
-  duration: 0,
-  freeIn: ''
-};
-  status = {
-    totalAssets: 142,
-    utilization: 78,
-    maintenance: 4,
-    buySuggestion: "High"
-  };
+  //  POPUP STATE (signal)
+  showPopup = signal(false);
+  editingItem = signal<Equipment | null>(null);
 
-  // ------ Table Data ------
-  equipment: Equipment[] = EQUIPMENT_LIST;
+  //  FORM MODEL (signal)
+  newEquipment = signal<Equipment>({
+    id: '',
+    name: '',
+    zone: '',
+    status: 'FREE',
+    duration: 0,
+    freeIn: ''
+  });
 
-  // ------ Tabs ------
-  activeTab: string = "All";
+  //  MASTER DATA (signal)
+  equipment = signal<Equipment[]>(EQUIPMENT_LIST);
+
+  //  FILTER TAB (signal)
+  activeTab = signal('All');
 
   tabs = ["All", "Cardio", "Strength", "Functional"];
-equipmentss: any;
-  zone: any;
 
-  filterByTab(tab: string) {
-    this.activeTab = tab;
+  //  FILTERED LIST (computed)
+  filteredEquipment = computed(() => {
 
-    if (tab === "All") {
-      this.equipment = EQUIPMENT_LIST;
-      return;
-    }
+    if (this.activeTab() === 'All')
+      return this.equipment();
 
-    this.equipment = EQUIPMENT_LIST.filter(item =>
-      item.zone.toLowerCase().includes(tab.toLowerCase())
+    return this.equipment().filter(
+      e => e.zone.toLowerCase()
+        .includes(this.activeTab().toLowerCase())
     );
+  });
+
+  //  LIVE STATS (computed)
+  status = computed(() => {
+    const list = this.equipment();
+
+    const total = list.length;
+    const inUse = list.filter(e => e.status === 'IN_USE').length;
+    const maintenance = list.filter(e => e.status === 'MAINTENANCE').length;
+
+    return {
+      totalAssets: total,
+      utilization: Math.round((inUse / total) * 100),
+      maintenance,
+      buySuggestion: inUse / total > 0.8 ? "High" : "Normal"
+    };
+  });
+popularity: any;
+
+  //  TAB FILTER
+  filterByTab(tab: string) {
+    this.activeTab.set(tab);
   }
 
-  // ------ Badge Text ------
-  getStatusLabel(status: string) {
-    switch (status) {
+  //  STATUS BADGE (same logic — kept)
+  getStatusLabel(s: string) {
+    switch (s) {
       case 'IN_USE': return "In Use";
       case 'FREE': return "Free";
       case 'MAINTENANCE': return "Maintenance";
-      default: return status;
+      default: return s;
     }
   }
 
-  // ------ Badge Color ------
-  getStatusClass(status: string) {
+  getStatusClass(s: string) {
     return {
-      'red': status === 'IN_USE',
-      'green': status === 'FREE',
-      'yellow': status === 'MAINTENANCE'
+      red: s === 'IN_USE',
+      green: s === 'FREE',
+      yellow: s === 'MAINTENANCE'
     };
   }
 
-  // ------ Popularity Data ------
-  popularity = [
-    { name: "Treadmills", value: 92 },
-    { name: "Free Weights", value: 85 },
-    { name: "Cable Machines", value: 68 },
-    { name: "Rowers", value: 45 }
-  ];
-  // ➕ Add Equipment
-openAdd(){
-  alert("open ADD Clicked")
-  this.editingItem = null;
-  this.newEquipment = { id:'', name:'', zone:'', status:'FREE', duration:0, freeIn:'' };
-  this.showPopup = true;
-  console.log("POPUP=",this.showPopup)
-}
+  //  OPEN ADD
+  openAdd() {
+    this.editingItem.set(null);
+    this.newEquipment.set({
+      id: '',
+      name: '',
+      zone: '',
+      status: 'FREE',
+      duration: 0,
+      freeIn: ''
+    });
 
-// ✏ Edit Equipment
-openEdit(item: Equipment){
-  this.editingItem = item;
-  this.newEquipment = { ...item };
-  this.showPopup = true;
-}
-
-// ❌ Delete
-delete(item: Equipment){
-  this.equipment = this.equipment.filter(e => e !== item);
-  this.recalculateStats();
-}
-
-// 💾 Save (Add + Update)
-saveEquipment(){
-  
-  if(!this.newEquipment.name.trim()) return;
-
-  // ADD
-  if(!this.editingItem){
-    this.newEquipment.id = 'EQ-' + Math.floor(Math.random()*999);
-    this.equipment.push({ ...this.newEquipment });
-  }
-  // UPDATE
-  else{
-    Object.assign(this.editingItem, this.newEquipment);
+    this.showPopup.set(true);
   }
 
-  this.showPopup = false;
-  this.recalculateStats();
-}
-recalculateStats(){
+  //  OPEN EDIT
+  openEdit(item: Equipment) {
+    this.editingItem.set(item);
+    this.newEquipment.set({ ...item });
+    this.showPopup.set(true);
+  }
 
-  this.status.totalAssets = this.equipment.length;
+  //  DELETE
+  delete(item: Equipment) {
+    this.equipment.update(list =>
+      list.filter(e => e !== item)
+    );
+  }
 
-  const inUse = this.equipment.filter(e => e.status === 'IN_USE').length;
-  this.status.utilization = Math.round((inUse / this.status.totalAssets) * 100);
+  //  SAVE (ADD / UPDATE)
+  saveEquipment() {
 
-  this.status.maintenance =
-    this.equipment.filter(e => e.status === 'MAINTENANCE').length;
+    const data = this.newEquipment();
 
-  this.status.buySuggestion =
-    this.status.utilization > 80 ? "High" : "Normal";
-}
+    if (!data.name.trim()) return;
 
-ngOnInit(){
-  this.recalculateStats();
-}
+    // ADD
+    if (!this.editingItem()) {
 
+      const id = 'EQ-' + Math.floor(Math.random() * 999);
 
+      this.equipment.update(list => [
+        ...list,
+        { ...data, id }
+      ]);
+    }
 
+    // UPDATE
+    else {
+
+      this.equipment.update(list =>
+        list.map(e =>
+          e === this.editingItem()
+            ? { ...data }
+            : e
+        )
+      );
+    }
+
+    this.showPopup.set(false);
+  }
+
+  //  INIT
+  ngOnInit() {}
 }

@@ -10,7 +10,7 @@ export type ChartOptions = {
   stroke: ApexStroke;
   tooltip: ApexTooltip;
   colors: string[];
-};
+ };
 @Component({
   selector: 'app-finace',
   imports: [DatePipe, AsyncPipe,NgIf,NgFor, CommonModule, ChartComponent, NgApexchartsModule, FormsModule],

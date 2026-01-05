@@ -118,6 +118,7 @@
 
         <!-- Staff Schedule Load -->
         <div class="card">
+   
             <h3>Staff Schedule Load</h3>
 
             <div class="grid">
@@ -125,8 +126,55 @@
                 </div>
             </div>
         </div>
+        
 
     </div>
+      <table class="staff-table">
+
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Shift</th>
+      <th>Check-In</th>
+      <th>Check-Out</th>
+      <th>Actions</th>
+      <th>Total Hours</th>
+      <th>Status</th>
+      <th>Overtime</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+    <tr *ngFor="let a of attendanceList">
+
+      <td>{{a.staffId}}</td>
+      <td>{{a.shiftStart}} - {{a.shiftEnd}}</td>
+
+      <td>{{a.checkIn || '--'}}</td>
+      <td>{{a.checkOut || '--'}}</td>
+
+      <td>
+        <button (click)="checkIn(a)" [disabled]="a.checkIn">
+          Check In
+        </button>
+
+        <button (click)="checkOut(a)" [disabled]="!a.checkIn || a.checkOut">
+          Check Out
+        </button>
+      </td>
+
+      <td>{{a.totalHours ?? '--'}} Hrs</td>
+
+      <td>
+        <span [ngClass]="a.status">{{a.status || 'Absent'}}</span>
+      </td>
+
+
+    </tr>
+  </tbody>
+
+</table>
 
 </div>
 <!-- 🔹 Add Staff Popup -->
@@ -160,4 +208,6 @@
         </div>
 
     </div>
+  
+
 </div>

@@ -2,38 +2,54 @@
 
     <div class="title-box">
         <h2>ALL USERS & PROFILES</h2>
-        <span>Drectory / Detail View</span>
+        <span>Directory / Detail View</span>
     </div>
 
     <input type="text" class="search-box" placeholder="Global Search......">
 </div>
+
+
 <div class="layout">
+
+    <!-- LEFT PANEL -->
     <div class="header-view">
-        <div class="top-veiw" *ngIf="editingmember">
+
+        <!-- Editing Panel -->
+        <div class="top-veiw" *ngIf="editingMember()">
+
             <div class="header-name">
                 <h3>Member Directory</h3>
-                <p class="special">1,248 Users</p>
+                <p class="special">{{ store.membersSig().length }} Users</p>
             </div>
-            <input type="text" [(ngModel)]="editingmember.name" class="Search-box1"
+
+            <input type="text" [(ngModel)]="editingMember().name" class="Search-box1"
                 placeholder="Find member by name or ID..">
-            <select name="" id="" [(ngModel)]="editingmember.status">
+
+            <select [(ngModel)]="editingMember().status">
                 <option>Active</option>
                 <option>Inactive</option>
                 <option>Pending</option>
                 <option>Expired</option>
             </select>
-            <button (click)="saveMember()">Save</button>
-            <button (click)="cancel()">Cancel</button>
+
+            <button (click)="store.update(editingMember()); editingMember.set(null)">Save</button>
+            <button (click)="editingMember.set(null)">Cancel</button>
+
         </div>
+
+
+        <!-- List Header -->
         <div class="status-bar">
             <span>MEMBER</span>
             <span>STATUS</span>
         </div>
+
+
+        <!-- Member List -->
         <div class="members-list">
 
-            <div class="member-card" *ngFor="let m of members" (click)="editmember(m.id)">
+            <div class="member-card" *ngFor="let m of store.membersSig()" (click)="editMember(m)">
 
-                <!-- Row: Name left | Status right -->
                 <div class="member-row">
                     <span class="member-name">{{ m.name }}</span>
 
@@ -42,47 +58,57 @@
                     </span>
                 </div>
 
-                <!-- ID below -->
                 <p class="member-id">ID: {{ m.id }}</p>
             </div>
 
         </div>
+
+
         <div class="bottom">
-            <p>Showing {{ members.length }} of {{ totalUsers }}</p>
-            <button class="filter-btn" (click)="newMember()">Add Member</button>
-            <p></p>
+            <p>Showing {{ store.membersSig().length }}</p>
+            <button class="filter-btn" (click)="newMember()"> Add Member
+            </button>
         </div>
 
     </div>
+
+
+
+    <!-- RIGHT PANEL -->
     <div class="right-section">
 
         <!-- PROFILE CARD -->
         <div class="profile-card">
 
-            <!-- View Mode -->
-            <div *ngIf="!editMode">
-                <h3>{{ user.name }}</h3>
-                <p>{{ user.email }}</p>
-                <p>{{user.location}}</p>
-                {{user.BirthDate}}
+            <!-- VIEW -->
+            <div *ngIf="!showToast()">
+                <h3>{{ user().name }}</h3>
+                <p>{{ user().email }}</p>
+                <p>{{ user().location }}</p>
+                <p>{{ user().BirthDate }}</p>
 
                 <button class="btn1" (click)="enableEdit()">Edit Profile</button>
             </div>
 
-            <!-- Edit Mode -->
-            <div *ngIf="editMode" class="edit-form">
+            <!-- EDIT -->
+            <div *ngIf="showToast()" class="edit-form">
 
-                <input type="text" [(ngModel)]="editUser.name" placeholder="Full Name">
-                <input type="email" [(ngModel)]="editUser.email" placeholder="Email">
-                <input type="text" [(ngModel)]="editUser.location" placeholder="Email">
-                <input type="text" [(ngModel)]="editUser.BirthDate" placeholder="Email">
+                <input [(ngModel)]="editUser().name">
+                <input [(ngModel)]="editUser().email">
+                <input [(ngModel)]="editUser().location">
+                <input [(ngModel)]="editUser().BirthDate">
 
                 <div class="actions">
                     <button (click)="saveProfile()">Save</button>
                     <button class="cancel" (click)="cancelEdit()">Cancel</button>
                 </div>
             </div>
+
         </div>
+
+
+
+        <!-- MEMBERSHIP CARD -->
         <div class="membership-card">
 
             <h3>Membership Details</h3>
@@ -91,306 +117,252 @@
 
                 <div>
                     <label>Plan Type</label>
-                    <!-- <input type="text" [(ngModel)]="member.planType"> -->
-                    <select name="" id="" [(ngModel)]="member.planType" (change)="setEndDate()">
-                        <option>Basic-1 Month</option>
-                        <option>Basic-3 Months</option>
-                        <option>Basic-6 Months</option>
-                        <option>Basic-12 Months</option>
-                        <option>Premium-1 Month</option>
-                        <option>Premium-12 Months</option>
+
+                    <select [(ngModel)]="member().planType" (change)="onPlanChange()">
+                        <option *ngFor="let p of plans">{{ p.name }}</option>
                     </select>
                 </div>
 
                 <div>
+                    <label>Price</label>
+                    <input type="number" [ngModel]="member().price" readonly>
+                </div>
+
+                <div>
                     <label>Start Date</label>
-                    <input type="date" [(ngModel)]="member.startDate" (ngModelChange)="setEndDate()">
+                    <input type="date" [(ngModel)]="member().startDate" (change)="setEndDate()">
                 </div>
 
                 <div>
                     <label>End Date</label>
-                    <input type="date" [(ngModel)]="member.endDate" (change)="updateExpiryBadge()">
+                    <input type="date" [(ngModel)]="member().endDate">
                 </div>
 
                 <div>
                     <label>Payment Status</label>
-                    <select [(ngModel)]="member.paymentStatus">
-                        <option value="Paid">Paid</option>
-                        <option value="Due">Due</option>
-                        <option value="Pending">Pending</option>
+                    <select [(ngModel)]="member().paymentStatus">
+                        <option>Paid</option>
+                        <option>Due</option>
+                        <option>Pending</option>
                     </select>
                 </div>
 
                 <div>
                     <label>
-                        <input type="checkbox" [(ngModel)]="member.renewalReminder">
+                        <input type="checkbox" [(ngModel)]="member().renewalReminder">
                         Renewal Reminder
                     </label>
                 </div>
-                <button (click)="saveMembership()">Save MemberShip</button>
 
             </div>
-            <div *ngIf="savedMember" class="profile-display">
-
-                <h3>Membership Summary</h3>
-
-                <p><strong>Plan:</strong> {{ savedMember.planType }}</p>
-                <p><strong>Start:</strong> {{ savedMember.startDate }}</p>
-                <p><strong>End:</strong> {{ savedMember.endDate }}</p>
-                <p><strong>Payment:</strong> {{ savedMember.paymentStatus }}</p>
-                <p><strong>Trainer:</strong>{{member.trainerName|| 'Not Assigned'}}</p>
-
-                <span class="badge" [ngClass]="{
-          'expired': member.statusBadge === 'Expired',
-          'warning': member.statusBadge.includes('Expires'),
-          'active': member.statusBadge.includes('Active')
-  }">
-                    {{ member.statusBadge }}
-                </span>
-
-            </div>
-            <h3>Health & Personal Details</h3>
-
-            <div *ngIf="savedMember" class="profile-display">
-
-                <h3>Health Summary</h3>
-
-                <p><strong>Height:</strong> {{ savedMember.height }} cm</p>
-                <p><strong>Weight:</strong> {{ savedMember.weight }} kg</p>
-                <p><strong>BMI:</strong> {{ savedMember.bmi }}</p>
-                <p><strong>Body Fat:</strong> {{ savedMember.bodyFat }} %</p>
-
-                <p><strong>Medical Conditions:</strong>
-                    {{ savedMember.medicalConditions || 'None' }}
-                </p>
-
-                <p><strong>Injuries:</strong>
-                    {{ savedMember.injuries || 'None' }}
-                </p>
-
-                <p><strong>Diet Preference:</strong>
-                    {{ savedMember.dietPreference }}
-                </p>
-
-            </div>
-
-            <hr>
-
             <h3>Trainer / Coach Assignment</h3>
 
             <div class="grid">
+
                 <div>
                     <label>Assigned Trainer</label>
-                    <select [(ngModel)]="member.trainerName">
+                    <select [(ngModel)]="member().trainerName">
                         <option value="">Select Trainer</option>
 
                         <option *ngFor="let t of trainers" [disabled]="getTrainerStatus(t) === 'Full'">
-
-                            {{t.name}} —
-                            {{ getTrainerStatus(t) }}
+                            {{t.name}} — {{ getTrainerStatus(t) }}
                             ({{t.assigned}} / {{t.capacity}})
                         </option>
                     </select>
                 </div>
 
-                <button (click)="changeTrainer('Not Assigned Trainer')">
-                    Change Trainer
-                </button>
                 <button (click)="assignTrainer()">Confirm Trainer</button>
+                <button (click)="changeTrainer()">Change Trainer</button>
             </div>
 
-            <hr>
+
+
+            <!-- HEALTH -->
             <h3>Health & Personal Details</h3>
 
             <div class="grid">
 
                 <div>
                     <label>Height (cm)</label>
-                    <input type="number" [(ngModel)]="member.height" (change)="calculateBMI()">
+                    <input type="number" [(ngModel)]="member().height" (ngModelChange)="recalculateBMI()">
                 </div>
 
                 <div>
                     <label>Weight (kg)</label>
-                    <input type="number" [(ngModel)]="member.weight" (change)="calculateBMI()">
+                    <input type="number" [(ngModel)]="member().weight" (ngModelChange)="recalculateBMI()">
                 </div>
 
                 <div>
                     <label>BMI</label>
-                    <input type="number" [(ngModel)]="member.bmi" disabled>
+                    <input type="number" [ngModel]="bmi()" readonly>
                 </div>
-
                 <div>
-                    <label>Body Fat %</label>
-                    <input type="number" [(ngModel)]="member.bodyFat">
+                    <label for="">Medical Conditions</label>
+                    <input type="text" [(ngModel)]="member().Medical">
                 </div>
-
-                <div class="full">
-                    <label>Medical Conditions</label>
-                    <textarea rows="2" [(ngModel)]="member.medicalConditions"></textarea>
-                </div>
-
-                <div class="full">
-                    <label>Injuries</label>
-                    <textarea rows="2" [(ngModel)]="member.injuries"></textarea>
-                </div>
-
                 <div>
-                    <label>Diet Preference</label>
-                    <select [(ngModel)]="member.dietPreference">
-                        <option>Veg</option>
-                        <option>Non-veg</option>
-                        <option>none</option>
+                    <label for="">Diet-Perference</label>
+                    <select name="" id="" [(ngModel)]="member().DietPreference">
+                        <option value="Non-Vej">Non-Veg</option>
+                        <option value="Vej">Vej</option>
+                        <option value="Not-Specific">Not-Specific</option>
                     </select>
                 </div>
-
             </div>
+            <button class="btn btn-success" (click)="saveMembership()">Save All Details</button>
+        </div>
+        <div *ngIf="savedMember" class="profile-display">
 
-            <button (click)="saveMembership()">Save Health Details</button>
+            <h3>Member Summary (Auto Saved)</h3>
+
+            <p><strong>Plan:</strong> {{ savedMember.planType }}</p>
+            <p><strong>Start:</strong> {{ savedMember.startDate }}</p>
+            <p><strong>End:</strong> {{ savedMember.endDate }}</p>
+            <p><strong>Payment:</strong> {{ savedMember.paymentStatus }}</p>
+
+            <p><strong>Trainer:</strong>
+                {{ savedMember.trainerName || 'Not Assigned' }}
+            </p>
+
+            <p><strong>Height:</strong> {{ savedMember.height }} cm</p>
+            <p><strong>Weight:</strong> {{ savedMember.weight }} kg</p>
+            <p><strong>BMI:</strong> {{ savedMember.bmi }}</p>
+
+            <p><strong>Medical Conditions:</strong>
+                {{ savedMember.medicalConditions || 'None' }}
+            </p>
+
+            <p><strong>Injuries:</strong>
+                {{ savedMember.injuries || 'None' }}
+            </p>
+
+            <p><strong>Diet Preference:</strong>
+                {{ savedMember.dietPreference }}
+            </p>
 
         </div>
-        <!-- SUGGESTION BOX -->
+
+
+
+
+        <!-- CHART -->
+        <!-- SMART OPTIMIZATION SUGGESTION -->
         <div class="suggestion-box">
             <h4>Smart Optimization Suggestion</h4>
-            <h6>Real-Time</h6>
-            <p class="color-change">
-                Sarah usually does cardio at this time . the <strong>Treadmill Zone</strong> is currently at <strong
-                    style="color: red;">95% capacity</strong> . Basec on her history. she also enjoys rowing. <strong
-                    style="color: green;">Rowing Machines</strong>
-                are 80% free.
-                Suggest switching to maintain heart rate target without wait </p>
+            <span class="tag">Real-Time</span>
+
+            <p>
+                {{ user().name }} usually does cardio at this time.
+                The <strong>Treadmill Zone</strong> is currently at
+                <strong style="color:red;">95% capacity</strong>.
+                Based on her history, she also enjoys rowing.
+                <strong style="color:rgb(0,255,150)">Rowing Machines</strong>
+                are 80% free. Suggest switching to maintain heart-rate
+                targets without wait.
+            </p>
+
             <span class="note">Notify User</span>
         </div>
 
+
         <!-- STATS ROW -->
         <div class="stats-row">
+
             <div class="stat-card">
                 <span>Attendance (MO)</span>
-                <h2>{{attendence}}</h2>
+                <h2>{{ attendence }}</h2>
                 <p style="color: green;">+2</p>
-                <div class="container">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                            aria-valuemax="100" style="width:84%">
-                            <span class="sr-only">98% Complete</span>
-                        </div>
-                    </div>
+
+                <div class="progress">
+                    <div class="progress-bar" [style.width.%]="attendence * 10"></div>
                 </div>
             </div>
 
             <div class="stat-card">
                 <span>Avg. Duration</span>
-                <h2>55 <h6>min</h6>
-                </h2>
+                <h2>55 <small>min</small></h2>
                 <p>Consistent</p>
             </div>
 
             <div class="stat-card">
                 <span>Current Streak</span>
-                <h2>{{currentStreak}}<h6>Days</h6>
-                </h2>
-                <p>Personal Best:12 Days</p>
+                <h2>{{ currentStreak }} <small>Days</small></h2>
+                <p>Personal Best: 12 Days</p>
             </div>
 
             <div class="stat-card">
                 <span>Progress Goal</span>
-                <h2>{{progressGoal}}</h2>
-                <div class="container">
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                            aria-valuemax="100" style=" background-color: #d63384;" [style.width.%]="progressGoal">
-                            <span class="sr-only">82% Complete</span>
-                        </div>
-                    </div>
-                </div>
+                <h2>{{ progressGoal }}%</h2>
 
+                <div class="progress">
+                    <div class="progress-bar pink" [style.width.%]="progressGoal"></div>
+                </div>
             </div>
+
         </div>
+
 
         <!-- LOWER SECTION -->
         <div class="two-panel">
+
+            <!-- Attendance Section -->
             <div class="attendance-card">
 
                 <div class="card-head">
                     <h4>Attendance & Preferred Times</h4>
                     <span class="dot-badge">● Workouts</span>
                 </div>
-                <div style="height: 160px;" class="chart-box">
+
+                <div class="chart-box">
                     <canvas id="attendanceChart"></canvas>
                 </div>
 
-
                 <div class="peak-box">
                     <span class="peak-title">Peak Performance Time</span>
-                    <p>Sarah trains best between 5 PM - 7 PM</p>
+                    <p>Best workouts between 5PM — 7PM</p>
                 </div>
 
             </div>
+
+
+            <!-- Workout Focus -->
             <div class="final-card">
 
                 <div class="card-top">
-                    <h4>WorkOut Focus & Equipment</h4>
+                    <h4>Workout Focus & Equipment</h4>
                 </div>
 
-                <!-- Row 1 -->
-                <div class="row">
+                <div class="focus-item">
                     <p>Cardio (Treadmill / Rowing)</p>
-
                     <div class="bar">
-                        <div class="container">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                                    aria-valuemax="100" style="width:45% ">
-                                    <span class="sr-only">45%Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                        <span class="percent">45%</span>
+                        <div class="fill blue" style="width:45% ; color : #d19696"></div>
+                        <span>45%</span>
                     </div>
                 </div>
 
-                <!-- Row 2 -->
-                <div class="row">
-                    <p>Strength (Free Weight)</p>
-
+                <div class="focus-item">
+                    <p>Strength (Free Weights)</p>
                     <div class="bar">
-                        <div class="container">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                                    aria-valuemax="100" style="width:30% ; background-color: #d712ba;">
-
-                                </div>
-                            </div>
-                        </div>
-                        <span class="percent">30%</span>
+                        <div class="fill purple" aria-valumin="0" aria-valuemax="100" style="width:40%"></div>
+                        <span>30%</span>
                     </div>
                 </div>
 
-                <!-- Row 3 -->
-                <div class="row">
+                <div class="focus-item">
                     <p>Flexibility (Yoga / Mat)</p>
-
                     <div class="bar">
-                        <div class="container">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"
-                                    aria-valuemax="100" style="width:25% ;background-color: green;">
-                                    <span class="sr-only">25%Complete</span>
-                                </div>
-                            </div>
-                        </div>
-                        <span class="percent">25%</span>
+                        <div class="fill green" style="width:25%"></div>
+                        <span>25%</span>
                     </div>
                 </div>
+
                 <div class="btns">
-                    <button>Fav:Leg Press</button>
-                    <button>Fav:Elliptical</button>
+                    <button>Fav: Leg Press</button>
+                    <button>Fav: Elliptical</button>
                 </div>
 
             </div>
 
-
         </div>
-
-
     </div>
 </div>

@@ -1,27 +1,31 @@
-import { DatePipe, NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { DatePipe, NgFor, PercentPipe } from '@angular/common';
+import { Component, computed, signal } from '@angular/core';
 import { Dashboardheader } from "./dashboardheader/dashboardheader";
 import { FormsModule } from '@angular/forms';
+import { HighchartsChartComponent } from 'highcharts-angular';
+import { BehaviorSubject } from 'rxjs';
+import Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-dashbord',
-  imports: [DatePipe, NgFor, Dashboardheader, FormsModule],
+  imports: [DatePipe, NgFor, Dashboardheader, FormsModule,PercentPipe,HighchartsChartComponent],
   templateUrl: './dashbord.html',
   styleUrl: './dashbord.css',
 })
 export class Dashbord {
 
   CurrentDate = new Date();
-  adminMode = false;     // ⭐ ADMIN ENABLE / DISABLE
+  adminMode = false;  //  ADMIN ENABLE / DISABLE
+   //  Edit popup
+  showEditPopup = false;   
 
-  // 🔹 Dynamic Metrics
+  // Dynamic Metrics
   occupancy = { used: 84, total: 120 };
   checkins = { value: 342, change: +15 };
   revenue = { total: 42500, membership: 35000, pos: 7500, growth: 12 };
 
-  // 🔹 Edit popup
-  showEditPopup = false;
-
+ 
+//CROWD DATA (Signal + Observable)
   hours = [
     { time: '06:00', avg: 25, live: 20 },
     { time: '08:00', avg: 45, live: 30 },
@@ -38,13 +42,22 @@ export class Dashbord {
     { time: '22:00', avg: 20, live: 15 },
     { time: '22:00', avg: 30, live: 5 },
   ];
+ // Signal
+ hoursSig = signal(this.hours);
+ //computed Value
+  peakHour = computed(() =>
+    this.hoursSig().reduce((p, c) => (c.live > p.live ? c : p))
+  );
+    //  OBSERVABLE STATE
+  private _hours$ = new BehaviorSubject(this.hours);
+  hours$ = this._hours$.asObservable();
 
-  // ⭐ Occupancy %
+  //  Occupancy %
   get occupancyPercent() {
     return Math.round((this.occupancy.used / this.occupancy.total) * 100);
   }
 
-  // ⭐ Auto Badge
+  //  Auto Badge
   get occupancyLevel() {
     const p = this.occupancyPercent;
     if (p < 40) return 'LOW';
@@ -52,14 +65,25 @@ export class Dashbord {
     return 'HIGH';
   }
 
-  // ⭐ Open Edit Dialog
+  //  Open Edit Dialog
   openEdit() {
     this.showEditPopup = true;
     this.adminMode = true;
   }
 
-  // ⭐ Save Changes
+  //  Save Changes
   saveMetrics() {
+     this._hours$.next(this.hours);
+    this.hoursSig.set(this.hours);
+   
     this.showEditPopup = false;
   }
+   // ⭐ HIGHCHARTS
+  Highcharts: typeof Highcharts = Highcharts;
+  crowdChart!: Highcharts.Options;
+
+
+  
+
+  // ⭐ BUILD CHART FROM hours[]
 }
