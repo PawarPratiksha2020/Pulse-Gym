@@ -1,213 +1,215 @@
 <app-staff-header></app-staff-header>
-<div class="page-head">
+<div class="full">
+    <div class="page-head">
 
-    <div>
-        <h2>Staff Management</h2>
-        <p>Manage profiles, roles, and monitor team performance.</p>
+        <div>
+            <h2>Staff Management</h2>
+            <p>Manage profiles, roles, and monitor team performance.</p>
+        </div>
+
+        <div class="action-btns">
+            <button class="filter-btn"> Filter</button>
+            <button class="add-btn" (click)="openAdd()"> Add Staff Member</button>
+        </div>
+
     </div>
+    <div class="stats-row">
 
-    <div class="action-btns">
-        <button class="filter-btn"> Filter</button>
-        <button class="add-btn" (click)="openAdd()"> Add Staff Member</button>
+        <div class="stat-card">
+            <h4>Total Staff</h4>
+            <h2>{{totalStaff}}</h2>
+            <span class="sub">+2 New this month</span>
+        </div>
+
+        <div class="stat-card">
+            <h4>Active Trainers</h4>
+            <h2>{{activeTrainers}}</h2>
+            <span class="sub">{{activeTrainers}} Currently On-Floor</span>
+        </div>
+
+        <div class="stat-card">
+            <h4>Avg. Trainer Rating</h4>
+            <h2>4.8 </h2>
+            <span class="sub">Top 5% in Region</span>
+        </div>
+
+
     </div>
+    <div class="dashboard">
 
-</div>
-<div class="stats-row">
+        <!-- LEFT SECTION -->
+        <div class="left">
 
-    <div class="stat-card">
-        <h4>Total Staff</h4>
-        <h2>{{totalStaff}}</h2>
-        <span class="sub">+2 New this month</span>
-    </div>
+            <div class="card">
+                <div class="card-head">
+                    <h3>Staff Directory</h3>
 
-    <div class="stat-card">
-        <h4>Active Trainers</h4>
-        <h2>{{activeTrainers}}</h2>
-        <span class="sub">{{activeTrainers}} Currently On-Floor</span>
-    </div>
+                    <div class="actions">
+                        <select>
+                            <option>All Roles</option>
+                            <option>Trainer</option>
+                            <option>Manager</option>
+                        </select>
 
-    <div class="stat-card">
-        <h4>Avg. Trainer Rating</h4>
-        <h2>4.8 </h2>
-        <span class="sub">Top 5% in Region</span>
-    </div>
+                    </div>
+                </div>
 
+                <table class="staff-table">
+                    <thead>
+                        <tr>
+                            <th>Staff Member</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Active Clients</th>
+                            <th>Rating</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
-</div>
-<div class="dashboard">
+                    <tbody>
+                        <tr *ngFor="let m of staff">
+                            <td class="member">
+                                <img [src]="m.img" />
+                                <div>
+                                    <h4>{{m.name}}</h4>
+                                    <span>{{m.id}}</span>
+                                </div>
+                            </td>
 
-    <!-- LEFT SECTION -->
-    <div class="left">
+                            <td>{{m.role}}</td>
 
-        <div class="card">
-            <div class="card-head">
-                <h3>Staff Directory</h3>
+                            <td>
+                                <span class="badge" [ngClass]="m.statusClass">{{m.status}}</span>
+                            </td>
 
-                <div class="actions">
-                    <select>
-                        <option>All Roles</option>
-                        <option>Trainer</option>
-                        <option>Manager</option>
-                    </select>
+                            <td>{{m.clients}}</td>
 
+                            <td>
+                                {{m.rating}}
+                            </td>
+                            <td>
+                                <button class="btn btn-success" (click)="openEdit(m)">Edit</button>
+                                <button class="btn btn-danger" (click)="delete(m)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <!-- RIGHT SECTION -->
+        <div class="right">
+
+            <!-- Trainer Popularity -->
+            <div class="card">
+                <h3>Trainer Popularity</h3>
+
+                <div *ngFor="let t of trainers" class="pop-row">
+                    <div class="row-head">
+                        <span>{{t.name}}</span>
+                        <span>{{t.percent}}%</span>
+                    </div>
+
+                    <div class="progress">
+                        <div class="bar" [style.width.%]="t.percent"></div>
+                    </div>
                 </div>
             </div>
 
-            <table class="staff-table">
-                <thead>
-                    <tr>
-                        <th>Staff Member</th>
-                        <th>Role</th>
-                        <th>Status</th>
-                        <th>Active Clients</th>
-                        <th>Rating</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+            <!-- Staff Schedule Load -->
+            <div class="card">
 
-                <tbody>
-                    <tr *ngFor="let m of staff">
-                        <td class="member">
-                            <img [src]="m.img" />
-                            <div>
-                                <h4>{{m.name}}</h4>
-                                <span>{{m.id}}</span>
-                            </div>
-                        </td>
+                <h3>Staff Schedule Load</h3>
 
-                        <td>{{m.role}}</td>
-
-                        <td>
-                            <span class="badge" [ngClass]="m.statusClass">{{m.status}}</span>
-                        </td>
-
-                        <td>{{m.clients}}</td>
-
-                        <td>
-                            {{m.rating}}
-                        </td>
-                        <td>
-                            <button class="btn btn-success" (click)="openEdit(m)">Edit</button>
-                            <button class="btn btn-danger" (click)="delete(m)">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-    </div>
-
-    <!-- RIGHT SECTION -->
-    <div class="right">
-
-        <!-- Trainer Popularity -->
-        <div class="card">
-            <h3>Trainer Popularity</h3>
-
-            <div *ngFor="let t of trainers" class="pop-row">
-                <div class="row-head">
-                    <span>{{t.name}}</span>
-                    <span>{{t.percent}}%</span>
-                </div>
-
-                <div class="progress">
-                    <div class="bar" [style.width.%]="t.percent"></div>
+                <div class="grid">
+                    <div *ngFor="let b of load" class="box" [ngClass]="b === 1 ? 'low' : 'high'">
+                    </div>
                 </div>
             </div>
+
+
         </div>
+        <table class="staff-table">
 
-        <!-- Staff Schedule Load -->
-        <div class="card">
-   
-            <h3>Staff Schedule Load</h3>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Shift</th>
+                    <th>Check-In</th>
+                    <th>Check-Out</th>
+                    <th>Actions</th>
+                    <th>Total Hours</th>
+                    <th>Status</th>
 
-            <div class="grid">
-                <div *ngFor="let b of load" class="box" [ngClass]="b === 1 ? 'low' : 'high'">
-                </div>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr *ngFor="let a of attendanceList">
+
+                    <td>{{a.staffId}}</td>
+                    <td>{{a.shiftStart}} - {{a.shiftEnd}}</td>
+
+                    <td>{{a.checkIn || '--'}}</td>
+                    <td>{{a.checkOut || '--'}}</td>
+
+                    <td>
+                        <button (click)="checkIn(a)" [disabled]="a.checkIn">
+                            Check In
+                        </button>
+
+                        <button (click)="checkOut(a)" [disabled]="!a.checkIn || a.checkOut">
+                            Check Out
+                        </button>
+                    </td>
+
+                    <td>{{a.totalHours ?? '--'}} Hrs</td>
+
+                    <td>
+                        <span [ngClass]="a.status">{{a.status || 'Absent'}}</span>
+                    </td>
+
+
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+    <!-- 🔹 Add Staff Popup -->
+    <div class="popup-backdrop" *ngIf="showAddPopup">
+        <div class="popup-card">
+
+            <h3>Add Staff Member</h3>
+            <p class="subtitle">Fill the details to add a new staff record</p>
+
+            <div class="form-grid">
+
+                <input placeholder="Full Name" [(ngModel)]="newStaff.name">
+
+                <input placeholder="Role (Trainer / Manager)" [(ngModel)]="newStaff.role">
+
+                <select [(ngModel)]="newStaff.status">
+                    <option>Active</option>
+                    <option>On Shift</option>
+                    <option>In Class</option>
+                </select>
+
+                <input type="number" placeholder="Active Clients" [(ngModel)]="newStaff.clients">
+
+                <input type="number" placeholder="Rating" [(ngModel)]="newStaff.rating">
+
             </div>
+
+            <div class="popup-footer">
+                <button class="save-btn" (click)="saveStaff()">Save</button>
+                <button class="cancel-btn" (click)="closeAdd()">Cancel</button>
+            </div>
+
         </div>
-        
+
 
     </div>
-      <table class="staff-table">
-
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Shift</th>
-      <th>Check-In</th>
-      <th>Check-Out</th>
-      <th>Actions</th>
-      <th>Total Hours</th>
-      <th>Status</th>
-      <th>Overtime</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    
-    <tr *ngFor="let a of attendanceList">
-
-      <td>{{a.staffId}}</td>
-      <td>{{a.shiftStart}} - {{a.shiftEnd}}</td>
-
-      <td>{{a.checkIn || '--'}}</td>
-      <td>{{a.checkOut || '--'}}</td>
-
-      <td>
-        <button (click)="checkIn(a)" [disabled]="a.checkIn">
-          Check In
-        </button>
-
-        <button (click)="checkOut(a)" [disabled]="!a.checkIn || a.checkOut">
-          Check Out
-        </button>
-      </td>
-
-      <td>{{a.totalHours ?? '--'}} Hrs</td>
-
-      <td>
-        <span [ngClass]="a.status">{{a.status || 'Absent'}}</span>
-      </td>
-
-
-    </tr>
-  </tbody>
-
-</table>
-
-</div>
-<!-- 🔹 Add Staff Popup -->
-<div class="popup-backdrop" *ngIf="showAddPopup">
-    <div class="popup-card">
-
-        <h3>Add Staff Member</h3>
-        <p class="subtitle">Fill the details to add a new staff record</p>
-
-        <div class="form-grid">
-
-            <input placeholder="Full Name" [(ngModel)]="newStaff.name">
-
-            <input placeholder="Role (Trainer / Manager)" [(ngModel)]="newStaff.role">
-
-            <select [(ngModel)]="newStaff.status">
-                <option>Active</option>
-                <option>On Shift</option>
-                <option>In Class</option>
-            </select>
-
-            <input type="number" placeholder="Active Clients" [(ngModel)]="newStaff.clients">
-
-            <input type="number" placeholder="Rating" [(ngModel)]="newStaff.rating">
-
-        </div>
-
-        <div class="popup-footer">
-            <button class="save-btn" (click)="saveStaff()">Save</button>
-            <button class="cancel-btn" (click)="closeAdd()">Cancel</button>
-        </div>
-
-    </div>
-  
-
 </div>

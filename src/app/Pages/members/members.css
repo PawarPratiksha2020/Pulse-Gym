@@ -1,4 +1,9 @@
 /* Top Menu Create And search box */
+.full{
+    margin-left: 40px;
+    margin-top: 80px
+}
+
 .header-row {
     display: flex;
     justify-content: space-between;

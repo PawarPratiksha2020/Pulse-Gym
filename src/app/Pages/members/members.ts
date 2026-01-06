@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Chart } from 'chart.js/auto';
 import { MembersServices } from '../Services/members-services';
+import { Dashboardheader } from "../dashbord/dashboardheader/dashboardheader";
 
 @Component({
   selector: 'app-members',
   standalone: true,
-  imports: [NgIf, NgFor , NgClass , FormsModule , RouterLink , DatePipe , PercentPipe ],
+  imports: [NgIf, NgFor, NgClass, FormsModule, RouterLink, DatePipe, PercentPipe, Dashboardheader],
   templateUrl: './members.html',
   styleUrl: './members.css',
 })

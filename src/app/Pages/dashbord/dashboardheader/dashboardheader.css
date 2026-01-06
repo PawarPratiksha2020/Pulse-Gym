@@ -1,8 +1,15 @@
 .header-row {
+    position:fixed;
+    top: 0;
+    left:270px;
+    right:0;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 18px;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    z-index: 1000;
     border-bottom: 1px solid #1b2432;
 
 }

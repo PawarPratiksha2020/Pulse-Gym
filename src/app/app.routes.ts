@@ -5,7 +5,8 @@ import { Satff } from './Pages/satff/satff';
 import { EquipmentComponent } from './Pages/equipment/equipment';
 import { Finace } from './Pages/finace/finace';
 import { Reports } from './Pages/reports/reports';
-import { Editmemberprofile } from './Pages/members/editmemberprofile/editmemberprofile';
+
+import { Users } from './Pages/users/users';
 
 
 
@@ -15,14 +16,15 @@ export const routes: Routes = [
         component: Dashbord
     },
     {
+        path: 'Users',
+        component: Users
+    },
+    {
         path: 'MembersPage',
         component: Members
     },
-   
-    {
-        path: 'edit-profile/:id',
-        component: Editmemberprofile
-    },
+
+ 
 
     {
         path: 'staffPage',

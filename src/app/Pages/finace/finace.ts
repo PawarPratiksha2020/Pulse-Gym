@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { async } from 'rxjs/internal/scheduler/async';
 import { ApexAxisChartSeries, ApexChart, ApexStroke, ApexXAxis, ApexTooltip, ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
 import { FormsModule } from '@angular/forms';
+import { Dashboardheader } from "../dashbord/dashboardheader/dashboardheader";
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 export type ChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -13,13 +16,20 @@ export type ChartOptions = {
  };
 @Component({
   selector: 'app-finace',
-  imports: [DatePipe, AsyncPipe,NgIf,NgFor, CommonModule, ChartComponent, NgApexchartsModule, FormsModule],
+  imports: [DatePipe, AsyncPipe, NgIf, NgFor, CommonModule, ChartComponent, NgApexchartsModule, FormsModule, Dashboardheader,MatSelectModule,MatFormFieldModule
+  ],
   templateUrl: './finace.html',
   styleUrls: ['./finace.css'],
 })
 export class Finace {
   myDate = new Date();
-  name = 'Q4  Projection'
+  name = 'Q4  Projection';
+  selectedPeriod ='month';
+  periodOptions = [
+  { value: 'month', label: 'This Month' },
+  { value: 'last-month', label: 'Last Month' },
+  { value: 'year', label: 'Last 12 Months' }
+];
 
   chart: any = {
     series: [
@@ -51,6 +61,7 @@ export class Finace {
   ];
 
   filteredBilling = [...this.billingHistory];  // copy for filtering
+
 
 
   applyFilters() {

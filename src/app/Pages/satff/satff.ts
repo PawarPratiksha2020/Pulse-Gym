@@ -19,7 +19,7 @@ export class Satff implements OnInit {
     { name: 'Sarah Connor', percent: 86 }
   ];
   attendanceList: Attendance[] = [
-   
+
   ];
 
   get totalStaff() {
@@ -167,7 +167,7 @@ export class Satff implements OnInit {
     att.status = 'Present';
     this.attendsvc.update(att);
   }
- checkOut(att: Attendance) {
+  checkOut(att: Attendance) {
     const now = new Date();
     now.setHours(now.getHours() + 1);
     att.checkOut = new Date().toTimeString().slice(0, 5);

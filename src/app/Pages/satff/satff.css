@@ -1,4 +1,10 @@
 /* ===== GLOBAL ===== */
+.full{
+  margin-left: 40px;
+  padding-top: 90px;
+
+}
+
 body{
   background:#020617;
   color:#e5e7ff;

@@ -8,6 +8,7 @@ import Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-dashbord',
+  standalone:true,
   imports: [DatePipe, NgFor, Dashboardheader, FormsModule,PercentPipe,HighchartsChartComponent],
   templateUrl: './dashbord.html',
   styleUrl: './dashbord.css',
@@ -78,12 +79,12 @@ export class Dashbord {
    
     this.showEditPopup = false;
   }
-   // ⭐ HIGHCHARTS
+   //  HIGHCHARTS
   Highcharts: typeof Highcharts = Highcharts;
   crowdChart!: Highcharts.Options;
 
 
   
 
-  // ⭐ BUILD CHART FROM hours[]
+  
 }

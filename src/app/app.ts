@@ -5,13 +5,14 @@ import { Reports } from './Pages/reports/reports';
 import { EquipmentComponent } from './Pages/equipment/equipment';
 import { Satff } from './Pages/satff/satff';
 import { Members } from './Pages/members/members';
-import { Editmemberprofile } from './Pages/members/editmemberprofile/editmemberprofile';
+
+import { Users } from './Pages/users/users';
 
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,Dashbord,Reports,EquipmentComponent,Satff,Members,RouterLink,Editmemberprofile],
+  imports: [RouterOutlet,Dashbord,Reports,EquipmentComponent,Satff,Members,RouterLink,Users],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

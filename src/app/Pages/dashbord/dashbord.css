@@ -1,4 +1,10 @@
 
+.full{
+   margin-left: 40px; /* sidebar match */
+  padding-top: 90px;
+  
+ 
+}
 .menu-header {
     display: flex;
     justify-content: space-between;
@@ -475,4 +481,35 @@
   background:#334155;
   display:grid;
   place-items:center;
+}
+.card{
+  background:#0b1220;
+  border-radius:18px;
+  padding:18px;
+  border:1px solid #111827;
+}
+
+.head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:6px;
+}
+
+.head h2{ color:#e5edff; margin:0; }
+.head p{ color:#9ca3af; margin:2px 0 10px; }
+
+.tabs button{
+  background:#0f172a;
+  border:1px solid #1e293b;
+  color:#9ca3af;
+  padding:6px 14px;
+  border-radius:10px;
+  margin-left:6px;
+  cursor:pointer;
+}
+
+.tabs button.active{
+  background:#2563eb;
+  color:white;
 }

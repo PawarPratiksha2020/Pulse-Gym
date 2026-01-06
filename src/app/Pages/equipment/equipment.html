@@ -1,168 +1,163 @@
 <app-dashboardheader></app-dashboardheader>
+<div class="full">
+  <div class="page">
 
-<div class="page">
+    <h2>Equipment & Availability</h2>
+    <p class="subtitle">
+      Live inventory tracking, predictive availability, and procurement intelligence.
+    </p>
 
-  <h2>Equipment & Availability</h2>
-  <p class="subtitle">
-    Live inventory tracking, predictive availability, and procurement intelligence.
-  </p>
-
-  <!-- Top Bar -->
-  <div class="top-actions">
-    <button class="secondary">Export Report</button>
-    <button class="primary" (click)="openAdd()">+ Add Equipment</button>
-  </div>
-
-  <!-- ⭐ STATUS CARDS (computed signals) -->
-  <div class="status-grid">
-
-    <div class="card">
-      <label>Total Assets</label>
-      <h1>{{ status().totalAssets }}</h1>
-      <span class="note">12 new added this month</span>
+    <!-- Top Bar -->
+    <div class="top-actions">
+      <button class="secondary">Export Report</button>
+      <button class="primary" (click)="openAdd()">+ Add Equipment</button>
     </div>
 
-    <div class="card">
-      <label>Live Utilization</label>
-      <h1>{{ status().utilization }}%</h1>
-
-      <div class="progress">
-        <div class="fill" [style.width.%]="status().utilization"></div>
-      </div>
-    </div>
-
-    <div class="card warn">
-      <label>Maintenance</label>
-      <h1>{{ status().maintenance }}</h1>
-      <span class="note orange">Action Required on 2 units</span>
-    </div>
-
-    <div class="card success">
-      <label>Buy Suggestion</label>
-      <h1>{{ status().buySuggestion }}</h1>
-      <span>Predictive Shortage: <b>Treadmills</b></span>
-    </div>
-  </div>
-
-  <!-- Smart Insight -->
-  <div class="insight">
-    <b>Smart Procurement Insight <strong>NEW</strong></b><br>
-    <b>Critical Shortage Detected:</b> Treadmill usage exceeds 95% between 17:00–19:00.
-    <span class="action">
-      Recommended Action — <b>Acquire 3 Units</b>
-    </span>
-  </div>
-
-  <!-- MAIN GRID -->
-  <div class="grid">
-
-    <!-- ⭐ LIVE INVENTORY TABLE -->
-    <div class="table-card">
-      <h3>Live Inventory Status</h3>
-
-      <table>
-        <tr>
-          <th>Equipment Name</th>
-          <th>Zone</th>
-          <th>Live Status</th>
-          <th>Avg Duration</th>
-          <th>Est. Free In</th>
-          <th>Action</th>
-        </tr>
-
-        <!-- 🔹 NOTE: use filteredEquipment() signal -->
-        <tr *ngFor="let item of filteredEquipment()">
-
-          <td>
-            {{ item.name }}
-            <div class="id">ID: {{ item.id }}</div>
-          </td>
-
-          <td>{{ item.zone }}</td>
-
-          <td>
-            <span class="badge"
-              [ngClass]="getStatusClass(item.status)">
-              {{ getStatusLabel(item.status) }}
-            </span>
-          </td>
-
-          <td>{{ item.duration }}</td>
-          <td>{{ item.freeIn || '—' }}</td>
-
-          <td>
-            <button class="btn btn-success" (click)="openEdit(item)">Edit</button>
-            <button class="btn btn-danger" (click)="delete(item)">Delete</button>
-          </td>
-        </tr>
-      </table>
-    </div>
-
-    <!-- RIGHT PANEL -->
-    <div class="side">
+    <!-- ⭐ STATUS CARDS (computed signals) -->
+    <div class="status-grid">
 
       <div class="card">
-        <h3>Equipment Popularity</h3>
+        <label>Total Assets</label>
+        <h1>{{ status().totalAssets }}</h1>
+        <span class="note">12 new added this month</span>
+      </div>
 
-        <div *ngFor="let p of popularity" class="pop-item">
-          <div class="row graph">
-            <span>{{ p.name }}</span>
-            <b>{{ p.value }}%</b>
-          </div>
+      <div class="card">
+        <label>Live Utilization</label>
+        <h1>{{ status().utilization }}%</h1>
 
-          <div class="bar">
-            <div class="fill" [style.width.%]="p.value"></div>
-          </div>
+        <div class="progress">
+          <div class="fill" [style.width.%]="status().utilization"></div>
         </div>
       </div>
 
-      <div class="card alert">
-        <h3>Crowd Balancing</h3>
-        <p>Live suggestions to optimize member flow</p>
+      <div class="card warn">
+        <label>Maintenance</label>
+        <h1>{{ status().maintenance }}</h1>
+        <span class="note orange">Action Required on 2 units</span>
+      </div>
 
-        <div class="cardio-box">
-          <h4>Cardio Zone A Overload</h4>
-          <p>98% capacity — redirect members to Zone-B (35% free)</p>
-          <button>Send Notification</button>
+      <div class="card success">
+        <label>Buy Suggestion</label>
+        <h1>{{ status().buySuggestion }}</h1>
+        <span>Predictive Shortage: <b>Treadmills</b></span>
+      </div>
+    </div>
+
+    <!-- Smart Insight -->
+    <div class="insight">
+      <b>Smart Procurement Insight <strong>NEW</strong></b><br>
+      <b>Critical Shortage Detected:</b> Treadmill usage exceeds 95% between 17:00–19:00.
+      <span class="action">
+        Recommended Action — <b>Acquire 3 Units</b>
+      </span>
+    </div>
+
+    <!-- MAIN GRID -->
+    <div class="grid">
+
+      <!-- ⭐ LIVE INVENTORY TABLE -->
+      <div class="table-card">
+        <h3>Live Inventory Status</h3>
+
+        <table>
+          <tr>
+            <th>Equipment Name</th>
+            <th>Zone</th>
+            <th>Live Status</th>
+            <th>Avg Duration</th>
+            <th>Est. Free In</th>
+            <th>Action</th>
+          </tr>
+
+          <!-- 🔹 NOTE: use filteredEquipment() signal -->
+          <tr *ngFor="let item of filteredEquipment()">
+
+            <td>
+              {{ item.name }}
+              <div class="id">ID: {{ item.id }}</div>
+            </td>
+
+            <td>{{ item.zone }}</td>
+
+            <td>
+              <span class="badge" [ngClass]="getStatusClass(item.status)">
+                {{ getStatusLabel(item.status) }}
+              </span>
+            </td>
+
+            <td>{{ item.duration }}</td>
+            <td>{{ item.freeIn || '—' }}</td>
+
+            <td>
+              <button class="btn btn-success" (click)="openEdit(item)">Edit</button>
+              <button class="btn btn-danger" (click)="delete(item)">Delete</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="side">
+
+        <div class="card">
+          <h3>Equipment Popularity</h3>
+
+          <div *ngFor="let p of popularity" class="pop-item">
+            <div class="row graph">
+              <span>{{ p.name }}</span>
+              <b>{{ p.value }}%</b>
+            </div>
+
+            <div class="bar">
+              <div class="fill" [style.width.%]="p.value"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card alert">
+          <h3>Crowd Balancing</h3>
+          <p>Live suggestions to optimize member flow</p>
+
+          <div class="cardio-box">
+            <h4>Cardio Zone A Overload</h4>
+            <p>98% capacity — redirect members to Zone-B (35% free)</p>
+            <button>Send Notification</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- ⭐ POPUP USING SIGNAL -->
-<div class="popup-backdrop" *ngIf="showPopup()">
-  <div class="popup-card">
+  <!-- ⭐ POPUP USING SIGNAL -->
+  <div class="popup-backdrop" *ngIf="showPopup()">
+    <div class="popup-card">
 
-    <h3>{{ editingItem() ? 'Edit Equipment' : 'Add Equipment' }}</h3>
+      <h3>{{ editingItem() ? 'Edit Equipment' : 'Add Equipment' }}</h3>
 
-    <div class="form-grid">
+      <div class="form-grid">
 
-      <input placeholder="Equipment Name"
-             [(ngModel)]="newEquipment().name">
+        <input placeholder="Equipment Name" [(ngModel)]="newEquipment().name">
 
-      <input placeholder="Zone"
-             [(ngModel)]="newEquipment().zone">
+        <input placeholder="Zone" [(ngModel)]="newEquipment().zone">
 
-      <select [(ngModel)]="newEquipment().status">
-        <option value="IN_USE">In Use</option>
-        <option value="FREE">Free</option>
-        <option value="MAINTENANCE">Maintenance</option>
-      </select>
+        <select [(ngModel)]="newEquipment().status">
+          <option value="IN_USE">In Use</option>
+          <option value="FREE">Free</option>
+          <option value="MAINTENANCE">Maintenance</option>
+        </select>
 
-      <input type="number"
-             placeholder="Avg Duration (min)"
-             [(ngModel)]="newEquipment().duration">
+        <input type="number" placeholder="Avg Duration (min)" [(ngModel)]="newEquipment().duration">
 
-      <input placeholder="Free In"
-             [(ngModel)]="newEquipment().freeIn">
+        <input placeholder="Free In" [(ngModel)]="newEquipment().freeIn">
+
+      </div>
+
+      <div class="popup-footer">
+        <button class="save-btn" (click)="saveEquipment()">Save</button>
+        <button class="cancel-btn" (click)="showPopup.set(false)">Cancel</button>
+      </div>
 
     </div>
-
-    <div class="popup-footer">
-      <button class="save-btn" (click)="saveEquipment()">Save</button>
-      <button class="cancel-btn" (click)="showPopup.set(false)">Cancel</button>
-    </div>
-
   </div>
 </div>

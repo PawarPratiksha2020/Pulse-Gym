@@ -1,0 +1,18 @@
+<h2>User Age Prediction</h2>
+
+<button (click)="OnBtExport()" style="margin-bottom: 5px; font-weight: bold;">
+    Import Excel
+</button>
+<div class="col-12" class="ag-theme-alpine" style="height:500px">
+    <ag-grid-angular class="ag-theme-quartz" style="height: 500px; width: 100%;"
+     [rowData]="UserList"
+        [columnDefs]="colDefs"
+         [defaultColDef]="defaultColDef" 
+         (gridReady)="onGridReady($event)"
+        [rowSelection]="rowSelection"
+         [suppressRowClickSelection]="true"
+          [pagination]="true"
+         
+        [paginationPageSizeSelector]="[5,10,20,50,100]">
+    </ag-grid-angular>
+</div>

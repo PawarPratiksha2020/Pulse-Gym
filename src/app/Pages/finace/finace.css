@@ -1,7 +1,13 @@
+.full{
+    margin-top: 70px;
+    margin-left: 20px
+}
+
 .header-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* margin-top: 3px; */
     margin-bottom: 18px;
     border-bottom: 1px solid #1b2432;
 
@@ -300,4 +306,11 @@ tr {
 .refunded {
     background: #312e81;
     color: #a5b4fc;
+}
+.filter-bar{
+    margin-top: 10px;
+    font-size: 22px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+   
 }
