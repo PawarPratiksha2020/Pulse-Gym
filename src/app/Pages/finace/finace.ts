@@ -1,35 +1,33 @@
 import { AsyncPipe, CommonModule, DatePipe, NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { async } from 'rxjs/internal/scheduler/async';
 import { ApexAxisChartSeries, ApexChart, ApexStroke, ApexXAxis, ApexTooltip, ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
 import { FormsModule } from '@angular/forms';
 import { Dashboardheader } from "../dashbord/dashboardheader/dashboardheader";
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-export type ChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  stroke: ApexStroke;
-  tooltip: ApexTooltip;
-  colors: string[];
- };
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 @Component({
   selector: 'app-finace',
-  imports: [DatePipe, AsyncPipe, NgIf, NgFor, CommonModule, ChartComponent, NgApexchartsModule, FormsModule, Dashboardheader,MatSelectModule,MatFormFieldModule
-  ],
+  imports: [DatePipe, AsyncPipe, NgIf, NgFor, CommonModule, ChartComponent, NgApexchartsModule, FormsModule, Dashboardheader, MatSelectModule, MatFormFieldModule,
+    MatProgressBarModule],
   templateUrl: './finace.html',
   styleUrls: ['./finace.css'],
 })
 export class Finace {
   myDate = new Date();
   name = 'Q4  Projection';
-  selectedPeriod ='month';
-  periodOptions = [
-  { value: 'month', label: 'This Month' },
-  { value: 'last-month', label: 'Last Month' },
-  { value: 'year', label: 'Last 12 Months' }
-];
+  revenue = 44.5;
+  target = 100;
+
+  planValue = (this.revenue / this.target) * 100;
+  Range=[
+     {value: 'month', viewValue: 'This Month'},
+    {value: 'Quarter', viewValue: 'This Quarter'},
+    {value: 'Year', viewValue: 'This Year'}
+  ];
+  selectedRange = 'month';
 
   chart: any = {
     series: [
@@ -49,41 +47,24 @@ export class Finace {
     colors: ['#38bdf8'],
     tooltip: { theme: 'dark' }
   };
-  filters = {
-    dateRange: 'month',
-    branch: 'all',
-    plan: 'all'
-  };
+  // filters = {
+  //   dateRange: 'month',
+  //   branch: 'all',
+  //   plan: 'all'
+  // };
   billingHistory = [
-    { id: '#INV-2042', member: 'Sarah Connor', method: 'Card', date: 'Oct 20', amount: 89, status: 'Paid',branch:'pune',plan:'premium' },
-    { id: '#INV-1844', member: 'James Lee', method: 'UPI', date: 'Oct 19', amount: 49, status: 'Failed', branch:'Mumbai', plan:'Standard'},
-    { id: '#INV-1772', member: 'Riya Patel', method: 'Cash', date: 'Oct 18', amount: 29, status: 'Refunded',branch:'Pune', plan:'Student' }
+    { id: '#INV-2042', member: 'Sarah Connor', method: 'Card', date: 'Oct 20', amount: 89, status: 'Paid', branch: 'pune', plan: 'premium' },
+    { id: '#INV-1844', member: 'James Lee', method: 'UPI', date: 'Oct 19', amount: 49, status: 'Failed', branch: 'Mumbai', plan: 'Standard' },
+    { id: '#INV-1772', member: 'Riya Patel', method: 'Cash', date: 'Oct 18', amount: 29, status: 'Refunded', branch: 'Pune', plan: 'Student' }
   ];
 
   filteredBilling = [...this.billingHistory];  // copy for filtering
 
+ 
 
 
-  applyFilters() {
-    console.log("Filters Applied", this.filters);
-     this.filteredBilling = this.billingHistory.filter(row => {
-
-    let match = true;
-
-    // Branch filter example
-    if(this.filters.branch !== 'all'){
-      match = match && row.branch === this.filters.branch;
-    }
-
-    // Plan filter (optional if data has plan)
-    if(this.filters.plan !== 'all'){
-      match = match && row.plan === this.filters.plan;
-    }
-
-    return match;
-  });
 
   }
 
 
-}
+

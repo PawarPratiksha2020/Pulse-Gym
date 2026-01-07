@@ -7,12 +7,13 @@ import { Satff } from './Pages/satff/satff';
 import { Members } from './Pages/members/members';
 
 import { Users } from './Pages/users/users';
+import { Dashboardheader } from "./Pages/dashbord/dashboardheader/dashboardheader";
 
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,Dashbord,Reports,EquipmentComponent,Satff,Members,RouterLink,Users],
+  imports: [RouterOutlet, Dashbord, Reports, EquipmentComponent, Satff, Members, RouterLink, Users, Dashboardheader],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

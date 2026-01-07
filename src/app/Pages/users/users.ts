@@ -14,7 +14,6 @@ import { ColDef, colorSchemeDark, GridApi, GridReadyEvent, themeQuartz } from 'a
 export class Users implements OnInit {
   private gridApi!:GridApi<any>
   UserList: any[] = [];
- 
  public rowSelection :'single'|'multiple'='multiple';
   colDefs: ColDef[] = [
     { field: "id", headerName: 'User-Id' , checkboxSelection:true, headerCheckboxSelection:true,

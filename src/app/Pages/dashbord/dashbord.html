@@ -1,4 +1,4 @@
-<app-dashboardheader></app-dashboardheader>
+
 <div class="full">
     <div class="menu-header">
         <div class="class-name">
@@ -27,27 +27,22 @@
             <span>5% vs. average for Tuesday</span>
         </div>
         <div class="start-card">
-            <div class="start-end">
-                <h4>Live Check-ins</h4>
-                <span class="tag success">+15</span>
+            <div class="card-box">
+
+                <div class="card-head">
+                    <span class="title">Live Check-ins</span>
+                    <span class="badge-up">+15</span>
+                </div>
+
+                <h1 class="value">342</h1>
+
+                <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions1" style="width:100%; display:block">
+                </highcharts-chart>
+
+                <p class="note">
+                    Peak time expected at 6:00 PM
+                </p>
             </div>
-            <h6>342</h6>
-            <div class="mini-bars">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <span>peak time expected at 6:00 PM</span>
         </div>
 
         <div class="start-card">
@@ -83,31 +78,21 @@
                     </div>
                 </div>
 
-                <!-- NOW Label -->
-                <div class="now-badge">NOW</div>
-
-                <!-- Vertical Bar Chart -->
                 <div class="vchart">
-
-                    <div class="vcol" *ngFor="let h of hours">
-
-                        <div class="col-bars">
-                            <div class="bar avg" [style.--h.%]="h.avg"></div>
-                            <div class="bar live" [style.--h.%]="h.live"></div>
-
-                        </div>
-
-                        <span class="time">{{h.time}}</span>
+                    <div class="chart-card">
+                        <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
+                            style="width:100%; height:400px; display:block">
+                        </highcharts-chart>
                     </div>
 
 
                 </div>
 
                 <!-- Legend -->
-                <div class="legend">
+                <!-- <div class="legend">
                     <span class="dot grey"></span> Average (Typical)
                     <span class="dot blue"></span> Today (Live)
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -196,5 +181,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="col-4">
+
     </div>
 </div>

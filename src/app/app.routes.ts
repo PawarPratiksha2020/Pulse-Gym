@@ -23,9 +23,6 @@ export const routes: Routes = [
         path: 'MembersPage',
         component: Members
     },
-
- 
-
     {
         path: 'staffPage',
         component: Satff

@@ -521,3 +521,47 @@ input, select, textarea{
   gap:10px;
   margin-top:8px;
 }
+.card-box{
+  background:#0E1733;
+  border-radius:18px;
+  padding:16px;
+}
+
+.card-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:#dbe4ff;
+  margin-bottom:8px;
+}
+
+.card-head h3{
+  margin:0;
+  font-size:18px;
+}
+
+.chip{
+  font-size:12px;
+  padding:4px 10px;
+  border-radius:12px;
+  background:#132a55;
+  color:#7fb4ff;
+}
+
+.info-box{
+  margin-top:10px;
+  background:#0B1228;
+  padding:10px 12px;
+  border-radius:12px;
+}
+
+.info-box label{
+  color:#ffcf6a;
+  font-size:12px;
+}
+
+.info-box p{
+  color:#cfd8ff;
+  margin:4px 0 0;
+  font-size:13px;
+}

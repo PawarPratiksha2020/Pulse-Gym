@@ -5,11 +5,13 @@ import { RouterLink } from '@angular/router';
 import { Chart } from 'chart.js/auto';
 import { MembersServices } from '../Services/members-services';
 import { Dashboardheader } from "../dashbord/dashboardheader/dashboardheader";
+import { HighchartsChartModule } from 'highcharts-angular';
+import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-members',
   standalone: true,
-  imports: [NgIf, NgFor, NgClass, FormsModule, RouterLink, DatePipe, PercentPipe, Dashboardheader],
+  imports: [NgIf, NgFor, NgClass, FormsModule, RouterLink, DatePipe, PercentPipe, Dashboardheader,HighchartsChartModule],
   templateUrl: './members.html',
   styleUrl: './members.css',
 })
@@ -229,7 +231,55 @@ saveMember() {
 cancel() {
   this.editingMember.set(null);
 }
+ Highcharts = Highcharts;
+ chartOptions: Highcharts.Options = {
 
+    chart: {
+      type: 'column',
+      backgroundColor: 'transparent',
+      height: 220,
+      margin: [20, 10, 30, 30]
+    },
+
+    credits: { enabled: false },
+    legend: { enabled: false },
+    title: { text: '' },
+
+    xAxis: {
+      categories: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+      lineColor: '#30405E',
+      labels: { style: { color: '#BFD3FF' } }
+    },
+
+    yAxis: {
+      title: { text: '' },
+      gridLineColor: '#1E2A45',
+      labels: { style: { color: '#7f92b8' } }
+    },
+
+    plotOptions: {
+      column: {
+        borderRadius: 10,
+        borderWidth: 0,
+        pointPadding: 0.25,
+        groupPadding: 0.2
+      }
+    },
+
+    series: [
+      {
+        type: 'column',
+        name: 'Workouts',
+        data: [3, 7, 1, 3, 5, 8, 2],
+        color: '#3DA4FF'
+      },
+      {
+        type :'column',
+        data:[10,10,10,10,10,10,10],
+        color:'#5a68b'
+      }
+    ]
+  };
 }
 
 

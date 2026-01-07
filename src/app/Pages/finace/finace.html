@@ -1,4 +1,4 @@
-<app-dashboardheader></app-dashboardheader>
+
 <div class="full">
     <div class="dashboard">
 
@@ -17,32 +17,31 @@
     <div class="filter-bar">
 
         <!-- Date Range -->
-        <select [(ngModel)]="filters.dateRange" (change)="applyFilters()">
-            <option value="month">This Month</option>
-            <option value="quarter">This Quarter</option>
-            <option value="year">This Year</option>
-        </select>
+        <mat-form-field appearance="outline">
+            <mat-label>Date Range</mat-label>
+            <mat-select placeholder="Choose" panelClass="range-dropdown" [(value)]="selectedRange">
+                <mat-option *ngFor="let R of Range" [value]="R.value">
+                    {{R.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>All Branches</mat-label>
+            <mat-select placeholder="Choose" panelClass="range-dropdown">
+                <mat-option value="pune">Pune</mat-option>
+                <mat-option value="Phaltan">Phaltan</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>All Plans</mat-label>
+            <mat-select placeholder="Choose" panelClass="range-dropdown">
+                <mat-option value="Standard">Standard</mat-option>
+                <mat-option value="Premium">Premium</mat-option>
+            </mat-select>
+        </mat-form-field>
 
-        <!-- Branch -->
-        <select [(ngModel)]="filters.branch" (change)="applyFilters()">
-            <option value="all">All Branches</option>
-            <option>Pune</option>
-            <option>Mumbai</option>
-        </select>
 
-        <!-- Plan -->
-        <select [(ngModel)]="filters.plan" (change)="applyFilters()">
-            <option value="all">All Plans</option>
-            <option>Standard</option>
-            <option>Premium</option>
-        </select>
 
-        <!-- Export Buttons -->
-         <!-- <div class="export-btns">
-        <button>Export PDF</button>
-        <button>Export Excel</button>
-        <button>Export CSV</button>  </div> -->
-  
     </div>
 
     <div class="dashboardss">
@@ -187,7 +186,7 @@
                                 <td>
                                     <span class="badge" [ngClass]="p.status">{{p.status}}</span>
                                 </td>
-                                <select [(ngModel)]="filters.branch" (change)="applyFilters()"></select>
+                                <!-- <select [(ngModel)]="filters.branch" (change)="applyFilters()"></select> -->
                             </tr>
                         </tbody>
                     </table>
@@ -211,7 +210,8 @@
                         </div>
                         <strong>$44.5k</strong>
                     </div>
-                    <div class="progress purple"></div>
+                    <mat-progress-bar mode="determinate" style="color: rgb(35, 6, 35);"
+                        [value]="planValue"></mat-progress-bar>
 
                     <div class="plan">
                         <div>
@@ -220,7 +220,7 @@
                         </div>
                         <strong>$40.1k</strong>
                     </div>
-                    <div class="progress blue"></div>
+                    <mat-progress-bar class="bar-blue" mode="determinate" value="40"></mat-progress-bar>
 
                     <div class="plan">
                         <div>
@@ -229,7 +229,7 @@
                         </div>
                         <strong>$12.5k</strong>
                     </div>
-                    <div class="progress green"></div>
+                    <mat-progress-bar class="bar-green" mode="determinate" value="12"></mat-progress-bar>
 
                     <div class="plan">
                         <div>
@@ -238,11 +238,13 @@
                         </div>
                         <strong>$5.2k</strong>
                     </div>
-                    <div class="progress orange"></div>
+                    <mat-progress-bar class="bar-yellow" mode="determinate" value="5"></mat-progress-bar>
 
                     <div class="chips">
-                        <button class="chip">Most Popular — Standard</button>
-                        <button class="chip">Highest Margin — Premium</button>
+                        <button class="chip">Most Popular <br>
+                            <b>Standard</b> </button>
+                        <button class="chip">Highest Margin <br>
+                            <b> Premium</b> </button>
                     </div>
                 </div>
 

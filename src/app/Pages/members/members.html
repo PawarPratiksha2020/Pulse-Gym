@@ -1,4 +1,4 @@
-<app-dashboardheader></app-dashboardheader>
+
 <div class="full">
     <div class="header-row">
 
@@ -309,8 +309,24 @@
 
                 <!-- Attendance Section -->
                 <div class="attendance-card">
+                    <div class="card-box">
 
-                    <div class="card-head">
+                        <div class="card-head">
+                            <h3>Attendance & Preferred Times</h3>
+                            <span class="chip">● Workouts</span>
+                        </div>
+
+                        <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
+                            style="width:100%; display:block">
+                        </highcharts-chart>
+
+                        <div class="info-box">
+                            <label>Peak Performance Time</label>
+                            <p>Best workouts between <b>5PM — 7PM</b></p>
+                        </div>
+
+                    </div>
+                    <!-- <div class="card-head">
                         <h4>Attendance & Preferred Times</h4>
                         <span class="dot-badge">● Workouts</span>
                     </div>
@@ -322,7 +338,8 @@
                     <div class="peak-box">
                         <span class="peak-title">Peak Performance Time</span>
                         <p>Best workouts between 5PM — 7PM</p>
-                    </div>
+                    </div> -->
+
 
                 </div>
 

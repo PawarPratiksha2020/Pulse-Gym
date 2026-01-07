@@ -263,12 +263,13 @@ td {
 }
 .alert .cardio-box{
     border: 1px solid rgb(65, 65, 76);
-    background: rgb(49, 46, 63);
+    background: rgb(29, 24, 53);
 }
  .cardio-box{
     padding: 10px;
     margin-left: 25px;
     font-size: 20px;
+    color: #000;
 }
 button{
     border: none;

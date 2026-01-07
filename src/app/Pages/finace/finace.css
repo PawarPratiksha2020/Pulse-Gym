@@ -219,8 +219,8 @@
     margin: 4px 0
 }
 
-.purple {
-    background: #a855f7
+/* .purple { */
+    /* background: #a855f7
 }
 
 .blue {
@@ -233,9 +233,11 @@
 
 .orange {
     background: #fb923c
-}
+} */
 
 .chips {
+    margin: 20px;
+    margin-top: 20px;
     display: flex;
     gap: 8px;
     margin-top: 10px
@@ -243,9 +245,13 @@
 
 .chip {
     border: 1px solid #334155;
-    background: #0f172a;
+    background: #0c0d0f;
     border-radius: 10px;
-    padding: 6px 10px
+    padding: 6px 10px;
+    color: #eeecec;
+    font-size: 19px;
+    
+    
 }
 
 table {
@@ -308,9 +314,68 @@ tr {
     color: #a5b4fc;
 }
 .filter-bar{
+    position: relative;
     margin-top: 10px;
+    z-index: 50;
     font-size: 22px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #f1eeee;
+    display: flex;
+    gap: 15px;
     
    
+}
+
+.range-dropdown{
+    z-index: 10000 !important;
+}
+.cdk-overlay-pane {
+  z-index: 9999 !important;
+}
+
+.dashboardss,
+
+.card {
+  overflow: visible !important;
+}
+.dashboardss {
+  position: relative;
+}
+mat-progress-bar {
+  height: 10px;
+  border-radius: 15px;
+ width: 100%;
+}
+
+mat-progress-bar .mdc-linear-progress__bar-inner {
+    
+  border-top-width: 10px;
+}
+
+:host ::ng-deep .mdc-linear-progress__buffer {
+  background: #2a2f55; /* faded background */
+}
+
+:host ::ng-deep .mdc-linear-progress__bar-inner {
+  border-color: #150212; /* highlight color */
+
+
+
+}
+.bar-blue ::ng-deep .mdc-linear-progress__bar-inner {
+  border-color: #490dee;
+}
+
+.bar-green ::ng-deep .mdc-linear-progress__bar-inner {
+  border-color: #20c40e;
+}
+
+.bar-yellow ::ng-deep .mdc-linear-progress__bar-inner {
+  border-color: #d2e507;
+}
+/* :host ::ng-deep .mdc-linear-progress__bar-inner {
+  border-color: #3223d4; /* highlight color */
+/* } */
+.Bars{
+    width: 25px;
 }
