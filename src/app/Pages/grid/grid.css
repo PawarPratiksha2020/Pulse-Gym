@@ -1,0 +1,12 @@
+h2{
+margin-top: 80px;
+margin-left: 20px;
+}
+
+:host ::ng-deep .ag-header {
+  background: #1c2539;
+}
+
+:host ::ng-deep .ag-row-selected {
+  background-color: #2159a3 !important;
+}

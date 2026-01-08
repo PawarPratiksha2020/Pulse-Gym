@@ -1,0 +1,17 @@
+<h2>5000 Record</h2>
+<div class="col-12 dashboard ag-theme-quartz">
+  <ag-grid-angular
+  class="ag-theme-alpine"
+  style="width: 100%;"
+  [rowData]="dataList"
+  [columnDefs]="columnDefs"
+  [rowSelection]="rowSelection1"
+  [headerHeight]="headerHeight"
+  [defaultColDef]="defaultColDef"
+  [pagination]="true"
+  [paginationPageSize]="15"
+  [paginationPageSizeSelector]="[15,40,80,100,400,500,5000]">
+
+</ag-grid-angular>
+
+</div>
