@@ -38,15 +38,18 @@ progressGoal = 82;
 
   enableEdit() {
     this.editUser.set({ ...this.user() });
+    this.showToast.set(true);
   }
 
   saveProfile() {
     this.user.set({ ...this.editUser() });
-    this.showToast.set(true);
-    setTimeout(() => this.showToast.set(false), 2000);
+    this.showToast.set(false);
+   
   }
 
-  cancelEdit() {}
+  cancelEdit() {
+    this.showToast.set(false)
+  }
 
   //  Membership data (signal)
   member = signal({
@@ -146,9 +149,9 @@ get newMemberObj() {
     status:'Active'
   };
 }
-editMember(m: any) {
-  this.editingMember.set({ ...m });
-}
+// editMember(m: any) {
+//   this.editingMember.set({ ...m });
+// }
 getTrainerStatus(t: any){
   return t.assigned >= t.capacity ? 'Full' : 'Available';
 }
@@ -202,35 +205,37 @@ saveMembership() {
 
   alert("All Details Saved Successfully");
 }
-newMember() {
-  this.editingMember.set({
-    id: '#'+ Math.floor(Math.random()*999),
-    name: '',
-    status: 'Active',
-    isNew: true
-  });
-}
 
-saveMember() {
+// newMember() {
+//   this.editingMember.set({
+   
+//     id: '#'+ Math.floor(Math.random()*999),
+//     name: '',
+//     status: 'Active',
+//     isNew: true
+//   });
+// }
 
-  const member = this.editingMember();
-  if (!member) return;
+// saveMember() {
 
-  // ADD NEW
-  if (member.isNew) {
-    this.store.add({ ...member, isNew:false });
-  }
+//   const member = this.editingMember();
+//   if (!member) return;
 
-  // UPDATE EXISTING
-  else {
-    this.store.update(member);
-  }
+//   // ADD NEW
+//   if (member.isNew) {
+//     this.store.add({ ...member, isNew:false });
+//   }
 
-  this.editingMember.set(null);
-}
-cancel() {
-  this.editingMember.set(null);
-}
+//   // UPDATE EXISTING
+//   else {
+//     this.store.update(member);
+//   }
+
+//   this.editingMember.set(null);
+// }
+// cancel() {
+//   this.editingMember.set(null);
+// }
  Highcharts = Highcharts;
  chartOptions: Highcharts.Options = {
 
@@ -280,6 +285,53 @@ cancel() {
       }
     ]
   };
+  editMember(m:any){
+  this.editingMember.set({ ...m, isNew:false });
+}
+
+newMember(){
+  this.editingMember.set({
+    id:'#'+Math.floor(Math.random()*999),
+    name:'',
+    status:'Active',
+    isNew:true
+  });
+}
+
+saveMember(){
+  const member = this.editingMember();
+  console.log('Saved Data',member);
+  if(!member) return;
+
+  if(member.isNew){
+    console.log("Add Mode")
+    this.store.add({ ...member, isNew:false });
+  } else {
+    console.log("Edit Mode")
+    this.store.update(member);
+  }
+
+  this.editingMember.set(null);
+  console.log('savng',member);
+}
+
+cancel(){
+  this.editingMember.set(null);
+}
+onNameChange(value: string) {
+  this.editingMember.update(m => ({ ...m, name: value }));
+}
+
+onStatusChange(value: string) {
+  this.editingMember.update(m => ({ ...m, status: value }));
+}
+onMemberClick(m:any){
+  const em = this.editingMember();
+  if(em?.isNew) return;   // Add मोड चालू असेल तर click ignore
+
+  this.editingMember.set({ ...m, isNew:false });
+}
+
 }
 
 

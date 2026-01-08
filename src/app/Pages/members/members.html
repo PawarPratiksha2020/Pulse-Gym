@@ -24,10 +24,12 @@
                     <p class="special">{{ store.membersSig().length }} Users</p>
                 </div>
 
-                <input type="text" [(ngModel)]="editingMember().name" class="Search-box1"
-                    placeholder="Find member by name or ID..">
+                <input type="text" [ngModel]="editingMember()?.name" class="Search-box1"
+                (ngModelChange) = "onNameChange($event)"
+                 placeholder="Find member by name or ID..">
 
-                <select [(ngModel)]="editingMember().status">
+                <select [ngModel]="editingMember()?.status"
+                (ngModelChange)= "onStatusChange($event)">
                     <option>Active</option>
                     <option>Inactive</option>
                     <option>Pending</option>
@@ -50,7 +52,8 @@
             <!-- Member List -->
             <div class="members-list">
 
-                <div class="member-card" *ngFor="let m of store.membersSig()" (click)="editMember(m)">
+                <div class="member-card" *ngFor="let m of store.membersSig()" 
+                (click)="onMemberClick(m)">
 
                     <div class="member-row">
                         <span class="member-name">{{ m.name }}</span>
@@ -84,12 +87,12 @@
 
                 <!-- VIEW -->
                 <div *ngIf="!showToast()">
-                    <h3>{{ user().name }}</h3>
-                    <p>{{ user().email }}</p>
-                    <p>{{ user().location }}</p>
-                    <p>{{ user().BirthDate }}</p>
+                    <h3 style="color: rgb(235, 180, 15);"><i class="fa-regular fa-user"></i>       {{ user().name }}</h3>
+                    <p> <i class="fa-regular fa-envelope"></i>    {{ user().email }}</p>
+                    <p> <i class="fa-solid fa-location-dot"></i>   {{ user().location }}</p>
+                    <p><i class="fa-solid fa-cake-candles"></i>   {{ user().BirthDate }}</p>
 
-                    <button class="btn1" (click)="enableEdit()">Edit Profile</button>
+                    <button class="btn1" (click)="enableEdit()">Edit Profiles</button>
                 </div>
 
                 <!-- EDIT -->
@@ -101,8 +104,8 @@
                     <input [(ngModel)]="editUser().BirthDate">
 
                     <div class="actions">
-                        <button (click)="saveProfile()">Save</button>
-                        <button class="cancel" (click)="cancelEdit()">Cancel</button>
+                        <button (click)="saveProfile()">Saved</button>
+                        <button class="cancel" (click)="cancelEdit()">Delete</button>
                     </div>
                 </div>
 

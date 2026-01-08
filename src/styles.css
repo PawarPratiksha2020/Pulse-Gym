@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "ag-grid-community/styles/ag-grid.css";
-@import "ag-grid-community/styles/ag-theme-alpine.css";
+
 html, body{
   background: #030712;
   margin: 0;
@@ -10,10 +10,171 @@ html, body{
   z-index: 9999 !important;
 }
 .mat-mdc-select-panel {
-  background: #0f172a !important;   /* डार्क पॅनेल */
-  border: 1px solid #334155 !important;
+  background: #0f172a !important;   
+  border: 1px solid #7f9ac0 !important;
 }
-.mat-mdc-select-panel {
-  background: #ffffff !important;
+/* .mat-mdc-select-panel {
+  background: #951b1b !important;
   color: #000 !important;
+} */
+ag-grid-angular {
+  height: 800px;
+  width: 150%;
 }
+/* ===== AG GRID HEADER ===== */
+.ag-header-cell-label {
+  justify-content: center;
+}
+
+.grid-header {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f5f3f3;
+}
+
+/* Header row background */
+.ag-header {
+  background: #1b2a39;
+  border-bottom: 2px solid #94a3b8;
+}
+
+/* ===== ROW TEXT ===== */
+.ag-cell {
+  font-size: 17px;
+  padding: 10px;
+}
+/* Hover effect */
+/* .ag-row-hover {
+  background-color: #c2ee99 !important;
+} */
+
+/* Pagination text */
+.ag-paging-panel {
+  font-size: 13px;
+}
+.status-active {
+  color: #166534;
+  font-weight: 600;
+}
+
+.status-pending {
+  color: #ca8a04;
+  font-weight: 600;
+}
+
+.status-expired {
+  color: #b91c1c;
+  font-weight: 600;
+}
+/* REMOVE vertical lines */
+.ag-cell,
+.ag-header-cell {
+  border-right: none !important;
+}
+
+/* STRONG horizontal row line */
+.ag-row {
+  border-bottom: 2px solid #313e4e !important;
+}
+
+/* Header bottom line */
+.ag-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 5px solid #94a3b8 !important;
+  
+}
+
+/* Cell spacing */
+.ag-cell {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 12px 10px;
+  font-size: 14px;
+}
+.email-cell {
+  white-space: normal !important;
+  line-height: 1.4;
+  word-break: break-word;
+}
+/* Selected Row */
+
+
+/* Checkbox cell background fix */
+.ag-row-selected .ag-cell {
+  font-weight: 500;
+}
+
+/* ===== AG GRID PAGINATION BAR HEIGHT ===== */
+.ag-paging-panel {
+  min-height: 50px;          /* line जाड */
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-top: 2px solid #2d4764;
+  background: #81a4c7;
+}
+
+/* Page size dropdown */
+.ag-paging-page-size {
+  height: 34px;
+  font-size: 15px;
+  padding: 4px 8px;
+}
+
+/* Page info text */
+.ag-paging-row-summary-panel {
+  font-size: 15px;
+}
+
+/* Pagination buttons ( < > >> ) */
+.ag-paging-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+}
+/* GRID FULL BACKGROUND */
+
+/* AG GRID FULL BACKGROUND SAME AS INVENTORY CARD */
+
+/* 🔥 REMOVE WHITE AREA BELOW ROWS */
+.ag-theme-quartz .ag-center-cols-container {
+  background: linear-gradient(
+    180deg,
+    #1e2739 0%,
+    #161b29 100%
+  ) !important;
+  min-height: 100% !important;
+}
+
+/* viewport */
+.ag-theme-quartz .ag-center-cols-viewport {
+  background: linear-gradient(
+    180deg,
+    #0b1220 0%,
+    #070d1a 100%
+  ) !important;
+}
+
+/* full grid root */
+.ag-theme-quartz .ag-root,
+.ag-theme-quartz .ag-root-wrapper,
+.ag-theme-quartz .ag-body-viewport {
+  background: linear-gradient(
+    180deg,
+    #253452 0%,
+    #fcfdff 100%
+  ) !important;
+}
+.ag-theme-quartz .ag-row {
+  background-color: #0b1220 !important;
+  color: #f5f7fa;
+  
+}
+.ag-theme-quartz .ag-row-hover {
+  background-color: #6a6b6b !important;
+}
+
+
+

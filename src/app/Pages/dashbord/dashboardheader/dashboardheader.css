@@ -38,3 +38,29 @@
 .search-box::placeholder {
     color: #6b7280;
 }
+@media (max-width: 768px){
+
+  .header-row{
+    left: 0;              /* 🔥 MOST IMPORTANT */
+    width: 100%;
+    padding: 12px 16px;
+    height: 60px;
+  }
+
+  .search-box{
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .title-box h2{
+    font-size: 16px;
+  }
+
+
+}
+@media (max-width: 768px){
+  .content{
+    padding-top: 60px;
+  }
+}
+

@@ -260,3 +260,84 @@ body{
   from{transform:scale(.85);opacity:.4;}
   to{transform:scale(1);opacity:1;}
 }
+
+@media (max-width: 768px){
+
+  /* ===== PAGE WRAPPER ===== */
+  .full{
+    margin-left: 0;
+    padding: 16px;
+    padding-top: 70px; /* fixed header साठी */
+  }
+
+  /* ===== PAGE HEADER ===== */
+  .page-head{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .action-btns{
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .action-btns button{
+    width: 100%;
+  }
+
+  /* ===== STATS ===== */
+  .stats-row{
+    grid-template-columns: 1fr;
+  }
+
+  /* ===== MAIN LAYOUT ===== */
+  .dashboard{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* ===== TABLE ===== */
+  .staff-table{
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .staff-table thead{
+    display: none; /* mobile readable */
+  }
+
+  .staff-table tr{
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid rgb(135, 129, 129);
+    border-radius: 15px;
+    padding: 10px;
+  }
+
+  .staff-table td{
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border: none;
+  }
+
+  .staff-table td::before{
+    content: attr(data-label);
+    color: #9ba4b5;
+    font-size: 12px;
+  }
+
+  /* ===== TRAINER POPULARITY ===== */
+  .grid{
+    grid-template-columns: repeat(4,1fr);
+  }
+
+  /* ===== GLOBAL ===== */
+  body{
+    overflow-x: hidden;
+  }
+}

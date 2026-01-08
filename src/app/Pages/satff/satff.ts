@@ -4,10 +4,12 @@ import { StaffHeader } from "./staff-header/staff-header";
 import { FormsModule } from '@angular/forms';
 import { Attendance } from '../Model/staffModel';
 import { StaffattendenceServices } from '../Services/staffattendence';
+import { MatFormField, MatSelect, MatOption, MatSelectModule } from "@angular/material/select";
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-satff',
-  imports: [NgClass, NgIf, NgFor, StaffHeader, FormsModule],
+  imports: [NgClass, NgIf, NgFor, StaffHeader, FormsModule, MatFormField, MatSelect, MatOption,MatSelectModule,MatFormFieldModule],
   templateUrl: './satff.html',
   styleUrl: './satff.css',
 })

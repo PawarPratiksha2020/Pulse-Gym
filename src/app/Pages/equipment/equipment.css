@@ -3,6 +3,7 @@
 
 }
 
+
 .header-row {
     display: flex;
     justify-content: space-between;
@@ -378,3 +379,98 @@ button{
   from{ transform:scale(.92); opacity:0 }
   to{ transform:scale(1); opacity:1 }
 }
+@media (max-width: 768px){
+
+  /* ===== PAGE WRAPPER ===== */
+  .full{
+    margin-top: 0;
+    padding: 14px;
+    padding-top: 70px;   /* fixed header */
+  }
+
+  .page{
+    padding: 0;
+  }
+
+  /* ===== HEADER ROW ===== */
+  .header-row{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .search-box{
+    width: 100%;
+  }
+
+  /* ===== TOP ACTION BUTTONS ===== */
+  .top-actions{
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .top-actions button{
+    width: 100%;
+  }
+
+  /* ===== STATS CARDS (🔥 MAIN FIX) ===== */
+  .status-grid{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .card h1{
+    font-size: 22px;
+  }
+
+  /* ===== INSIGHT BANNER ===== */
+  .insight{
+    padding: 14px;
+  }
+
+  .insight .action{
+    float: none;
+    margin: 10px 0 0;
+  }
+
+  /* ===== MAIN GRID ===== */
+  .grid{
+    grid-template-columns: 1fr;
+  }
+
+  /* ===== TABLE ===== */
+  .table-card{
+    height: auto;
+  }
+
+  table{
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  th{
+    font-size: 12px;
+  }
+
+  td{
+    font-size: 13px;
+  }
+
+  /* ===== RIGHT PANEL ===== */
+  .side .card{
+    margin-bottom: 10px;
+  }
+
+  /* ===== POPUP ===== */
+  .popup-card{
+    width: 92%;
+  }
+
+  /* ===== GLOBAL ===== */
+  body{
+    overflow-x: hidden;
+  }
+}
+

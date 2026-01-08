@@ -8,15 +8,24 @@ import { Members } from './Pages/members/members';
 
 import { Users } from './Pages/users/users';
 import { Dashboardheader } from "./Pages/dashbord/dashboardheader/dashboardheader";
+import { Grid } from './Pages/grid/grid';
 
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Dashbord, Reports, EquipmentComponent, Satff, Members, RouterLink, Users, Dashboardheader],
+  imports: [RouterOutlet, Dashbord, Reports, EquipmentComponent, Satff, Members, RouterLink, Users, Dashboardheader,Grid],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('DashboardPortal');
+
+  isSidebarOpen = false;
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+  
+
 }

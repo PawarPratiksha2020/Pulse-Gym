@@ -7,6 +7,7 @@ import { Finace } from './Pages/finace/finace';
 import { Reports } from './Pages/reports/reports';
 
 import { Users } from './Pages/users/users';
+import { Grid } from './Pages/grid/grid';
 
 
 
@@ -18,6 +19,10 @@ export const routes: Routes = [
     {
         path: 'Users',
         component: Users
+    },
+     {
+        path: 'Grid',
+        component: Grid
     },
     {
         path: 'MembersPage',

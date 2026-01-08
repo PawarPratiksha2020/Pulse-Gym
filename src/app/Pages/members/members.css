@@ -565,3 +565,91 @@ input, select, textarea{
   margin:4px 0 0;
   font-size:13px;
 }
+@media (max-width: 768px){
+
+  /* ---------- GENERAL RESET ---------- */
+  .full{
+    margin: 0;
+  }
+
+  /* ---------- LEFT MEMBER LIST ---------- */
+  .header-view{
+    width: 100%;
+    height: auto;
+    border-right: none;
+  }
+
+  .header-view .Search-box1{
+    width: 90%;
+    margin: 10px;
+  }
+
+  /* ---------- TOP HEADER ---------- */
+  .header-row{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .search-box{
+    width: 100%;
+  }
+
+  /* ---------- LAYOUT FIX ---------- */
+  .layout{
+    flex-direction: column;
+  }
+
+  .right-section{
+    padding-left: 0;
+  }
+
+  /* ---------- PROFILE CARD ---------- */
+  .profile-card{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profile-card .btn1{
+    margin-left: 0;
+  }
+
+  /* ---------- GRID → SINGLE COLUMN ---------- */
+  .stats-row{
+    grid-template-columns: 1fr;
+  }
+
+  .two-panel{
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .grid{
+    grid-template-columns: 1fr;
+  }
+
+  .full{
+    grid-column: auto;
+  }
+
+  /* ---------- BOTTOM SPACING ---------- */
+  .bottom p{
+    margin: 20px 0;
+  }
+
+  /* ---------- CARDS FULL WIDTH ---------- */
+  .member-card,
+  .profile-card,
+  .attendance-card,
+  .final-card,
+  .membership-card,
+  .card-box{
+    width: 100%;
+  }
+
+  /* ---------- SCROLL FIX ---------- */
+  body{
+    overflow-x: hidden;
+  }
+}
+

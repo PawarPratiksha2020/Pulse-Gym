@@ -1,15 +1,17 @@
+<button class="menu-btn" (click)="toggleSidebar()">☰</button>
 <app-dashboardheader></app-dashboardheader>
-<div class="layout">
+<div class="layout"[class.sidebar-open]="isSidebarOpen">
 
   <!-- LEFT SIDEBAR -->
-  <aside class="sidebar">
+  <aside class="sidebar"[class.open]="isSidebarOpen">
 
     <h2 class="logo">Pulse Gym</h2>
     <span class="subtitle">Admin Portal</span>
 
     <ul class="menu">
 
-      <li><a routerLink="/Dashboard" routerLinkActive="active">Dashboard</a></li>
+      <li><a routerLink="/Dashboard" routerLinkActive="active" (click)="isSidebarOpen=false">Dashboard</a></li>
+       <li><a routerLink="/Grid" routerLinkActive="active">Grid</a></li>
       <li><a routerLink="/Users" routerLinkActive="active">Users</a></li>
       <li><a routerLink="/MembersPage" routerLinkActive="active">Members</a></li>
       <li><a routerLink="/staffPage" routerLinkActive="active">Staff</a></li>
@@ -27,8 +29,10 @@
       </div>
 
     </div>
+    
 
   </aside>
+  
 
   <!-- RIGHT CONTENT AREA -->
   <main class="content">

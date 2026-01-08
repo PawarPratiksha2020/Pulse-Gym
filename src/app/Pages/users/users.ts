@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { UserServices, } from '../Services/user-services';
 import { HttpClient } from '@angular/common/http';
-import { ColDef, colorSchemeDark, GridApi, GridReadyEvent, themeQuartz } from 'ag-grid-community';
+import { ColDef, colorSchemeDark, GridApi, GridReadyEvent, themeQuartz, } from 'ag-grid-community';
 
 @Component({
   standalone: true,
@@ -15,7 +15,8 @@ export class Users implements OnInit {
   private gridApi!:GridApi<any>
   UserList: any[] = [];
  public rowSelection :'single'|'multiple'='multiple';
-  colDefs: ColDef[] = [
+  colDefs1: ColDef[] = [
+   
     { field: "id", headerName: 'User-Id' , checkboxSelection:true, headerCheckboxSelection:true,
     cellRenderer:(item:any)=>{
         return "Emp -"+item.value
@@ -23,17 +24,31 @@ export class Users implements OnInit {
     },
     { field: "name", headerName: 'Name',filter: 'agTextColumnFilter'},
     { field: "username", headerName: 'UserName' },
-    { field: "email", headerName: 'E-mail',editable:true },
-    {headerName:'Street', valueGetter:p=>p.data.address?.street},
-    {headerName:"city",valueGetter:p=>p.data.address?.city},
-    { headerName: "Zip", valueGetter: p => p.data.address?.zipcode }
+    { field: "email", headerName: 'E-mail',editable:true,
+      wrapText: true,
+  autoHeight: true,
+  cellStyle: { lineHeight: '1.4'}
+     },
+    {headerName:'Street', valueGetter:p=>p.data.address?.street ,wrapText: true,
+  autoHeight: true},
+    {headerName:"city",valueGetter:p=>p.data.address?.city,wrapText: true,
+  autoHeight: true},
+    { headerName: "Zip", valueGetter: p => p.data.address?.zipcode ,wrapText: true,
+  autoHeight: true}
 
 
   ];
-  defaultColDef = {
+  defaultColDef1 = {
     flex: 1,
-    minWidith: 100
+    minWidth: 120,
+    sortable:true,
+    filter:true,
+    resizable:true,
+    wraptext:true,
+    autoHight:true
   }
+  rowHeight = 42;
+  headerHieght=44;
   constructor(private http: HttpClient) { }
   ngOnInit(): void {
     this.getUser();
@@ -49,5 +64,7 @@ export class Users implements OnInit {
       this.UserList = res;
     })
   }
-
+ 
 }
+
+
