@@ -10,14 +10,14 @@
 
     <ul class="menu">
 
-      <li><a routerLink="/Dashboard" routerLinkActive="active" (click)="isSidebarOpen=false">Dashboard</a></li>
-       <li><a routerLink="/Grid" routerLinkActive="active">Grid</a></li>
-      <li><a routerLink="/Users" routerLinkActive="active">Users</a></li>
-      <li><a routerLink="/MembersPage" routerLinkActive="active">Members</a></li>
-      <li><a routerLink="/staffPage" routerLinkActive="active">Staff</a></li>
-      <li><a routerLink="/Equipments" routerLinkActive="active">Equipment</a></li>
-      <li><a routerLink="/finances" routerLinkActive="active">Finance</a></li>
-      <li><a routerLink="/reports" routerLinkActive="active">Reports</a></li>
+      <li><a routerLink="/Dashboard" routerLinkActive="active"  (click)="closeSidebar()">Dashboard</a></li>
+       <li><a routerLink="/Grid" routerLinkActive="active" (click)="closeSidebar()">Grid</a></li>
+      <li><a routerLink="/Users" routerLinkActive="active" (click)="closeSidebar()">Users</a></li>
+      <li><a routerLink="/MembersPage" routerLinkActive="active" (click)="closeSidebar()">Members</a></li>
+      <li><a routerLink="/staffPage" routerLinkActive="active" (click)="closeSidebar()">Staff</a></li>
+      <li><a routerLink="/Equipments" routerLinkActive="active" (click)="closeSidebar()">Equipment</a></li>
+      <li><a routerLink="/finances" routerLinkActive="active" (click)="closeSidebar()">Finance</a></li>
+      <li><a routerLink="/reports" routerLinkActive="active" (click)="closeSidebar()">Reports</a></li>
 
     </ul>
 

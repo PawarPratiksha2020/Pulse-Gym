@@ -167,15 +167,6 @@ export class Dashbord {
     this.adminMode = true;
   }
 
-  //  Save Changes
-  // saveMetrics() {
-  //    this._hours$.next(this.hours);
-  //   this.hoursSig.set(this.hours);
-   
-  //   this.showEditPopup = false;
-  // }
-   //  HIGHCHARTS
-
 
 
   

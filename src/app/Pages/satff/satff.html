@@ -1,4 +1,3 @@
-
 <div class="full">
     <div class="page-head">
 
@@ -45,58 +44,26 @@
                     <h3>Staff Directory</h3>
 
                     <div class="actions">
-                       <mat-form-field>
-                        <mat-label>Select</mat-label>
-                        <mat-select >
-                            <mat-option value="All Roles">All Roles </mat-option>
-                            <mat-option value="Trainer">Trainer</mat-option>
-                            <mat-option value="Manager">Manager</mat-option>
-                        </mat-select>
-                       </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Select</mat-label>
+                            <mat-select style="color: aqua; font-size: 20px;">
+                                <mat-option value="All Roles">All Roles </mat-option>
+                                <mat-option value="Trainer">Trainer</mat-option>
+                                <mat-option value="Manager">Manager</mat-option>
+                            </mat-select>
+                        </mat-form-field>
 
                     </div>
                 </div>
 
-                <table class="staff-table">
-                    <thead>
-                        <tr>
-                            <th>Staff Member</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                            <th>Active Clients</th>
-                            <th>Rating</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+                <ag-grid-angular class="ag-theme-quartz" 
+                style="width:100%; height:450px" 
+                [rowData]="rowData"
+                    [columnDefs]="columnDefs"
+                    [rowHeight]="rowHeight"
+                    [headerHeight]="headerHeight">
+                </ag-grid-angular>
 
-                    <tbody>
-                        <tr *ngFor="let m of staff">
-                            <td class="member">
-                                <img [src]="m.img" />
-                                <div>
-                                    <h4>{{m.name}}</h4>
-                                    <span>{{m.id}}</span>
-                                </div>
-                            </td>
-
-                            <td>{{m.role}}</td>
-
-                            <td>
-                                <span class="badge" [ngClass]="m.statusClass">{{m.status}}</span>
-                            </td>
-
-                            <td>{{m.clients}}</td>
-
-                            <td>
-                                {{m.rating}}
-                            </td>
-                            <td>
-                                <button class="btn btn-success" (click)="openEdit(m)">Edit</button>
-                                <button class="btn btn-danger" (click)="delete(m)">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
 
         </div>
@@ -119,100 +86,100 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <!-- Staff Schedule Load -->
+        <div class="card">
 
-            <!-- Staff Schedule Load -->
-            <div class="card">
+            <h3>Staff Schedule Load</h3>
 
-                <h3>Staff Schedule Load</h3>
-
-                <div class="grid">
-                    <div *ngFor="let b of load" class="box" [ngClass]="b === 1 ? 'low' : 'high'">
-                    </div>
+            <div class="grid">
+                <div *ngFor="let b of load" class="box" [ngClass]="b === 1 ? 'low' : 'high'">
                 </div>
             </div>
-
-
-        </div>
-        <table class="staff-table">
-
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Shift</th>
-                    <th>Check-In</th>
-                    <th>Check-Out</th>
-                    <th>Actions</th>
-                    <th>Total Hours</th>
-                    <th>Status</th>
-
-                </tr>
-            </thead>
-
-            <tbody>
-
-                <tr *ngFor="let a of attendanceList">
-
-                    <td>{{a.staffId}}</td>
-                    <td>{{a.shiftStart}} - {{a.shiftEnd}}</td>
-
-                    <td>{{a.checkIn || '--'}}</td>
-                    <td>{{a.checkOut || '--'}}</td>
-
-                    <td>
-                        <button (click)="checkIn(a)" [disabled]="a.checkIn">
-                            Check In
-                        </button>
-
-                        <button (click)="checkOut(a)" [disabled]="!a.checkIn || a.checkOut">
-                            Check Out
-                        </button>
-                    </td>
-
-                    <td>{{a.totalHours ?? '--'}} Hrs</td>
-
-                    <td>
-                        <span [ngClass]="a.status">{{a.status || 'Absent'}}</span>
-                    </td>
-
-
-                </tr>
-            </tbody>
-
-        </table>
-
-    </div>
-    <!-- 🔹 Add Staff Popup -->
-    <div class="popup-backdrop" *ngIf="showAddPopup">
-        <div class="popup-card">
-
-            <h3>Add Staff Member</h3>
-            <p class="subtitle">Fill the details to add a new staff record</p>
-
-            <div class="form-grid">
-
-                <input placeholder="Full Name" [(ngModel)]="newStaff.name">
-
-                <input placeholder="Role (Trainer / Manager)" [(ngModel)]="newStaff.role">
-
-                <select [(ngModel)]="newStaff.status">
-                    <option>Active</option>
-                    <option>On Shift</option>
-                    <option>In Class</option>
-                </select>
-
-                <input type="number" placeholder="Active Clients" [(ngModel)]="newStaff.clients">
-
-                <input type="number" placeholder="Rating" [(ngModel)]="newStaff.rating">
-
-            </div>
-
-            <div class="popup-footer">
-                <button class="save-btn" (click)="saveStaff()">Save</button>
-                <button class="cancel-btn" (click)="closeAdd()">Cancel</button>
-            </div>
-
         </div>
 
 
     </div>
+    <table class="staff-table">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Shift</th>
+                <th>Check-In</th>
+                <th>Check-Out</th>
+                <th>Actions</th>
+                <th>Total Hours</th>
+                <th>Status</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let a of attendanceList">
+
+                <td>{{a.staffId}}</td>
+                <td>{{a.shiftStart}} - {{a.shiftEnd}}</td>
+
+                <td>{{a.checkIn || '--'}}</td>
+                <td>{{a.checkOut || '--'}}</td>
+
+                <td>
+                    <button (click)="checkIn(a)" [disabled]="a.checkIn">
+                        Check In
+                    </button>
+
+                    <button (click)="checkOut(a)" [disabled]="!a.checkIn || a.checkOut">
+                        Check Out
+                    </button>
+                </td>
+
+                <td>{{a.totalHours ?? '--'}} Hrs</td>
+
+                <td>
+                    <span [ngClass]="a.status">{{a.status || 'Absent'}}</span>
+                </td>
+
+
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>
+<!-- 🔹 Add Staff Popup -->
+<div class="popup-backdrop" *ngIf="showAddPopup">
+    <div class="popup-card">
+
+        <h3>Add Staff Member</h3>
+        <p class="subtitle">Fill the details to add a new staff record</p>
+
+        <div class="form-grid">
+
+            <input placeholder="Full Name" [(ngModel)]="newStaff.name">
+
+            <input placeholder="Role (Trainer / Manager)" [(ngModel)]="newStaff.role">
+
+            <select [(ngModel)]="newStaff.status">
+                <option>Active</option>
+                <option>On Shift</option>
+                <option>In Class</option>
+            </select>
+
+            <input type="number" placeholder="Active Clients" [(ngModel)]="newStaff.clients">
+
+            <input type="number" placeholder="Rating" [(ngModel)]="newStaff.rating">
+
+        </div>
+
+        <div class="popup-footer">
+            <button class="save-btn" (click)="saveStaff()">Save</button>
+            <button class="cancel-btn" (click)="closeAdd()">Cancel</button>
+        </div>
+
+    </div>
+
+
+
 </div>

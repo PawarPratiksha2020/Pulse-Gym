@@ -33,12 +33,12 @@ export class Finace {
     series: [
       { name: 'Revenue', data: [48, 55, 62, 70, 78, 84, 90] }
     ],
-    chart: {            // ← must exist
+    chart: {        
       type: 'line',
       height: 230,
       toolbar: { show: false }
     },
-    stroke: {           // ← must exist
+    stroke: {          
       curve: 'smooth',
       width: 3,
       dashArray: [0, 6]
@@ -47,11 +47,7 @@ export class Finace {
     colors: ['#38bdf8'],
     tooltip: { theme: 'dark' }
   };
-  // filters = {
-  //   dateRange: 'month',
-  //   branch: 'all',
-  //   plan: 'all'
-  // };
+ 
   billingHistory = [
     { id: '#INV-2042', member: 'Sarah Connor', method: 'Card', date: 'Oct 20', amount: 89, status: 'Paid', branch: 'pune', plan: 'premium' },
     { id: '#INV-1844', member: 'James Lee', method: 'UPI', date: 'Oct 19', amount: 49, status: 'Failed', branch: 'Mumbai', plan: 'Standard' },

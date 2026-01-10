@@ -164,40 +164,21 @@ h2 {
     gap: 14px;
 }
 
-/* ---------- Table Card ---------- */
 .table-card {
-    height: 80vh;
-    background: #0b1220;
-    border: 1px solid #1f2937;
-    border-radius: 14px;
-    padding: 10px;
+  height: 420px;   /* 🔥 important */
+  padding: 0;
 }
 
-.table-card h3 {
-    margin: 4px 0 15px;
+ag-grid-angular {
+  width: 100%;
+  height: 100%;
+}
+.ag-cell {
+  justify-content: center;   /* center align */
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th {
-    text-align: left;
-    font-size: 14px;
-    opacity: .7;
-    padding: 7px;
-    border-bottom: 1px solid #273048;
-}
-
-td {
-    padding: 10px 9px;
-    border-bottom: 1px solid #1e2538;
-}
-
-.id {
-    font-size: 12px;
-    opacity: .6;
+.ag-header-cell-label {
+  justify-content: center;
 }
 
 /* ---------- Status Badges ---------- */
@@ -234,18 +215,6 @@ td {
     justify-content:space-around;
 }
 
-
-/* Popularity Bar */
-.pop-item {
-    margin-bottom: 15px
-}
-
-.row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 15px;
-}
-
 .bar {
     height: 15px;
     border-radius: 6px;
@@ -257,64 +226,23 @@ td {
     border-radius: 6px;
     background: #3b82f6;
 }
-
-/* Alert Card */
-.alert {
-    border-color: #242328
-}
-.alert .cardio-box{
-    border: 1px solid rgb(65, 65, 76);
-    background: rgb(29, 24, 53);
-}
- .cardio-box{
-    padding: 10px;
-    margin-left: 25px;
-    font-size: 20px;
-    color: #000;
-}
-button{
-    border: none;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    color: #f9f8f8;
-    
-   
-}
-/* Buttons Row */
-/* Backdrop */
-.popup-backdrop{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.65);
-  display: grid;
-  place-items: center;
-  z-index: 999;
-  backdrop-filter: blur(4px);
+.grid-btn {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-right: 6px;
 }
 
-/* Card Box */
-.popup-card{
-  width: 440px;
-  background: linear-gradient(145deg,#0f172a,#111827);
-  border: 1px solid #1f2937;
-  border-radius: 18px;
-  padding: 18px 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,.55);
-  color: #e5e7eb;
-  animation: popupFade .25s ease-out;
+.grid-btn.edit {
+  background: #2563eb;
+  color: white;
 }
 
-/* Heading */
-.popup-card h3{
-  margin: 0 0 6px;
-  font-weight: 600;
-}
-
-.popup-card p{
-  margin: 0 0 10px;
-  color:#9ca3af;
-  font-size: 13px;
+.grid-btn.delete {
+  background: #dc2626;
+  color: white;
 }
 
 /* Form Grid */
@@ -340,14 +268,6 @@ button{
 .form-grid select:focus{
   border-color:#2563eb;
   background:#030712;
-}
-
-/* Footer */
-.popup-footer{
-  margin-top: 14px;
-  display:flex;
-  justify-content:flex-end;
-  gap:10px;
 }
 
 /* Buttons */

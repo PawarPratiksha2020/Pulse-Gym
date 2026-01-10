@@ -5,6 +5,6 @@ export interface Equipment {
   id: string;
   zone: string;
   status: string;
-  duration: 0;
+  duration: number;
   freeIn?: string;
 }

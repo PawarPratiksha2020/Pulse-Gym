@@ -60,41 +60,19 @@
       <div class="table-card">
         <h3>Live Inventory Status</h3>
 
-        <table>
-          <tr>
-            <th>Equipment Name</th>
-            <th>Zone</th>
-            <th>Live Status</th>
-            <th>Avg Duration</th>
-            <th>Est. Free In</th>
-            <th>Action</th>
-          </tr>
-
           <!-- 🔹 NOTE: use filteredEquipment() signal -->
-          <tr *ngFor="let item of filteredEquipment()">
-
-            <td>
-              {{ item.name }}
-              <div class="id">ID: {{ item.id }}</div>
-            </td>
-
-            <td>{{ item.zone }}</td>
-
-            <td>
-              <span class="badge" [ngClass]="getStatusClass(item.status)">
-                {{ getStatusLabel(item.status) }}
-              </span>
-            </td>
-
-            <td>{{ item.duration }}</td>
-            <td>{{ item.freeIn || '—' }}</td>
-
-            <td>
-              <button class="btn btn-success" (click)="openEdit(item)">Edit</button>
-              <button class="btn btn-danger" (click)="delete(item)">Delete</button>
-            </td>
-          </tr>
-        </table>
+          <ag-grid-angular
+           class="ag-theme-quartz dark-grid"
+           style="height: 500px; width: 100%"
+            [rowData]="rowData()"
+            [rowHeight]="rowHeight"
+            [headerHeight]="headerHeight"
+            [defaultColDef]="defaultColDef"
+            [columnDefs]="columnDefs"
+             rowSelection="multiple"
+             [context]="context">
+             
+          </ag-grid-angular>
       </div>
 
       <!-- RIGHT PANEL -->
@@ -130,34 +108,5 @@
   </div>
 
   <!-- ⭐ POPUP USING SIGNAL -->
-  <div class="popup-backdrop" *ngIf="showPopup()">
-    <div class="popup-card">
 
-      <h3>{{ editingItem() ? 'Edit Equipment' : 'Add Equipment' }}</h3>
-
-      <div class="form-grid">
-
-        <input placeholder="Equipment Name" [(ngModel)]="newEquipment().name">
-
-        <input placeholder="Zone" [(ngModel)]="newEquipment().zone">
-
-        <select [(ngModel)]="newEquipment().status">
-          <option value="IN_USE">In Use</option>
-          <option value="FREE">Free</option>
-          <option value="MAINTENANCE">Maintenance</option>
-        </select>
-
-        <input type="number" placeholder="Avg Duration (min)" [(ngModel)]="newEquipment().duration">
-
-        <input placeholder="Free In" [(ngModel)]="newEquipment().freeIn">
-
-      </div>
-
-      <div class="popup-footer">
-        <button class="save-btn" (click)="saveEquipment()">Save</button>
-        <button class="cancel-btn" (click)="showPopup.set(false)">Cancel</button>
-      </div>
-
-    </div>
-  </div>
 </div>
