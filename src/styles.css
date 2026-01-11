@@ -62,12 +62,12 @@ ag-grid-angular {
 .grid-header {
   font-size: 18px;
   font-weight: 600;
-  color: #f5f3f3;
+  color: #efeaea;
 }
 
 /* Header row background */
 .ag-header {
-   background: var(--bg-card) !important;
+   
   border-bottom: 2px solid #94a3b8;
 }
 
@@ -76,13 +76,6 @@ ag-grid-angular {
   font-size: 17px;
   padding: 10px;
 }
-
-/* Hover effect */
-/* .ag-row-hover {
-  background-color: #c2ee99 !important;
-} */
-
-/* Pagination text */
 .ag-paging-panel {
   font-size: 13px;
 }
@@ -110,7 +103,7 @@ ag-grid-angular {
 
 /* STRONG horizontal row line */
 .ag-row {
- background-color: var(--bg-main) !important;
+ /* background-color: var(--bg-main) !important; */
   color: var(--text-main);
 }
 
@@ -148,12 +141,11 @@ ag-grid-angular {
 /* ===== AG GRID PAGINATION BAR HEIGHT ===== */
 .ag-paging-panel {
   min-height: 50px;
-  /* line जाड */
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 500;
   border-top: 2px solid #2d4764;
-  background: #81a4c7;
+  /* background: #668fb8; */
 }
 
 /* Page size dropdown */
@@ -180,46 +172,46 @@ ag-grid-angular {
 /* AG GRID FULL BACKGROUND SAME AS INVENTORY CARD */
 
 /* 🔥 REMOVE WHITE AREA BELOW ROWS */
-.ag-theme-quartz .ag-center-cols-container {
+/* .ag-theme-quartz .ag-center-cols-container {
   background: linear-gradient(180deg,
       #1e2739 0%,
       #161b29 100%) !important;
   min-height: 100% !important;
-}
+} */
 
 /* viewport */
-.ag-theme-quartz .ag-center-cols-viewport {
+/* .ag-theme-quartz .ag-center-cols-viewport {
   background: linear-gradient(180deg,
       #0b1220 0%,
       #070d1a 100%) !important;
-}
+} */
 
 /* full grid root */
-.ag-theme-quartz .ag-root,
+/* .ag-theme-quartz .ag-root,
 .ag-theme-quartz .ag-root-wrapper,
 .ag-theme-quartz .ag-body-viewport {
   background: linear-gradient(180deg,
       #253452 0%,
       #fcfdff 100%) !important;
-}
+} */
 
 .ag-theme-quartz .ag-row {
-  background-color: #0b1220 !important;
+  /* background-color: #0b1220 !important; */
   color: #f5f7fa;
 
 }
 
-.ag-theme-quartz .ag-row-hover {
+/* .ag-theme-quartz .ag-row-hover {
   background-color: #6a6b6b !important;
-}
+} */
 
-.ag-row {
+/* .ag-row {
   background-color: #102f4e !important;
-}
+} */
 
-.ag-header {
+/* .ag-header {
   background: linear-gradient(180deg, #243658, #0c1528) !important;
-}
+} */
 
 :root {
   --primary-color: #2563eb;
@@ -227,71 +219,46 @@ ag-grid-angular {
   --bg-card: #0f172a;
   --text-main: #ffffff;
   --header-border: rgba(255, 255, 255, 0.08);
-}
-
-/* THEMES */
-:root {
-  --bg-main: #020617;
-  --bg-card: #0f172a;
-  --text-main: #ffffff;
   --text-muted: #9ca3af;
-  --primary-color: #2563eb;
 }
-
-/* 🔵 BLUE (Default) */
 .theme-blue {
   --primary-color: #2563eb;
   --bg-main: #020617;
   --bg-card: #0f172a;
 }
-
-/* 🟢 GREEN */
 .theme-green {
   --primary-color: #22c55e;
   --bg-main: #02150c;
   --bg-card: #052e1a;
 }
-
-/* 🟣 PINK */
 .theme-pink {
   --primary-color: #ec4899;
   --bg-main: #1a0712;
   --bg-card: #2f0a1e;
 }
-
-/* 🟠 ORANGE */
 .theme-orange {
   --primary-color: #f97316;
   --bg-main: #1a0b02;
   --bg-card: #2e1505;
   --header-border: rgba(255, 165, 0, 0.25);
 }
-
-/* 🔴 RED */
 .theme-red {
   --primary-color: #ef4444;
-  --bg-main: #160606;
+  --bg-main: #361212;
   --bg-card: #2a0d0d;
 }
-
-/* 🟡 YELLOW */
 .theme-yellow {
   --primary-color: #facc15;
   --bg-main: #161403;
   --bg-card: #2a2506;
 }
-
-/* ⚪ WHITE */
-.theme-white {
+.theme-black {
   --primary-color: #2563eb;
-  --bg-main: #f9fafb;
-  --bg-card: #ffffff;
+  --bg-main: #020202;
+  --bg-card: #121111;
   --text-main: #111827;
   --text-muted: #4b5563;
 }
-
-
-
 button,
  .active {
   background: var(--primary-color);
@@ -303,3 +270,65 @@ button,
   color: var(--text-main);
   padding: 16px;
 }
+/* Grid background */
+.custom-grid {
+  --ag-background-color: var(--bg-card);
+  --ag-foreground-color: var(--text-main);
+
+  --ag-header-background-color: color-mix(in srgb, var(--bg-card) 92%, black);
+  --ag-header-foreground-color: var(--text-main);
+
+  --ag-row-background-color: var(--bg-card);
+  --ag-odd-row-background-color: color-mix(in srgb, var(--bg-card) 96%, black);
+
+  --ag-row-hover-color: color-mix(in srgb, var(--primary-color) 15%, transparent);
+  --ag-selected-row-background-color: color-mix(in srgb, var(--primary-color) 25%, transparent);
+
+  --ag-border-color: var(--header-border);
+  --ag-font-size: 14px;
+}
+.custom-grid .ag-row {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+}
+
+/* Header text */
+.custom-grid .ag-header-cell-text {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Cells */
+.custom-grid .ag-cell {
+  color: var(--text-main);
+}
+
+/* Pagination */
+.custom-grid .ag-paging-panel {
+  background: var(--bg-main);
+  color: var(--text-main);
+  border-top: 1px solid var(--header-border);
+}
+
+/* Buttons */
+.custom-grid .ag-paging-button {
+  color: var(--text-main);
+}
+/* center container background */
+.custom-grid .ag-center-cols-container {
+  background-color: var(--bg-card) !important;
+}
+
+/* viewport background */
+.custom-grid .ag-body-viewport {
+  background-color: var(--bg-card) !important;
+}
+.custom-grid .ag-header {
+  background: var(--bg-card) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.custom-grid .ag-header-cell-label {
+  color: var(--text-main) !important;
+  font-weight: 600;
+}
+

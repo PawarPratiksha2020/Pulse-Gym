@@ -237,9 +237,7 @@ export class Satff implements OnInit {
   constructor(private attendsvc: StaffattendenceServices) { }
 
   // Temporary object for new staff
-  attendanceList: Attendance[] = [
-
-  ];
+  attendanceList: Attendance[] = [];
 
   calculateAttendance(att: Attendance) {
 

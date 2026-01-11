@@ -101,6 +101,14 @@
 .start-card h2 {
     margin: 8px 0;
 }
+.start-card .btn1{
+  display: flex;
+  justify-content: space-around;
+}
+.start-card  span{
+  padding-bottom: 25px;
+
+}
 
 .tag {
     padding: 4px 8px;
@@ -365,12 +373,6 @@
   cursor:pointer;
 }
 
-/* Color variants */
-/* .danger{
-  background:#1e1b1f;
-  border-color:#7c2d12;
-  color:#fecaca;
-} */
 
 .warning{
   background:#1f232d;
@@ -409,9 +411,6 @@
 
 /* header */
 .card-head{
-  /* display:flex; */
-  /* justify-content:space-between; */
-  /* align-items:center; */
    border-bottom: 2px solid #1c2635;
 }
 
@@ -469,15 +468,6 @@
 .warn{ background:#372417; color:#fbbf24; }
 .good{ background:#022c22; color:#6ee7b7; }
 
-/* avatars */
-.avatar{
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:#334155;
-  display:grid;
-  place-items:center;
-}
 .card{
   background:#0b1220;
   border-radius:18px;
