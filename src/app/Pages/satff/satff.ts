@@ -26,10 +26,37 @@ export class Satff implements OnInit {
       clients: 24,
       rating: 4.9
     },
+     {
+      img: 'assets1/user1.jpg',
+      name: 'Pratiksha',
+      id: 'ID-002',
+      role: 'Senior Trainer',
+      status: 'In Class',
+      clients: 20,
+      rating: 4.5
+    },
+     {
+      img: 'assets/user1.jpg',
+      name: 'Shubham K',
+      id: 'ID-003',
+      role: 'Yoga Instructor',
+      status: 'Active',
+      clients: 25,
+      rating: 5.0
+    },
+     {
+      img: 'assets/user1.jpg',
+      name: 'John Pandy',
+      id: 'ID-004',
+      role: 'Fintess Coach',
+      status: 'On Shift',
+      clients: 10,
+      rating: 4.9
+    },
     {
       img: 'assets/user2.jpg',
       name: 'Jane Smith',
-      id: 'ID-004',
+      id: 'ID-005',
       role: 'Floor Manager',
       status: 'On Shift',
       clients: 18,

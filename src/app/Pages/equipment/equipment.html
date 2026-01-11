@@ -31,13 +31,13 @@
         </div>
       </div>
 
-      <div class="card warn">
+      <div class="card ">
         <label>Maintenance</label>
         <h1>{{ status().maintenance }}</h1>
         <span class="note orange">Action Required on 2 units</span>
       </div>
 
-      <div class="card success">
+      <div class="card">
         <label>Buy Suggestion</label>
         <h1>{{ status().buySuggestion }}</h1>
         <span>Predictive Shortage: <b>Treadmills</b></span>
@@ -59,20 +59,26 @@
       <!-- ⭐ LIVE INVENTORY TABLE -->
       <div class="table-card">
         <h3>Live Inventory Status</h3>
+        <div class="btn1s">
+          <button class="btn" style="color: blue;">All Equipment</button>
+          <button>Cardio</button>
+          <button>Strength</button>
+          <button>Functional</button>
+        </div>
 
-          <!-- 🔹 NOTE: use filteredEquipment() signal -->
-          <ag-grid-angular
-           class="ag-theme-quartz dark-grid"
-           style="height: 500px; width: 100%"
-            [rowData]="rowData()"
-            [rowHeight]="rowHeight"
-            [headerHeight]="headerHeight"
-            [defaultColDef]="defaultColDef"
-            [columnDefs]="columnDefs"
-             rowSelection="multiple"
-             [context]="context">
-             
-          </ag-grid-angular>
+
+        <!-- 🔹 NOTE: use filteredEquipment() signal -->
+        <ag-grid-angular class="ag-theme-quartz dark-grid"
+         style="height: 500px; width: 100%"
+          [rowData]="rowData()"
+          [rowHeight]="rowHeight" 
+          [headerHeight]="headerHeight"
+           [defaultColDef]="defaultColDef"
+          [columnDefs]="columnDefs"
+           rowSelection="multiple"
+            [context]="context">
+
+        </ag-grid-angular>
       </div>
 
       <!-- RIGHT PANEL -->

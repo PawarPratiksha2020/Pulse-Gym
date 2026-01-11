@@ -6,4 +6,17 @@
     </div>
 
     <input type="text" class="search-box" placeholder="Search equipment ID....">
+    <div class="theme-wrapper">
+        <button class="theme-btn" (click)="toggleThemeMenu()">Theme Change</button>
+
+        <div class="theme-menu" *ngIf="showThemeMenu">
+            <span class="theme-circle blue" (click)="changeTheme('theme-blue')"></span>
+            <span class="theme-circle green" (click)="changeTheme('theme-green')"></span>
+            <span class="theme-circle pink" (click)="changeTheme('theme-pink')"></span>
+            <span class="theme-circle orange" (click)="changeTheme('theme-orange')"></span>
+            <span class="theme-circle white" (click)="changeTheme('theme-white')"></span>
+            <span class="theme-circle yellow" (click)="changeTheme('theme-yellow')"></span>
+            <span class="theme-circle red" (click)="changeTheme('theme-red')"></span>
+        </div>
+    </div>
 </div>

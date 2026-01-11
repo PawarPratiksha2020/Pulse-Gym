@@ -2,6 +2,8 @@
 .full{
    margin-left: 40px; /* sidebar match */
   padding-top: 90px;
+   background: var(--bg-main);
+  color: var(--text-main);
   
  
 }
@@ -10,10 +12,11 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
-    border-bottom: 2px solid rgb(26, 26, 40);
+    background: var(--bg-card);
+  border-bottom: 1px solid var(--header-border);
 }
 
-.title-box h2 {
+/* .title-box h2 {
     margin: 0;
     color: #ffffff;
     letter-spacing: 1px;
@@ -22,16 +25,16 @@
 .class-name {
     margin: 0px;
     letter-spacing: 1px;
+} */
+ .title-box h2,
+.class-name{
+  color: var(--text-main);
+}
+.class-name p,
+.title-box span{
+  color: var(--text-muted);
 }
 
-.class-name p {
-    color: rgb(120, 117, 117);
-}
-
-.title-box span {
-    color: rgb(120, 117, 117);
-    font-size: 13px;
-}
 
 .txt1 {
     padding: 10px, 15px;
@@ -46,9 +49,9 @@
     padding: 10px 14px;
     width: 260px;
     border-radius: 10px;
-    border: 1px solid #334155;
-    background: #020617;
-    color: white;
+     background: var(--bg-main);
+  border: 1px solid var(--header-border);
+  color: var(--text-main);
     outline: none;
 }
 
@@ -64,11 +67,12 @@
 }
 
 .start-card {
-    background: #18223c;
-    border: 1px solid #1e293b;
+   background: var(--bg-card);
+  border: 1px solid var(--header-border);
+  color: var(--text-main);
     padding: 15px;
     border-radius: 14px;
-    color: #e5e7eb;
+   
 
 
 }
@@ -114,6 +118,73 @@
     color: #192621;
 }
 
+/* ===== DASHBOARD THEME SUPPORT ===== */
+
+/* Main cards */
+.menu-header,
+.start-card,
+.trend-card,
+.insights-card,
+.trend-header,
+.insight-item
+.small-card,
+.right-panel,
+.card-head
+.chart-card
+.item {
+  background: var(--bg-card);
+  color: var(--text-main);
+}
+.trend-card,
+.insights-card,
+.small-card,
+.chart-card{
+  background: var(--bg-card);
+  border: 1px solid var(--header-border);
+  color: var(--text-main);
+}
+.trend-header span,
+.insights-header span,
+.sub,
+.note{
+  color: var(--text-muted);
+}
+/* Text colors */
+.start-card h4,
+.card-head h4
+.start-card h6,
+.info h5,
+.trend-card h3,
+.insights-card h3,
+.small-card h4 {
+  color: var(--text-main);
+}
+
+/* Sub text */
+.start-card span,
+.trend-card span,
+.insights-card span,
+.small-card span,
+.note {
+  color: var(--text-muted);
+}
+
+/* Buttons & badges */
+.btn-primary,
+.tab.active,
+.badge,
+.tag,
+.status,
+.live {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+/* Insight boxes */
+.insight-item {
+  background: rgba(255,255,255,0.03);
+  border-left: 3px solid var(--primary-color);
+}
 
 
 
@@ -135,7 +206,7 @@
 
 /* ---------- TREND CARD ---------- */
 .trend-card{
-  background:#0b1329;
+ 
   border:1px solid #1e293b;
   border-radius:14px;
   padding:16px;
@@ -164,19 +235,23 @@
 .tab{
   padding:6px 12px;
   border-radius:10px;
-  border:1px solid #334155;
-  background:#020617;
-  color:#e5e7eb;
+  background: var(--bg-main);
+  border: 1px solid var(--header-border);
+  color: var(--text-muted);
 }
 
-.tab.active{
-  background:#2563eb;
-  border-color:#2563eb;
+.tab.active,
+.btn-primary,
+.badge,
+.tag,
+.status{
+  background: var(--primary-color);
+  color: #fff;
 }
 
 /* NOW */
 .now-badge{
-  background:#1e3a8a;
+  
   color:#bfdbfe;
   padding:4px 10px;
   border-radius:12px;
@@ -252,8 +327,7 @@
 
 /* ---------- RIGHT SIDE : AI INSIGHTS ---------- */
 .insights-card{
-  background:#0b1329;
-  border:1px solid #1e293b;
+  border:1px solid #1c2739;
   border-radius:14px;
   padding:16px;
   color:#e5e7eb;
@@ -271,6 +345,8 @@
   padding:12px;
   border-radius:12px;
   border:1px solid transparent;
+  border-left: 3px solid var(--primary-color);
+  color: var(--text-main);
 }
 
 .insight-item h4{
@@ -290,11 +366,11 @@
 }
 
 /* Color variants */
-.danger{
+/* .danger{
   background:#1e1b1f;
   border-color:#7c2d12;
   color:#fecaca;
-}
+} */
 
 .warning{
   background:#1f232d;
@@ -302,7 +378,7 @@
 }
 
 .info{
-  background:#0f172a;
+  
   border-color:#1e293b;
 }
 
@@ -323,7 +399,7 @@
 }
 
 .small-card{
-  background:#0b1329;
+  
   border:1px solid #1e293b;
   border-radius:14px;
   padding:14px;
@@ -349,7 +425,7 @@
 }
 
 .badge.live{
-  background:#022c22;
+  
   color:#6ee7b7;
   padding:4px 8px;
   border-radius:10px;
@@ -420,7 +496,7 @@
 .head p{ color:#9ca3af; margin:2px 0 10px; }
 
 .tabs button{
-  background:#0f172a;
+  
   border:1px solid #1e293b;
   color:#9ca3af;
   padding:6px 14px;
@@ -435,7 +511,7 @@
 }
 
 .chart-card{
-  background:#07102A;
+  
   padding:20px;
   
   margin-top: 200px;

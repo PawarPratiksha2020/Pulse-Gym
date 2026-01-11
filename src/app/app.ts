@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Dashbord } from './Pages/dashbord/dashbord';
 import { Reports } from './Pages/reports/reports';
@@ -9,6 +9,7 @@ import { Members } from './Pages/members/members';
 import { Users } from './Pages/users/users';
 import { Dashboardheader } from "./Pages/dashbord/dashboardheader/dashboardheader";
 import { Grid } from './Pages/grid/grid';
+import { ThemeService } from './Pages/Services/theme-service';
 
 
 
@@ -18,7 +19,7 @@ import { Grid } from './Pages/grid/grid';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('DashboardPortal');
 
   isSidebarOpen = false;
@@ -29,6 +30,10 @@ export class App {
 
 closeSidebar(){
   this.isSidebarOpen=false
+}
+constructor(private themeServices:ThemeService){}
+ngOnInit(): void {
+  this.themeServices.loadTheme();
 }
 
 }

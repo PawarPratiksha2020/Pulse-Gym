@@ -1,6 +1,6 @@
 .full{
     margin-top: 60px;
-
+   background: var(--bg-main);
 }
 
 
@@ -40,8 +40,9 @@
 
 /* ---------- Page Layout ---------- */
 .page {
-    background: #020617;
+    
     color: #e5e7eb;
+    border: 2px solid #19253a;
     padding: 20px;
     font-family: Inter, system-ui, Arial;
 }
@@ -92,9 +93,9 @@ h2 {
 .status-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    width: 100%;
-    align-items: stretch;
+    gap: 16px;
+    /* width: 100%;
+    align-items: stretch; */
 }
 
 .status-grid .card {
@@ -103,11 +104,21 @@ h2 {
 }
 
 .card {
-    background: #0b1220;
-    border-radius: 14px;
-    border: 1px solid #1f2937;
-    padding: 14px;
-    color: white;
+    background: linear-gradient(
+    180deg,
+    var(--bg-card),
+    var(--bg-main)
+  );
+  border-radius:14px;
+  padding:16px;
+  color:var(--text-main);
+
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 18px 35px rgba(0,0,0,.35),
+    inset 0 0 0 1px rgba(255,255,255,.05);
+
+  transition:.25s;
 }
  label{
     font-size: 20px;
@@ -129,7 +140,7 @@ h2 {
     height: 5px;
     margin-top: 5px;
     border-radius: 6px;
-    background: #0f172a;
+    
 }
 
 .progress .fill {
@@ -143,8 +154,8 @@ h2 {
     margin: 14px 0;
     padding: 18px;
     border-radius: 15px;
-    background: #0a1c38;
-    border: 1px solid #1e3a8a;
+
+    border: 2px solid #16213d;
 }
 
 .insight .action {
@@ -254,7 +265,7 @@ ag-grid-angular {
 
 .form-grid input,
 .form-grid select{
-  background:#020617;
+  
   border:1px solid #1f2937;
   padding:10px 12px;
   border-radius:10px;
@@ -267,7 +278,19 @@ ag-grid-angular {
 .form-grid input:focus,
 .form-grid select:focus{
   border-color:#2563eb;
-  background:#030712;
+  
+}
+button{
+  cursor: pointer;
+  font-size: 14px;
+  transition: 3s;
+ padding: 8px 12px;
+ margin: 8px;
+ 
+ color: white;
+
+ border-radius: 8px;
+ border: none;
 }
 
 /* Buttons */

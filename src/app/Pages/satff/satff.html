@@ -88,7 +88,7 @@
             </div>
         </div>
         <!-- Staff Schedule Load -->
-        <div class="card">
+        <div class="card ">
 
             <h3>Staff Schedule Load</h3>
 
@@ -100,7 +100,7 @@
 
 
     </div>
-    <table class="staff-table">
+    <table class="staff-table" *ngif="attendanceList.length>0">
 
         <thead>
             <tr>
@@ -126,7 +126,7 @@
                 <td>{{a.checkOut || '--'}}</td>
 
                 <td>
-                    <button (click)="checkIn(a)" [disabled]="a.checkIn">
+                    <button  (click)="checkIn(a)" [disabled]="a.checkIn">
                         Check In
                     </button>
 

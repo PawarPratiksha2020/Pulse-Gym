@@ -1,17 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 @import "ag-grid-community/styles/ag-grid.css";
 
-html, body{
-  background: #0d1325;
+html,
+body {
   width: 100%;
   max-width: 100%;
   padding: 0;
   margin: 0;
   overflow-x: hidden;
 }
- *{
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  margin: 0;
+}
+
+* {
   box-sizing: border-box;
 }
+
 /* Mobile / Tablet fix */
 @media (max-width: 1024px) {
   .sidebar {
@@ -29,13 +36,15 @@ html, body{
   }
 }
 
-.cdk-overlay-pane{
+.cdk-overlay-pane {
   z-index: 9999 !important;
 }
+
 .mat-mdc-select-panel {
-  background: #0f172a !important;   
+  background: #0f172a !important;
   border: 1px solid #7f9ac0 !important;
 }
+
 /* .mat-mdc-select-panel {
   background: #951b1b !important;
   color: #000 !important;
@@ -44,6 +53,7 @@ ag-grid-angular {
   height: 800px;
   width: 150%;
 }
+
 /* ===== AG GRID HEADER ===== */
 .ag-header-cell-label {
   justify-content: center;
@@ -57,7 +67,7 @@ ag-grid-angular {
 
 /* Header row background */
 .ag-header {
-  background: #1b2a39;
+   background: var(--bg-card) !important;
   border-bottom: 2px solid #94a3b8;
 }
 
@@ -66,6 +76,7 @@ ag-grid-angular {
   font-size: 17px;
   padding: 10px;
 }
+
 /* Hover effect */
 /* .ag-row-hover {
   background-color: #c2ee99 !important;
@@ -75,6 +86,7 @@ ag-grid-angular {
 .ag-paging-panel {
   font-size: 13px;
 }
+
 .status-active {
   color: #166534;
   font-weight: 600;
@@ -89,6 +101,7 @@ ag-grid-angular {
   color: #b91c1c;
   font-weight: 600;
 }
+
 /* REMOVE vertical lines */
 .ag-cell,
 .ag-header-cell {
@@ -97,7 +110,8 @@ ag-grid-angular {
 
 /* STRONG horizontal row line */
 .ag-row {
-  border-bottom: 2px solid #313e4e !important;
+ background-color: var(--bg-main) !important;
+  color: var(--text-main);
 }
 
 /* Header bottom line */
@@ -106,7 +120,7 @@ ag-grid-angular {
   top: 0;
   z-index: 10;
   border-bottom: 5px solid #94a3b8 !important;
-  
+
 }
 
 /* Cell spacing */
@@ -116,11 +130,13 @@ ag-grid-angular {
   padding: 12px 10px;
   font-size: 14px;
 }
+
 .email-cell {
   white-space: normal !important;
   line-height: 1.4;
   word-break: break-word;
 }
+
 /* Selected Row */
 
 
@@ -131,7 +147,8 @@ ag-grid-angular {
 
 /* ===== AG GRID PAGINATION BAR HEIGHT ===== */
 .ag-paging-panel {
-  min-height: 50px;          /* line जाड */
+  min-height: 50px;
+  /* line जाड */
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 500;
@@ -157,44 +174,41 @@ ag-grid-angular {
   height: 32px;
   border-radius: 6px;
 }
+
 /* GRID FULL BACKGROUND */
 
 /* AG GRID FULL BACKGROUND SAME AS INVENTORY CARD */
 
 /* 🔥 REMOVE WHITE AREA BELOW ROWS */
 .ag-theme-quartz .ag-center-cols-container {
-  background: linear-gradient(
-    180deg,
-    #1e2739 0%,
-    #161b29 100%
-  ) !important;
+  background: linear-gradient(180deg,
+      #1e2739 0%,
+      #161b29 100%) !important;
   min-height: 100% !important;
 }
 
 /* viewport */
 .ag-theme-quartz .ag-center-cols-viewport {
-  background: linear-gradient(
-    180deg,
-    #0b1220 0%,
-    #070d1a 100%
-  ) !important;
+  background: linear-gradient(180deg,
+      #0b1220 0%,
+      #070d1a 100%) !important;
 }
 
 /* full grid root */
 .ag-theme-quartz .ag-root,
 .ag-theme-quartz .ag-root-wrapper,
 .ag-theme-quartz .ag-body-viewport {
-  background: linear-gradient(
-    180deg,
-    #253452 0%,
-    #fcfdff 100%
-  ) !important;
+  background: linear-gradient(180deg,
+      #253452 0%,
+      #fcfdff 100%) !important;
 }
+
 .ag-theme-quartz .ag-row {
   background-color: #0b1220 !important;
   color: #f5f7fa;
-  
+
 }
+
 .ag-theme-quartz .ag-row-hover {
   background-color: #6a6b6b !important;
 }
@@ -202,8 +216,90 @@ ag-grid-angular {
 .ag-row {
   background-color: #102f4e !important;
 }
-.ag-header{
-  background:linear-gradient(180deg, #243658, #0c1528) !important;
+
+.ag-header {
+  background: linear-gradient(180deg, #243658, #0c1528) !important;
+}
+
+:root {
+  --primary-color: #2563eb;
+  --bg-main: #020617;
+  --bg-card: #0f172a;
+  --text-main: #ffffff;
+  --header-border: rgba(255, 255, 255, 0.08);
+}
+
+/* THEMES */
+:root {
+  --bg-main: #020617;
+  --bg-card: #0f172a;
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+  --primary-color: #2563eb;
+}
+
+/* 🔵 BLUE (Default) */
+.theme-blue {
+  --primary-color: #2563eb;
+  --bg-main: #020617;
+  --bg-card: #0f172a;
+}
+
+/* 🟢 GREEN */
+.theme-green {
+  --primary-color: #22c55e;
+  --bg-main: #02150c;
+  --bg-card: #052e1a;
+}
+
+/* 🟣 PINK */
+.theme-pink {
+  --primary-color: #ec4899;
+  --bg-main: #1a0712;
+  --bg-card: #2f0a1e;
+}
+
+/* 🟠 ORANGE */
+.theme-orange {
+  --primary-color: #f97316;
+  --bg-main: #1a0b02;
+  --bg-card: #2e1505;
+  --header-border: rgba(255, 165, 0, 0.25);
+}
+
+/* 🔴 RED */
+.theme-red {
+  --primary-color: #ef4444;
+  --bg-main: #160606;
+  --bg-card: #2a0d0d;
+}
+
+/* 🟡 YELLOW */
+.theme-yellow {
+  --primary-color: #facc15;
+  --bg-main: #161403;
+  --bg-card: #2a2506;
+}
+
+/* ⚪ WHITE */
+.theme-white {
+  --primary-color: #2563eb;
+  --bg-main: #f9fafb;
+  --bg-card: #ffffff;
+  --text-main: #111827;
+  --text-muted: #4b5563;
 }
 
 
+
+button,
+ .active {
+  background: var(--primary-color);
+}
+/* ===== GLOBAL PAGE WRAPPER ===== */
+.page-wrapper {
+  background: var(--bg-main);
+  min-height: 100vh;
+  color: var(--text-main);
+  padding: 16px;
+}
