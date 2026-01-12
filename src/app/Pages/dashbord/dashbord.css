@@ -1,6 +1,6 @@
 
 .full{
-   margin-left: 40px; /* sidebar match */
+   margin-left: 10px; /* sidebar match */
   padding-top: 90px;
    background: var(--bg-main);
   color: var(--text-main);

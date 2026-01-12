@@ -5,7 +5,19 @@
         <span>ID:#NTC-042</span>
     </div>
 
-    <input type="text" class="search-box" placeholder="Search equipment ID....">
+    <input type="text" class="search-box" placeholder="Search Pages or Features....."
+    (input)="onSearch($event.target.value)">
+    <div class="search-results" *ngIf="searchResults.length">
+  <div
+    class="search-item"
+    *ngFor="let item of searchResults"
+    (click)="goToPage(item.route)">
+
+    <strong>{{ item.page }}</strong>
+    <p>{{ item.description }}</p>
+
+  </div>
+</div>
     <div class="theme-wrapper">
         <button class="theme-btn" (click)="toggleThemeMenu()">Theme Change</button>
 
