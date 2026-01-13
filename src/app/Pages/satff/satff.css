@@ -183,13 +183,6 @@ body{
 }
 .low{background:#0f2440;}
 .high{background:#4e8cff;}
-/* .low{
-  background: color-mix(in srgb, var(--bg-card) 80%, black);
-}
-
-.high{
-  background: var(--primary-color);
-} */
 .box:hover{
   transform:scale(1.08);
   box-shadow:0 0 12px #4e8cff66;
