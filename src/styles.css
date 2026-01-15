@@ -45,10 +45,6 @@ body {
   border: 1px solid #7f9ac0 !important;
 }
 
-/* .mat-mdc-select-panel {
-  background: #951b1b !important;
-  color: #000 !important;
-} */
 ag-grid-angular {
   height: 800px;
   width: 150%;
@@ -115,7 +111,6 @@ ag-grid-angular {
   border-bottom: 5px solid #94a3b8 !important;
 
 }
-
 /* Cell spacing */
 .ag-cell {
   white-space: nowrap;
@@ -123,16 +118,11 @@ ag-grid-angular {
   padding: 12px 10px;
   font-size: 14px;
 }
-
 .email-cell {
   white-space: normal !important;
   line-height: 1.4;
   word-break: break-word;
 }
-
-/* Selected Row */
-
-
 /* Checkbox cell background fix */
 .ag-row-selected .ag-cell {
   font-weight: 500;
@@ -145,7 +135,6 @@ ag-grid-angular {
   font-size: 14px;
   font-weight: 500;
   border-top: 2px solid #2d4764;
-  /* background: #668fb8; */
 }
 
 /* Page size dropdown */
@@ -166,53 +155,11 @@ ag-grid-angular {
   height: 32px;
   border-radius: 6px;
 }
-
-/* GRID FULL BACKGROUND */
-
-/* AG GRID FULL BACKGROUND SAME AS INVENTORY CARD */
-
-/* 🔥 REMOVE WHITE AREA BELOW ROWS */
-/* .ag-theme-quartz .ag-center-cols-container {
-  background: linear-gradient(180deg,
-      #1e2739 0%,
-      #161b29 100%) !important;
-  min-height: 100% !important;
-} */
-
-/* viewport */
-/* .ag-theme-quartz .ag-center-cols-viewport {
-  background: linear-gradient(180deg,
-      #0b1220 0%,
-      #070d1a 100%) !important;
-} */
-
-/* full grid root */
-/* .ag-theme-quartz .ag-root,
-.ag-theme-quartz .ag-root-wrapper,
-.ag-theme-quartz .ag-body-viewport {
-  background: linear-gradient(180deg,
-      #253452 0%,
-      #fcfdff 100%) !important;
-} */
-
 .ag-theme-quartz .ag-row {
   /* background-color: #0b1220 !important; */
   color: #f5f7fa;
 
 }
-
-/* .ag-theme-quartz .ag-row-hover {
-  background-color: #6a6b6b !important;
-} */
-
-/* .ag-row {
-  background-color: #102f4e !important;
-} */
-
-/* .ag-header {
-  background: linear-gradient(180deg, #243658, #0c1528) !important;
-} */
-
 :root {
   --primary-color: #2563eb;
   --bg-main: #020617;

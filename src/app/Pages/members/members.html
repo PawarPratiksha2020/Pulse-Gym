@@ -275,11 +275,11 @@
 
                 <div class="stat-card">
                     <span>Attendance (MO)</span>
-                    <h2>{{ attendence }}</h2>
+                    <h2>{{ attendence() }}</h2>
                     <p style="color: green;">+2</p>
 
                     <div class="progress">
-                        <div class="progress-bar" [style.width.%]="attendence * 10"></div>
+                        <div class="progress-bar" [style.width.%]="attendence() * 10"></div>
                     </div>
                 </div>
 
@@ -291,16 +291,16 @@
 
                 <div class="stat-card">
                     <span>Current Streak</span>
-                    <h2>{{ currentStreak }} <small>Days</small></h2>
+                    <h2>{{ currentStreak() }} <small>Days</small></h2>
                     <p>Personal Best: 12 Days</p>
                 </div>
 
                 <div class="stat-card">
                     <span>Progress Goal</span>
-                    <h2>{{ progressGoal }}%</h2>
+                    <h2>{{ progressGoal() }}%</h2>
 
                     <div class="progress">
-                        <div class="progress-bar pink" [style.width.%]="progressGoal"></div>
+                        <div class="progress-bar pink" [style.width.%]="progressGoal()"></div>
                     </div>
                 </div>
 

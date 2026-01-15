@@ -18,9 +18,9 @@ import * as Highcharts from 'highcharts';
 export class Members implements AfterViewInit, OnDestroy {
 
   constructor(public store: MembersServices) {}
-  attendence = 18;
-currentStreak = 4;
-progressGoal = 82;
+  attendence = signal<number>(18);
+currentStreak = signal<number>(4);
+progressGoal = signal<number>(75);
 
   //  UI State (signals)
   editingMember = signal<any>(null);

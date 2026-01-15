@@ -321,7 +321,6 @@ tr {
   z-index: 9999 !important;
 }
 
-.dashboardss,
 
 .card {
   overflow: visible !important;
@@ -436,7 +435,7 @@ mat-progress-bar .mdc-linear-progress__bar-inner {
 
   /* ===== PROGRESS BAR ===== */
   mat-progress-bar{
-    height: 8px;
+    height: 10px;
   }
 
   /* ===== GLOBAL SAFETY ===== */

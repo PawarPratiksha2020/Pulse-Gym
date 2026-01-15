@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal, Signal } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { UserServices, } from '../Services/user-services';
 import { HttpClient } from '@angular/common/http';
@@ -13,7 +13,7 @@ import { ColDef, colorSchemeDark, GridApi, GridReadyEvent, themeQuartz, } from '
 })
 export class Users implements OnInit {
   private gridApi!:GridApi<any>
-  UserList: any[] = [];
+  UserList = signal<any[]>([]);
  public rowSelection :'single'|'multiple'='multiple';
   colDefs1: ColDef[] = [
    

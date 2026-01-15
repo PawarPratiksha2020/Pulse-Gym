@@ -1,5 +1,5 @@
 import { AsyncPipe, CommonModule, DatePipe, NgFor, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { async } from 'rxjs/internal/scheduler/async';
 import { ApexAxisChartSeries, ApexChart, ApexStroke, ApexXAxis, ApexTooltip, ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
 import { FormsModule } from '@angular/forms';
@@ -17,11 +17,12 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 })
 export class Finace {
   myDate = new Date();
-  name = 'Q4  Projection';
-  revenue = 44.5;
-  target = 100;
+  name = signal<string>("'Q4  Projection'");
+  revenue = signal<string>('$84,320');
+  target = signal<number>(120);
 
-  planValue = (this.revenue / this.target) * 100;
+  // planValue = (this.revenue() / this.target()) * 100;
+  planValue = signal<number>( (this.revenue().replace('$','') as unknown as number / this.target()) * 100 );
   Range=[
      {value: 'month', viewValue: 'This Month'},
     {value: 'Quarter', viewValue: 'This Quarter'},

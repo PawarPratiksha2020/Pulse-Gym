@@ -1,5 +1,5 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Attendance } from '../Model/staffModel';
 import { StaffattendenceServices } from '../Services/staffattendence';
@@ -151,7 +151,7 @@ export class Satff implements OnInit {
 
   ngOnInit() {
     this.rowData = [...this.staff];
-    this.attendanceList = this.staffList1.map(s => ({
+    this.attendanceList.set(this.staffList1.map(s => ({
       staffId: s.id,
       name: s.name,
       shiftStart: '09:00',
@@ -162,7 +162,8 @@ export class Satff implements OnInit {
       overtime: 0,
       status: 'Absent',
       date: new Date().toISOString().slice(0, 10)
-    }));
+    }))
+  );
   }
 
   // =======================
@@ -236,7 +237,7 @@ export class Satff implements OnInit {
   constructor(private attendsvc: StaffattendenceServices) { }
 
   // Temporary object for new staff
-  attendanceList: Attendance[] = [];
+  attendanceList = signal<Attendance[]>([]);
 
   calculateAttendance(att: Attendance) {
 

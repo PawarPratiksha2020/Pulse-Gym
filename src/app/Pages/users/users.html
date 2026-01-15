@@ -8,7 +8,7 @@
     class="ag-theme-quartz custom-grid"
     theme="legacy" 
     style=" width: 100%;height: calc(100vh-140px);"
-     [rowData]="UserList"
+     [rowData]="UserList()"
         [columnDefs]="colDefs1"
          [defaultColDef]="defaultColDef1" 
          (gridReady)="onGridReady($event)"

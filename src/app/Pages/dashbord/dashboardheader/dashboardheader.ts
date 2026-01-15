@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ThemeService } from '../../Services/theme-service';
 import { Router } from '@angular/router';
 import { SearchService } from '../../Services/search-service';
@@ -12,7 +12,7 @@ import { SearchService } from '../../Services/search-service';
 })
 export class Dashboardheader {
  showThemeMenu =false;
- searchResults :any[] =[];
+ searchResults = signal<any[]>([]);
  constructor(private themeServices :ThemeService,
   private router:Router,
   private searchServices :SearchService
@@ -27,16 +27,15 @@ export class Dashboardheader {
  onSearch(value:string){
   console.log('Search Value:',value);
    if (!value.trim()) {
-    this.searchResults = [];
+    this.searchResults = signal([]);
     return;
   }
 
-  this.searchResults = this.searchServices.search(value);
+  this.searchResults = signal(this.searchServices.search(value));
 }
 
 goToPage(route: string) {
   this.router.navigate([route]);
-  this.searchResults = [];
+  this.searchResults = signal([]);
  }
-
 }

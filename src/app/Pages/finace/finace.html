@@ -9,7 +9,7 @@
                 <p>Financial overview, forecasting & billing history.</p>
             </div>
 
-            <button class="btn">{{myDate|date:'MMM d, y' }} {{ name}}</button>
+            <button class="btn">{{myDate|date:'MMM d, y' }} {{ name()}}</button>
         </div>
 
     </div>
@@ -29,7 +29,9 @@
             <mat-label>All Branches</mat-label>
             <mat-select placeholder="Choose" panelClass="range-dropdown">
                 <mat-option value="pune">Pune</mat-option>
-                <mat-option value="Phaltan">Phaltan</mat-option>
+                <mat-option value="Nagar">Nagar</mat-option>
+                <mat-option value="Mumbai">Mumbai</mat-option>
+                
             </mat-select>
         </mat-form-field>
         <mat-form-field appearance="outline">
@@ -37,6 +39,8 @@
             <mat-select placeholder="Choose" panelClass="range-dropdown">
                 <mat-option value="Standard">Standard</mat-option>
                 <mat-option value="Premium">Premium</mat-option>
+                <mat-option value="Corporate">Corporate</mat-option>
+
             </mat-select>
         </mat-form-field>
 
@@ -54,7 +58,7 @@
                     <label>Monthly Recurring Revenue</label>
                     <span class="badge green">+12.5%</span>
                 </div>
-                <h1>$84,320</h1>
+                <h1>{{revenue()}}</h1>
 
                 <div class="kpi-footer">
                     <div>

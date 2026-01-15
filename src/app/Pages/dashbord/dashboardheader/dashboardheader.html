@@ -10,7 +10,7 @@
     <div class="search-results" *ngIf="searchResults.length">
   <div
     class="search-item"
-    *ngFor="let item of searchResults"
+    *ngFor="let item of searchResults()"
     (click)="goToPage(item.route)">
 
     <strong>{{ item.page }}</strong>
