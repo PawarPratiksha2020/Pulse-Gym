@@ -1,6 +1,5 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { StaffHeader } from "./staff-header/staff-header";
 import { FormsModule } from '@angular/forms';
 import { Attendance } from '../Model/staffModel';
 import { StaffattendenceServices } from '../Services/staffattendence';
@@ -11,7 +10,7 @@ import { AgGridAngular } from "ag-grid-angular";
 
 @Component({
   selector: 'app-satff',
-  imports: [NgClass, NgIf, NgFor, StaffHeader, FormsModule, MatFormField, MatSelect, MatOption, MatSelectModule, MatFormFieldModule, AgGridAngular],
+  imports: [NgClass, NgIf, NgFor, FormsModule, MatFormField, MatSelect, MatOption, MatSelectModule, MatFormFieldModule, AgGridAngular],
   templateUrl: './satff.html',
   styleUrl: './satff.css',
 })
